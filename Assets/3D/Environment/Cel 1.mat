@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3595707794746130854
+--- !u!114 &-5019500823889642277
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,10 +20,10 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CelNoImage 1
-  m_Shader: {fileID: -6465566751694194690, guid: 55ce9f3f20961ea4c9462e3bac389335,
+  m_Name: Cel 1
+  m_Shader: {fileID: -6465566751694194690, guid: 8fe8c2ee1a596134abb0cc5cfe9f20c4,
     type: 3}
-  m_Parent: {fileID: 2100000, guid: 8bad621fea6ca5445a6845e815d2c7a0, type: 2}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -39,13 +39,38 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Highlight:
+        m_Texture: {fileID: 2800000, guid: 46dec3ea3ddbb71458c71e5e6b7b9d38, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HighlightText:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _shadow:
+        m_Texture: {fileID: 2800000, guid: 6c4d92be1b04fad458e771b5bb326d5f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Outline_Thickness: 0.1
+    - _QueueControl: 0
+    - _QueueOffset: 0
+    - _UVTile: 1.38
     m_Colors:
-    - _Highlight_1: {r: 0.6470132, g: 0.78113204, b: 0.73235124, a: 0}
-    - _Shadow: {r: 0.42352942, g: 0.6509804, b: 0.6666667, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _Tile: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
