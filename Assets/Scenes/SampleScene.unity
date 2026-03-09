@@ -2361,7 +2361,8 @@ GameObject:
   - component: {fileID: 543450653413028983}
   - component: {fileID: 3469287837263477714}
   - component: {fileID: 1711813855350148888}
-  - component: {fileID: 3469287837263477715}
+  - component: {fileID: 3469287837263477716}
+  - component: {fileID: 3469287837263477717}
   m_Layer: 0
   m_Name: CSChartestv2
   m_TagString: Untagged
@@ -2427,7 +2428,29 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149474619085}
   m_Mesh: {fileID: -153830957423991239, guid: 7b1d80a4d1bf721498189fb03074a350, type: 3}
---- !u!54 &3469287837263477715
+--- !u!64 &3469287837263477716
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149474619085}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -153830957423991239, guid: 7b1d80a4d1bf721498189fb03074a350, type: 3}
+--- !u!54 &3469287837263477717
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
