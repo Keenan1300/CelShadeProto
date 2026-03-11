@@ -373,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026913622, y: 0.011650466, z: -0.00031369118, w: 0.99956983}
+  m_LocalRotation: {x: 0.026967695, y: 0.012561776, z: -0.00033891216, w: 0.9995574}
   m_LocalPosition: {x: -0.31654, y: 9.704585, z: -28.580256}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -861,7 +861,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         LegacyInput: Mouse X
-        LegacyGain: -1012.7
+        LegacyGain: 1012.7
         CancelDeltaTime: 0
       InputValue: 5.37
       Driver:
@@ -1049,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654862858}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026913624, y: 0.011650466, z: -0.00031369118, w: 0.99956983}
+  m_LocalRotation: {x: 0.026967691, y: 0.012561774, z: -0.00033891207, w: 0.9995574}
   m_LocalPosition: {x: 0, y: 1.634265, z: -30.264965}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1581,6 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c40ee9932192c642943a1d9167e9a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  RB: {fileID: 1343870692}
 --- !u!1 &1430693497
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,7 +2820,7 @@ GameObject:
   - component: {fileID: 543450653413028983}
   - component: {fileID: 3469287837263477714}
   - component: {fileID: 1711813855350148888}
-  - component: {fileID: 3469287837263477716}
+  - component: {fileID: 3469287837263477715}
   m_Layer: 0
   m_Name: CharacterMesh
   m_TagString: Untagged
@@ -2885,8 +2886,8 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149474619085}
   m_Mesh: {fileID: -153830957423991239, guid: 7b1d80a4d1bf721498189fb03074a350, type: 3}
---- !u!64 &3469287837263477716
-MeshCollider:
+--- !u!136 &3469287837263477715
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2903,10 +2904,11 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -153830957423991239, guid: 7b1d80a4d1bf721498189fb03074a350, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.015
+  m_Height: 0.06
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.0018912791, z: 0.023545366}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
