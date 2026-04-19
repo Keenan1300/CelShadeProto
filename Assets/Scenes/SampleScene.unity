@@ -1376,12 +1376,12 @@ GameObject:
   - component: {fileID: 1122987721}
   - component: {fileID: 1122987720}
   - component: {fileID: 1122987719}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1122987719
 BoxCollider:
@@ -1393,7 +1393,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1426,7 +1426,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: f73fd536020a9d943ab2e151aab70f35, type: 2}
@@ -1533,9 +1533,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343870691}
   serializedVersion: 5
-  m_Mass: 3
-  m_LinearDamping: 2
-  m_AngularDamping: 0.2
+  m_Mass: 1
+  m_LinearDamping: 2.5
+  m_AngularDamping: 0.5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1583,7 +1583,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   RB: {fileID: 1343870692}
   PlayerMesh: {fileID: 7123956367740831228}
-  movespeed: 35
+  movespeed: 15
+  Jumpforce: 20
+  JumpCooldown: 0.25
+  airmultiplier: 0.8
+  gravityMultiplier: 8
+  Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  playerhieght: 15
   Orientation: {fileID: 1323500136}
 --- !u!1 &1430693497
 GameObject:
@@ -1748,12 +1756,12 @@ GameObject:
   - component: {fileID: 1599900652}
   - component: {fileID: 1599900651}
   - component: {fileID: 1599900650}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!65 &1599900650
 BoxCollider:

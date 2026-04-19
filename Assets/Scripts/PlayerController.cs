@@ -7,9 +7,27 @@ public class PlayerController : MonoBehaviour
     public Rigidbody RB;
     private Animator Anim;
     public GameObject PlayerMesh;
+    
+    //inputs
     float horizontalinput;
     float VerticalInput;
+
+    //Char Data
     public float movespeed;
+
+
+    //Jump
+    public float Jumpforce;
+    public float JumpCooldown;
+    private bool JumpCooled;
+    private bool Grounded;
+    public float airmultiplier;
+    public float gravityMultiplier;
+
+    //Ground Check
+    public LayerMask Ground;
+    public float playerhieght;
+
 
     Vector3 MoveDirection;
 
@@ -17,6 +35,7 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        JumpCooled = true;
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
         Anim = PlayerMesh.GetComponent<Animator>();
@@ -26,7 +45,32 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         input();
-        //RB.AddForce();
+
+        //ground check
+        Grounded = Physics.Raycast(transform.position, Vector3.down, playerhieght * 0.5f + 0.2f, Ground);
+        Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
+
+
+        //Jump logic
+        if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
+        {
+            JumpCooled = false;
+            Jumplogii();
+            Invoke(nameof(resetjump), JumpCooldown);
+
+            Anim.SetBool("Jump", true);
+            Debug.Log("Jump!");
+        }
+        else
+        {
+            Anim.SetBool("Jump", false);
+        }
+
+        if (RB.linearVelocity.y < 0) // If the player is falling
+        {
+            RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Acceleration);
+        }
+
     }
 
     private void FixedUpdate()
@@ -40,6 +84,7 @@ public class PlayerController : MonoBehaviour
          horizontalinput = Input.GetAxisRaw("Horizontal");
          VerticalInput = Input.GetAxisRaw("Vertical");
 
+     
 
     }
 
@@ -47,10 +92,22 @@ public class PlayerController : MonoBehaviour
     {
         //find move dir
         MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
-        RB.AddForce(MoveDirection.normalized*movespeed*10f,ForceMode.Force);
+
+        if (Grounded)
+        {
+           
+            RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
+
+        }
+        else
+        {
+            RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
+
+        }
 
         //Animation
-        if (Input.GetAxisRaw("Horizontal") != 0 ||  Input.GetAxisRaw("Vertical") != 0)
+        //Standard Run
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             Anim.SetBool("IsMoving", true);
         }
@@ -58,8 +115,19 @@ public class PlayerController : MonoBehaviour
         {
             Anim.SetBool("IsMoving", false);
         }
+    }
+
+    private void Jumplogii()
+    {
+
+        RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
+
+        RB.AddForce(transform.up * Jumpforce, ForceMode.Impulse);
 
     }
 
-
+    private void resetjump()
+    {
+        JumpCooled = true;
+    }
 }
