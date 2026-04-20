@@ -1534,8 +1534,8 @@ Rigidbody:
   m_GameObject: {fileID: 1343870691}
   serializedVersion: 5
   m_Mass: 1
-  m_LinearDamping: 2.5
-  m_AngularDamping: 0.5
+  m_LinearDamping: 1
+  m_AngularDamping: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1583,11 +1583,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   RB: {fileID: 1343870692}
   PlayerMesh: {fileID: 7123956367740831228}
-  movespeed: 15
-  Jumpforce: 20
-  JumpCooldown: 0.25
+  JumpDust: {fileID: 487821162018929193, guid: 56e4c8ed19543b34198b720871bc126a, type: 3}
+  movespeed: 10
+  Jumpforce: 30
+  JumpCooldown: 1
   airmultiplier: 0.8
-  gravityMultiplier: 8
+  gravityMultiplier: 20
+  VertFallClamp: 50
   Ground:
     serializedVersion: 2
     m_Bits: 8

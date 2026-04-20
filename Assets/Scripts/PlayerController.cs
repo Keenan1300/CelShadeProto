@@ -1,12 +1,16 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
+using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody RB;
     private Animator Anim;
     public GameObject PlayerMesh;
+
+    public GameObject JumpDust;
     
     //inputs
     float horizontalinput;
@@ -23,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool Grounded;
     public float airmultiplier;
     public float gravityMultiplier;
+    public float VertFallClamp;
 
     //Ground Check
     public LayerMask Ground;
@@ -49,7 +54,7 @@ public class PlayerController : MonoBehaviour
         //ground check
         Grounded = Physics.Raycast(transform.position, Vector3.down, playerhieght * 0.5f + 0.2f, Ground);
         Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
-
+        Anim.SetBool("Grounded", Grounded);
 
         //Jump logic
         if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
@@ -57,8 +62,8 @@ public class PlayerController : MonoBehaviour
             JumpCooled = false;
             Jumplogii();
             Invoke(nameof(resetjump), JumpCooldown);
-
-            Anim.SetBool("Jump", true);
+            
+            Anim.SetTrigger("Jump");
             Debug.Log("Jump!");
         }
         else
@@ -68,7 +73,18 @@ public class PlayerController : MonoBehaviour
 
         if (RB.linearVelocity.y < 0) // If the player is falling
         {
-            RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Acceleration);
+            //exponential grav increase as term velo is reached
+            gravityMultiplier += Time.deltaTime * 10f;
+            gravityMultiplier = Mathf.Clamp(gravityMultiplier, 0f, VertFallClamp);
+
+
+            RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Impulse);
+            Anim.SetBool("Falling",true);
+        }
+        else if (Grounded)
+        {
+            Anim.SetBool("Falling", false);
+           
         }
 
     }
@@ -95,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
         if (Grounded)
         {
-           
+            gravityMultiplier = 0;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
@@ -107,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
         //Animation
         //Standard Run
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 && Grounded)
         {
             Anim.SetBool("IsMoving", true);
         }
@@ -120,14 +136,17 @@ public class PlayerController : MonoBehaviour
     private void Jumplogii()
     {
 
+       Instantiate(JumpDust,new Vector3(transform.position.x, transform.position.y -4f, transform.position.z), Quaternion.identity);
+
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
 
-        RB.AddForce(transform.up * Jumpforce, ForceMode.Impulse);
+        RB.AddForce(transform.up * Jumpforce, ForceMode.VelocityChange);
 
     }
 
     private void resetjump()
     {
+        Anim.ResetTrigger("Jump");
         JumpCooled = true;
     }
 }
