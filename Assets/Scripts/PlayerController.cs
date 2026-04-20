@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         if (!Grounded) // If the player is falling
         {
             //exponential grav increase as term velo is reached
-            gravityMultiplier += Time.deltaTime * 2f;
+            gravityMultiplier += Time.deltaTime;
             gravityMultiplier = Mathf.Clamp(gravityMultiplier, 0f, VertFallClamp);
 
 
