@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
        Instantiate(JumpDust,new Vector3(transform.position.x, transform.position.y -4f, transform.position.z), Quaternion.identity);
 
-        RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
+        RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
         RB.AddForce(transform.up * Jumpforce, ForceMode.VelocityChange);
 
