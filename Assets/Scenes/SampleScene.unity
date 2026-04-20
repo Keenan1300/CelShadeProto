@@ -1585,10 +1585,10 @@ MonoBehaviour:
   PlayerMesh: {fileID: 7123956367740831228}
   JumpDust: {fileID: 487821162018929193, guid: 56e4c8ed19543b34198b720871bc126a, type: 3}
   movespeed: 10
-  Jumpforce: 30
+  Jumpforce: 60
   JumpCooldown: 1
   airmultiplier: 0.8
-  gravityMultiplier: 20
+  gravityMultiplier: 10
   VertFallClamp: 50
   Ground:
     serializedVersion: 2
@@ -1852,7 +1852,7 @@ Transform:
   m_GameObject: {fileID: 1599900649}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 80, y: -22.3, z: -4.1}
+  m_LocalPosition: {x: 80, y: -21, z: -4.1}
   m_LocalScale: {x: 87.931984, y: 71.677, z: 38.05253}
   m_ConstrainProportionsScale: 0
   m_Children: []

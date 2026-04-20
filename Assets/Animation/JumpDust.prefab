@@ -103,3 +103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c0765c3ce4a8e4f9ab15a41317ee25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::JumpDust
+  alph: {fileID: 0}
+  transp: {r: 1, g: 1, b: 1, a: 0.2}
+  opaq: {r: 1, g: 1, b: 1, a: 0}

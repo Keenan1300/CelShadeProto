@@ -71,10 +71,10 @@ public class PlayerController : MonoBehaviour
             Anim.SetBool("Jump", false);
         }
 
-        if (RB.linearVelocity.y < 0) // If the player is falling
+        if (!Grounded) // If the player is falling
         {
             //exponential grav increase as term velo is reached
-            gravityMultiplier += Time.deltaTime * 10f;
+            gravityMultiplier += Time.deltaTime * 2f;
             gravityMultiplier = Mathf.Clamp(gravityMultiplier, 0f, VertFallClamp);
 
 
@@ -117,7 +117,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
+            RB.AddForce((Vector3.down * 0.5f) * gravityMultiplier, ForceMode.Acceleration);
+            //RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
 
         }
 
