@@ -19,15 +19,20 @@ public class PlayerController : MonoBehaviour
     //Char Data
     public float movespeed;
 
+    //1 or 0, is the player moving with WASD?
+    int InputNum;
+
 
     //Jump
     public float Jumpforce;
+    public float JumpForwardforce;
     public float JumpCooldown;
     private bool JumpCooled;
     private bool Grounded;
     public float airmultiplier;
     public float gravityMultiplier;
     public float VertFallClamp;
+
 
     //Ground Check
     public LayerMask Ground;
@@ -99,8 +104,8 @@ public class PlayerController : MonoBehaviour
         //Calc Player input
          horizontalinput = Input.GetAxisRaw("Horizontal");
          VerticalInput = Input.GetAxisRaw("Vertical");
+        InputNum = (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0) ? 1 : 0;
 
-     
 
     }
 
@@ -141,7 +146,7 @@ public class PlayerController : MonoBehaviour
 
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
-        RB.AddForce(transform.up * Jumpforce, ForceMode.VelocityChange);
+        RB.AddForce(transform.up * Jumpforce + (PlayerMesh.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
 
     }
 
