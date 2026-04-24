@@ -1,167 +1,164 @@
-using System;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
 public class PlayerGrind : MonoBehaviour
 {
     [Header("Grind Data")]
-    bool onRail;
-    public float GrindSpeed;
-    public float HeightOffset;
-    public float TimeForFullSpline;
-    public float elapsedTime;
-    public float LerpSpeed = 0.5f;
+    public bool onRail;
+    public float GrindSpeed = 10f;
+    public float HeightOffset = 1.0f;
+    public float LerpSpeed = 10f;
 
-    [Header("JumpLogic")]
-    public float JumpForce = 5f; // Added for jump off
-
-    [Header("Inputs")]
-    public bool jump;
-    Vector3 Input;
+    private float elapsedTime;
+    private float totalRailDuration; // How long it takes to finish the rail at GrindSpeed
 
     [Header("Scripts")]
     Rigidbody PlayerRB;
-    CharacterController CharCont;
-    Collider CharCollision;
     RailScript CurrentRailScript;
+    CapsuleCollider Colliding;
+    public GameObject PlayerMesh;
 
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
-        CharCollision = GetComponent<CapsuleCollider>();
+        Colliding = GetComponent<CapsuleCollider>();
     }
 
     public void InterpretJump(InputAction.CallbackContext context)
     {
-        // Space button check
-        jump = Convert.ToBoolean(context.ReadValue<float>());
-
-        // If we press space while on the rail, jump off
         if (context.started && onRail)
         {
             JumpOffRail();
         }
     }
 
-    public void InterpretMovement(InputAction.CallbackContext context)
-    {
-        Vector2 Rawinput = context.ReadValue<Vector2>();
-        Input.x = Rawinput.x;
-    }
-
     private void FixedUpdate()
     {
         if (onRail)
         {
-            GrindplayerAlongRail();
+            GrindPlayerAlongRail();
         }
     }
 
-    void GrindplayerAlongRail()
+    void GrindPlayerAlongRail()
     {
-        if (CurrentRailScript != null && onRail)
+        if (CurrentRailScript == null || !onRail) return;
+
+        // 1. Calculate Progress (0 to 1)
+        float progress = elapsedTime / totalRailDuration;
+
+        // 2. Check if we've reached the end or beginning of the rail
+        if (progress < 0f || progress > 1f)
         {
-            float progress = elapsedTime / TimeForFullSpline;
-            bool ForwardOrient = CurrentRailScript.ForwardOrient;
-
-            if (progress < 0 || progress > 1)
-            {
-                ThrowOffRail();
-                return;
-            }
-
-            float nextTimeNormalized;
-            if (ForwardOrient)
-            {
-                nextTimeNormalized = (elapsedTime + Time.deltaTime) / TimeForFullSpline;
-            }
-            else
-            {
-               
-                nextTimeNormalized = (elapsedTime - Time.deltaTime) / TimeForFullSpline;
-            }
-
-            float3 pos, tangent, up;
-            float3 nextposfloat, nextTan, nextUp;
-
-            SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, progress, out pos, out tangent, out up);
-            SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, nextTimeNormalized, out nextposfloat, out nextTan, out nextUp);
-
-            Vector3 worldPos = CurrentRailScript.ConvertLocaltoWorld(pos);
-            Vector3 nextPos = CurrentRailScript.ConvertLocaltoWorld(nextposfloat);
-
-            //update position
-            transform.position = worldPos + (transform.up * HeightOffset);
-
-            //update rotation
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(nextPos - worldPos), LerpSpeed);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.up, up) * transform.rotation, LerpSpeed);
-
-            if (ForwardOrient)
-            {
-                elapsedTime += Time.deltaTime;
-            }
-            else
-            {
-                elapsedTime -= Time.deltaTime;
-            }
-
-            if (elapsedTime > TimeForFullSpline || elapsedTime < TimeForFullSpline * -1f)
-            {
-                JumpOffRail();
-
-            }
-          
+            JumpOffRail();
+            return;
         }
+
+        // 3. Evaluate Spline Position and Rotation
+        // We use the spline's local evaluation and convert to world space via the RailScript
+        SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, progress, out float3 localPos, out float3 localForward, out float3 localUp);
+
+        Vector3 worldPos = CurrentRailScript.ConvertLocaltoWorld(localPos);
+        Vector3 worldUp = CurrentRailScript.ConvertLocaltoWorldDirection(localUp);
+        Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
+
+        // 4. Update Position
+        // Set position directly to the rail point + offset
+        transform.position = Vector3.Lerp(transform.position, worldPos + (worldUp * HeightOffset), Time.deltaTime * LerpSpeed);
+
+        // 5. Update Rotation
+        // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
+        Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
+        Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * LerpSpeed);
+
+        // 6. Increment/Decrement Time based on direction
+        if (CurrentRailScript.ForwardOrient)
+            elapsedTime += Time.deltaTime;
+        else
+            elapsedTime -= Time.deltaTime;
+
+
+       
     }
 
     private void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.tag == "Rail")
+        if (hit.gameObject.CompareTag("Rail") && !onRail)
         {
-            onRail = true;
             CurrentRailScript = hit.gameObject.GetComponent<RailScript>();
+            if (CurrentRailScript == null) return;
 
-            
-            //PlayerRB.isKinematic = true;
-
-            SetRailPositionFromEntry();
+            EnterRail();
         }
     }
 
-    void SetRailPositionFromEntry()
+    void EnterRail()
     {
-        TimeForFullSpline = CurrentRailScript.RailLength / GrindSpeed;
+        GetComponent<Collider>().enabled = false;
+      
+        onRail = true;
+        PlayerRB.isKinematic = true;
 
-        Vector3 SplinePoint;
-        float normalizedTime = CurrentRailScript.CalculateTargetRailPoint(transform.position, out SplinePoint);
-        elapsedTime = TimeForFullSpline * normalizedTime;
 
-        float3 pos, forward, up;
-        SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out pos, out forward, out up);
+        // Calculate how long the grind lasts based on speed
+        totalRailDuration = CurrentRailScript.RailLength / GrindSpeed;
 
-        CurrentRailScript.CalcDirection(forward, transform.forward);
+        // Find where on the rail we are starting
+        Vector3 splinePoint;
+        float normalizedTime = CurrentRailScript.CalculateTargetRailPoint(transform.position, out splinePoint);
 
-        
-        transform.position = SplinePoint + (transform.up * HeightOffset);
+        //Put player aligned to rail
+        Vector3 Startpos = transform.position;
+        Startpos.x = splinePoint.x;
+        Startpos.y = splinePoint.y + HeightOffset;
+        transform.position = Startpos;
+
+      // Set our elapsed time relative to the total duration
+      elapsedTime = totalRailDuration * normalizedTime;
+
+        // Determine if we are facing with or against the spline direction
+        SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out _, out float3 localForward, out _);
+        Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
+
+        CurrentRailScript.CalcDirection(worldForward, PlayerMesh.transform.forward);
+
     }
 
     void JumpOffRail()
     {
+        // Add an upward burst for the jump
         ThrowOffRail();
+       
+        PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
     }
 
     public void ThrowOffRail()
     {
-        PlayerRB.AddForce(transform.forward * GrindSpeed * 10f, ForceMode.Force);
+        transform.position += Vector3.forward * 10f;
         onRail = false;
+       
+
+        // 1. Clear any 'spinning' forces built up during the grind
+        PlayerRB.angularVelocity = Vector3.zero;
+
+        // 2. Straighten the player out 
+        // This keeps the Y rotation (direction) but resets X and Z (tilting)
+        Vector3 currentEuler = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+
+        // 3. Maintain momentum
+        PlayerRB.linearVelocity = transform.forward * GrindSpeed;
+
+        PlayerRB.isKinematic = false;
+
+        //prevent stuck bug
+        GetComponent<Collider>().enabled = true;
+        PlayerRB.AddForce(Vector3.forward * 100f, ForceMode.Force);
+
+
         CurrentRailScript = null;
-
-        //PlayerRB.isKinematic = false;
-
-        transform.position += transform.forward * 10;
     }
 }

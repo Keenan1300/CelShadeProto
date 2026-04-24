@@ -1,90 +1,87 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
-using static UnityEngine.ParticleSystem;
 
 public class RailScript : MonoBehaviour
 {
-
-    //RailStructure
+    [Header("Rail Structure")]
     public Transform PointA;
     public Transform PointB;
 
-
-    //Rail data
+    [Header("Rail Data")]
     public bool ForwardOrient;
     public SplineContainer RailSp;
     public float RailLength;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         RailSp = GetComponent<SplineContainer>();
-        RailLength = RailSp.CalculateLength();
-        
-
-
-
+        UpdateRailPoints();
     }
 
-    //Take local coordinates and convert it to world position
+    // Correctly convert local spline point to world position
     public Vector3 ConvertLocaltoWorld(float3 localPoint)
     {
-        Vector3 WorldPos = transform.TransformPoint(localPoint);
-        return WorldPos;
+        return transform.TransformPoint(localPoint);
     }
 
-
-    //Take a spot in the world and convert it to local coordinates
+    // Correctly convert world position to local spline space
     public float3 ConvertWorldtoLocal(Vector3 worldPoint)
     {
-        float3 localPos = transform.TransformPoint(worldPoint);
-        return localPos;
-
+        return transform.InverseTransformPoint(worldPoint);
     }
 
+    // Convert directions (tangents/up vectors) without translation
+    public Vector3 ConvertLocaltoWorldDirection(float3 localDir)
+    {
+        return transform.TransformDirection(localDir);
+    }
 
     public float CalculateTargetRailPoint(Vector3 playerPos, out Vector3 worldPosOnSpline)
     {
-        float3 nearestpoint;
-        float time;
-        SplineUtility.GetNearestPoint(RailSp.Spline, ConvertWorldtoLocal(playerPos), out nearestpoint, out time);
-        worldPosOnSpline = ConvertLocaltoWorld(nearestpoint);
-        return time;
+        // Must convert player world pos to local rail space for SplineUtility
+        float3 localPlayerPos = ConvertWorldtoLocal(playerPos);
+
+        SplineUtility.GetNearestPoint(RailSp.Spline, localPlayerPos, out float3 nearestLocalPoint, out float t);
+
+        worldPosOnSpline = ConvertLocaltoWorld(nearestLocalPoint);
+        return t; // Returns 0.0 to 1.0
     }
 
-    
-    public void CalcDirection(float3 railforward, Vector3 playerforward)
+    public void CalcDirection(Vector3 worldRailForward, Vector3 playerForward)
     {
-        float angle = Vector3.Angle(railforward, playerforward.normalized);
-        if (angle > 90f)
-        {
-            ForwardOrient = false;
-        }
-        else
-        {
-            ForwardOrient = true;
-        }
+        // Using Dot product is slightly more performant for "is it facing same way?"
+        float dot = Vector3.Dot(worldRailForward.normalized, playerForward.normalized);
+
+        // If dot is positive, we are facing the same way. If negative, opposite.
+        ForwardOrient = dot > 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (RailSp == null || PointA == null || PointB == null) return;
-       
-        Spline Spline = RailSp.Spline;
+        // Only update if points move in the editor/game
+        if (PointA != null && PointB != null)
+        {
+            UpdateRailPoints();
+        }
+    }
 
-        //Set Position A
-        BezierKnot StartPos = Spline[0];
-        StartPos.Position = RailSp.transform.InverseTransformPoint(PointA.position);
-        Spline[0] = StartPos;
+    void UpdateRailPoints()
+    {
+        //Spline spline = RailSp.Spline;
 
-        //Set position B
-        BezierKnot EndPos = Spline[Spline.Count - 1];
-        EndPos.Position = RailSp.transform.InverseTransformPoint(PointB.position);
-        Spline[Spline.Count - 1] = StartPos;
+        // Set Knot 0 to Point A
+        //BezierKnot startKnot = spline[0];
+        //startKnot.Position = transform.InverseTransformPoint(PointA.position);
+        //spline[0] = startKnot;
+
+        // Set Last Knot to Point B
+        //BezierKnot endKnot = spline[spline.Count - 1];
+        //endKnot.Position = transform.InverseTransformPoint(PointB.position);
+        //spline[spline.Count - 1] = endKnot;
+
+        // Recalculate length so PlayerGrind speed stays consistent
+        RailLength = RailSp.CalculateLength();
     }
 }
+
