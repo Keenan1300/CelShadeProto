@@ -1,8 +1,9 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-using Unity.Mathematics;
-using UnityEngine.Splines;
 using System;
+using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.Splines;
 
 public class PlayerGrind : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class PlayerGrind : MonoBehaviour
         if (CurrentRailScript != null && onRail)
         {
             float progress = elapsedTime / TimeForFullSpline;
+            bool ForwardOrient = CurrentRailScript.ForwardOrient;
 
             if (progress < 0 || progress > 1)
             {
@@ -72,13 +74,13 @@ public class PlayerGrind : MonoBehaviour
             }
 
             float nextTimeNormalized;
-            if (CurrentRailScript.ForwardOrient)
+            if (ForwardOrient)
             {
                 nextTimeNormalized = (elapsedTime + Time.deltaTime) / TimeForFullSpline;
             }
             else
             {
-                // Fixed the typo from your original code (was = instead of -)
+               
                 nextTimeNormalized = (elapsedTime - Time.deltaTime) / TimeForFullSpline;
             }
 
@@ -91,11 +93,14 @@ public class PlayerGrind : MonoBehaviour
             Vector3 worldPos = CurrentRailScript.ConvertLocaltoWorld(pos);
             Vector3 nextPos = CurrentRailScript.ConvertLocaltoWorld(nextposfloat);
 
+            //update position
             transform.position = worldPos + (transform.up * HeightOffset);
+
+            //update rotation
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(nextPos - worldPos), LerpSpeed);
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(transform.up, up) * transform.rotation, LerpSpeed);
 
-            if (CurrentRailScript.ForwardOrient)
+            if (ForwardOrient)
             {
                 elapsedTime += Time.deltaTime;
             }
@@ -103,6 +108,13 @@ public class PlayerGrind : MonoBehaviour
             {
                 elapsedTime -= Time.deltaTime;
             }
+
+            if (elapsedTime > TimeForFullSpline || elapsedTime < TimeForFullSpline * -1f)
+            {
+                JumpOffRail();
+
+            }
+          
         }
     }
 
@@ -113,8 +125,8 @@ public class PlayerGrind : MonoBehaviour
             onRail = true;
             CurrentRailScript = hit.gameObject.GetComponent<RailScript>();
 
-            // Fix: Disable physics so it doesn't fight the teleport
-            PlayerRB.isKinematic = true;
+            
+            //PlayerRB.isKinematic = true;
 
             SetRailPositionFromEntry();
         }
@@ -133,24 +145,23 @@ public class PlayerGrind : MonoBehaviour
 
         CurrentRailScript.CalcDirection(forward, transform.forward);
 
-        // FIX: Removed the * Time.deltaTime that caused the teleport to (0,0,0)
+        
         transform.position = SplinePoint + (transform.up * HeightOffset);
     }
 
     void JumpOffRail()
     {
         ThrowOffRail();
-        PlayerRB.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
     }
 
     public void ThrowOffRail()
     {
+        PlayerRB.AddForce(transform.forward * GrindSpeed * 10f, ForceMode.Force);
         onRail = false;
         CurrentRailScript = null;
 
-        // FIX: Turn physics back on
-        PlayerRB.isKinematic = false;
+        //PlayerRB.isKinematic = false;
 
-        transform.position += transform.forward * 1;
+        transform.position += transform.forward * 10;
     }
 }
