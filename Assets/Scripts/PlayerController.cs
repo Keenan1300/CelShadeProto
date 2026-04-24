@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     public GameObject PlayerMesh;
 
     public GameObject JumpDust;
-    
+
+    [Header("Inputs")]
     //inputs
     float horizontalinput;
     float VerticalInput;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     int InputNum;
 
 
+    [Header("JumpData")]
     //Jump
     public float Jumpforce;
     public float JumpForwardforce;
@@ -38,10 +40,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public float playerhieght;
 
-
+    //Direction Calc
     Vector3 MoveDirection;
-
     public Transform Orientation;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
