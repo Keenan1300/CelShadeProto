@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5353393984998262357}
   - component: {fileID: 4799182623856535167}
   - component: {fileID: 4751394111658822592}
+  - component: {fileID: 297221445242676788}
   m_Layer: 0
   m_Name: Rail
   m_TagString: Untagged
@@ -264,6 +265,27 @@ MonoBehaviour:
   ForwardOrient: 0
   RailSp: {fileID: 3231075659777374076}
   RailLength: 0
+--- !u!65 &297221445242676788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087267925229389991}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.34, y: 6.18, z: 45}
+  m_Center: {x: 0, y: 0, z: 22.5}
 --- !u!1 &5619723380050975029
 GameObject:
   m_ObjectHideFlags: 0

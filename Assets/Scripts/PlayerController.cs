@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForwardforce;
     public float JumpCooldown;
     private bool JumpCooled;
-    private bool Grounded;
+    public bool Grounded;
     public float airmultiplier;
     public float gravityMultiplier;
     public float VertFallClamp;

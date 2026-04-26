@@ -17,6 +17,7 @@ public class PlayerGrind : MonoBehaviour
     [Header("Scripts")]
     Rigidbody PlayerRB;
     RailScript CurrentRailScript;
+    PlayerController PlayerControl;
     CapsuleCollider Colliding;
     public GameObject PlayerMesh;
 
@@ -24,6 +25,7 @@ public class PlayerGrind : MonoBehaviour
     {
         PlayerRB = GetComponent<Rigidbody>();
         Colliding = GetComponent<CapsuleCollider>();
+        PlayerControl = GetComponent<PlayerController>();
     }
 
     public void InterpretJump(InputAction.CallbackContext context)
@@ -86,12 +88,15 @@ public class PlayerGrind : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.CompareTag("Rail") && !onRail)
+        if (PlayerControl.Grounded == false)
         {
-            CurrentRailScript = hit.gameObject.GetComponent<RailScript>();
-            if (CurrentRailScript == null) return;
+            if (hit.gameObject.CompareTag("Rail") && !onRail)
+            {
+                CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
+                if (CurrentRailScript == null) return;
 
-            EnterRail();
+                EnterRail();
+            }
         }
     }
 
