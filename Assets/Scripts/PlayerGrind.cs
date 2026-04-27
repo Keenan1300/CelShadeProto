@@ -19,7 +19,8 @@ public class PlayerGrind : MonoBehaviour
     RailScript CurrentRailScript;
     PlayerController PlayerControl;
     CapsuleCollider Colliding;
-    public GameObject PlayerMesh;
+    private GameObject PlayerMesh;
+    public bool ForwardOrient;
 
     void Start()
     {
@@ -74,7 +75,13 @@ public class PlayerGrind : MonoBehaviour
         // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
         Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
         Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * LerpSpeed);
+        transform.rotation = targetRotation;
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * LerpSpeed);
+
+        //force lookat direction
+        transform.LookAt(moveDir);
+
+
 
         // 6. Increment/Decrement Time based on direction
         if (CurrentRailScript.ForwardOrient)
@@ -128,7 +135,8 @@ public class PlayerGrind : MonoBehaviour
         SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out _, out float3 localForward, out _);
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
-        CurrentRailScript.CalcDirection(worldForward, PlayerMesh.transform.forward);
+        CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerMesh.transform.forward);
+        transform.LookAt(worldForward);
 
     }
 

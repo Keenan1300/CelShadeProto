@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject JumpDust;
 
+    PlayerGrind PlayerGrind;
+
     [Header("Inputs")]
     //inputs
     float horizontalinput;
@@ -44,11 +46,14 @@ public class PlayerController : MonoBehaviour
     Vector3 MoveDirection;
     public Transform Orientation;
 
+    public bool OnRail;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PlayerGrind = GetComponent<PlayerGrind>();
         JumpCooled = true;
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
@@ -59,6 +64,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         input();
+
+        OnRail = PlayerGrind.onRail;
 
         //ground check
         Grounded = Physics.Raycast(transform.position, Vector3.down, playerhieght * 0.5f + 0.2f, Ground);
@@ -100,31 +107,39 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+      
+  
+            MovePlayer();
+        
     }
 
     private void input()
     {
-        //Calc Player input
-         horizontalinput = Input.GetAxisRaw("Horizontal");
-         VerticalInput = Input.GetAxisRaw("Vertical");
-        InputNum = (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0) ? 1 : 0;
-
+        if (!OnRail)
+        {
+            //Calc Player input
+            horizontalinput = Input.GetAxisRaw("Horizontal");
+            VerticalInput = Input.GetAxisRaw("Vertical");
+            InputNum = (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0) ? 1 : 0;
+        }
 
     }
 
     private void MovePlayer()
     {
-        //find move dir
-        MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
-
-        if (Grounded)
+        if (!OnRail)
+        {
+            //find move dir
+            MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
+        }
+        
+        if (Grounded && !OnRail)
         {
             gravityMultiplier = 0;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
-        else
+        else if (!Grounded && !OnRail)
         {
             RB.AddForce((Vector3.down * 0.5f) * gravityMultiplier, ForceMode.Acceleration);
             //RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
@@ -133,7 +148,7 @@ public class PlayerController : MonoBehaviour
 
         //Animation
         //Standard Run
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 && Grounded)
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0 && Grounded && !OnRail)
         {
             Anim.SetBool("IsMoving", true);
         }

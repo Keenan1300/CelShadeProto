@@ -2158,6 +2158,7 @@ MonoBehaviour:
     m_Bits: 8
   playerhieght: 15
   Orientation: {fileID: 1323500136}
+  OnRail: 0
 --- !u!114 &1343870695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2174,7 +2175,7 @@ MonoBehaviour:
   GrindSpeed: 40
   HeightOffset: 4
   LerpSpeed: 5.75
-  PlayerMesh: {fileID: 0}
+  ForwardOrient: 0
 --- !u!136 &1343870696
 CapsuleCollider:
   m_ObjectHideFlags: 0
