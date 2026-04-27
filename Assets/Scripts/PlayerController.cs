@@ -63,9 +63,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input();
 
         OnRail = PlayerGrind.onRail;
+        Debug.Log("On Rail is " + OnRail);
+
+
+        input();
 
         //ground check
         Grounded = Physics.Raycast(transform.position, Vector3.down, playerhieght * 0.5f + 0.2f, Ground);

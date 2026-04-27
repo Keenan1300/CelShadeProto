@@ -1,11 +1,14 @@
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
 
 public class PlayerGrind : MonoBehaviour
 {
     [Header("Grind Data")]
+    public UnityEvent EnterGrindingEvent;
+    public UnityEvent ExitGrindingEvent;
     public bool onRail;
     public float GrindSpeed = 10f;
     public float HeightOffset = 1.0f;
@@ -103,12 +106,14 @@ public class PlayerGrind : MonoBehaviour
                 if (CurrentRailScript == null) return;
 
                 EnterRail();
+              
             }
         }
     }
 
     void EnterRail()
     {
+        EnterGrindingEvent.Invoke();
         GetComponent<Collider>().enabled = false;
       
         onRail = true;
@@ -143,9 +148,10 @@ public class PlayerGrind : MonoBehaviour
     void JumpOffRail()
     {
         // Add an upward burst for the jump
-        ThrowOffRail();
-       
+        ExitGrindingEvent.Invoke();
         PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        ThrowOffRail();
+
     }
 
     public void ThrowOffRail()
