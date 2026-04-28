@@ -22,8 +22,13 @@ public class PlayerGrind : MonoBehaviour
     RailScript CurrentRailScript;
     PlayerController PlayerControl;
     CapsuleCollider Colliding;
-    private GameObject PlayerMesh;
+    public GameObject PlayerMesh;
     public bool ForwardOrient;
+
+
+    public float EjectForce;
+
+    private Vector3 moveDir;
 
     void Start()
     {
@@ -98,8 +103,8 @@ public class PlayerGrind : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
-        if (PlayerControl.Grounded == false)
-        {
+       
+        
             if (hit.gameObject.CompareTag("Rail") && !onRail)
             {
                 CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
@@ -108,7 +113,19 @@ public class PlayerGrind : MonoBehaviour
                 EnterRail();
               
             }
-        }
+
+            //Boot Player off if end is reached
+            if (hit.gameObject.CompareTag("RailExit") && onRail)
+            {
+                Debug.Log("Hit end of the line here!");
+                CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
+                hit.gameObject.SetActive(false);
+                if (CurrentRailScript == null) return;
+                JumpOffRail();
+
+            }
+
+        
     }
 
     void EnterRail()
@@ -149,19 +166,20 @@ public class PlayerGrind : MonoBehaviour
     {
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
-        PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-        ThrowOffRail();
+        //PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
+        ThrowOffRail(moveDir);
 
     }
 
-    public void ThrowOffRail()
+    public void ThrowOffRail(Vector3 moveDir)
     {
-        transform.position += Vector3.forward * 10f;
+        transform.position += moveDir * 70f;
+        //transform.position += Vector3.forward * 10f;
         onRail = false;
        
 
         // 1. Clear any 'spinning' forces built up during the grind
-        PlayerRB.angularVelocity = Vector3.zero;
+        //PlayerRB.angularVelocity = Vector3.zero;
 
         // 2. Straighten the player out 
         // This keeps the Y rotation (direction) but resets X and Z (tilting)
@@ -175,8 +193,9 @@ public class PlayerGrind : MonoBehaviour
 
         //prevent stuck bug
         GetComponent<Collider>().enabled = true;
-        PlayerRB.AddForce(Vector3.forward * 100f, ForceMode.Force);
+        //PlayerRB.AddForce(PlayerMesh.transform.up * moveDir * 100f, ForceMode.Force);
 
+        PlayerRB.AddForce(transform.up + (moveDir * EjectForce), ForceMode.Impulse);
 
         CurrentRailScript = null;
     }

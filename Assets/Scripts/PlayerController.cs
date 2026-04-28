@@ -130,6 +130,13 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+
+        if (OnRail)
+        {
+            //replace with proper grinding anim when the time comes
+            Anim.SetBool("Falling", true);
+        }
+
         if (!OnRail)
         {
             //find move dir
