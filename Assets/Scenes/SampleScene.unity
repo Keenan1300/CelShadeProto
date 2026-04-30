@@ -2284,7 +2284,7 @@ MonoBehaviour:
   ResetFreelookCam:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1109868792}
         m_TargetAssemblyTypeName: PlayerCamController, Assembly-CSharp
         m_MethodName: resetCampos
         m_Mode: 1
@@ -2299,9 +2299,9 @@ MonoBehaviour:
   ExitGrindingEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1109868790}
         m_TargetAssemblyTypeName: PlayerCamController, Assembly-CSharp
-        m_MethodName: SwitchToGrind
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   onRail: 0
   GrindSpeed: 40
   HeightOffset: 4
-  LerpSpeed: 5.75
+  LerpSpeed: 6.49
   PlayerMesh: {fileID: 7123956367740831228}
   ForwardOrient: 0
   EjectForce: 12
