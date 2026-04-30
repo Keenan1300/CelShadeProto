@@ -638,8 +638,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026967984, y: 0.011681473, z: -0.0003151619, w: 0.999568}
-  m_LocalPosition: {x: -0.31654, y: 9.704585, z: -28.580256}
+  m_LocalRotation: {x: -0.012636135, y: 3.1909582e-15, z: 4.0324595e-17, w: 0.9999202}
+  m_LocalPosition: {x: -0.096540004, y: 7.266795, z: -27.942451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1096,6 +1096,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 18.103327}
   m_Center: {x: -1.4999967, y: 1.4999883, z: -6.448307}
+--- !u!1 &584837713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 584837714}
+  m_Layer: 0
+  m_Name: CameraReset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &584837714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584837713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.75, z: -27.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7608462404785233734}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &617849113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1253,6 @@ GameObject:
   - component: {fileID: 654862861}
   - component: {fileID: 654862860}
   - component: {fileID: 654862859}
-  - component: {fileID: 654862865}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -1318,7 +1348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
   Composition:
-    ScreenPosition: {x: -0.011389583, y: 0}
+    ScreenPosition: {x: 0, y: 0}
     DeadZone:
       Enabled: 0
       Size: {x: 0.2, y: 0.2}
@@ -1326,9 +1356,9 @@ MonoBehaviour:
       Enabled: 0
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
+  CenterOnActivate: 0
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 0.5, y: 0.5}
+  Damping: {x: 0, y: 0}
   Lookahead:
     Enabled: 0
     Time: 0
@@ -1346,10 +1376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineOrbitalFollow
-  TargetOffset: {x: 0, y: 3.94, z: 1}
+  TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 4
-    PositionDamping: {x: 1, y: 1, z: 1}
+    PositionDamping: {x: 0, y: 0, z: 0}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
@@ -1365,10 +1395,10 @@ MonoBehaviour:
     Bottom:
       Radius: 13.6
       Height: -8.43
-    SplineCurvature: 0.024
-  RecenteringTarget: 2
+    SplineCurvature: 0
+  RecenteringTarget: 0
   HorizontalAxis:
-    Value: 0
+    Value: -0
     Center: -0
     Range: {x: -180, y: 180}
     Wrap: 0
@@ -1378,7 +1408,7 @@ MonoBehaviour:
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 2.93
+    Value: 17.5
     Center: 17.5
     Range: {x: -86.95, y: 91.1}
     Wrap: 0
@@ -1448,35 +1478,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654862858}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.026967978, y: 0.011681472, z: -0.0003151618, w: 0.99956805}
-  m_LocalPosition: {x: 0, y: 1.634265, z: -30.264965}
+  m_LocalRotation: {x: -0.0126361335, y: 3.1946699e-15, z: 3.340689e-16, w: 0.9999202}
+  m_LocalPosition: {x: 0.22, y: -0.803525, z: -29.627161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1109868791}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &654862865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654862858}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a942a453157b52d449684dfab7e27f5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerCamController
-  orientation: {fileID: 1323500136}
-  player: {fileID: 1343870693}
-  playermesh: {fileID: 2085100358}
-  rb: {fileID: 1343870692}
-  RotSpeed: 14
-  Grinding: {fileID: 0}
-  Freelook: {fileID: 0}
-  Freelookpos: {fileID: 0}
-  GrindCam: {fileID: 0}
-  GrindCampos: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 1.338, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,6 +1845,7 @@ MonoBehaviour:
   orientation: {fileID: 1323500136}
   player: {fileID: 1343870693}
   playermesh: {fileID: 2085100358}
+  CameraReset: {fileID: 584837714}
   rb: {fileID: 1343870692}
   RotSpeed: 14
   Grinding: {fileID: 1343870695}
@@ -2145,8 +2154,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323500135}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.22, y: 0, z: 2.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2260,9 +2269,24 @@ MonoBehaviour:
   EnterGrindingEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654862865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerCamController, Assembly-CSharp
         m_MethodName: SwitchToGrind
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ResetFreelookCam:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerCamController, Assembly-CSharp
+        m_MethodName: resetCampos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2275,7 +2299,7 @@ MonoBehaviour:
   ExitGrindingEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654862865}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerCamController, Assembly-CSharp
         m_MethodName: SwitchToGrind
         m_Mode: 1
@@ -3625,7 +3649,7 @@ PrefabInstance:
     - target: {fileID: 8223189530443329369, guid: 84250098ef1bd374b881badec156868c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.921345
+      value: -50.7
       objectReference: {fileID: 0}
     - target: {fileID: 8223189530443329369, guid: 84250098ef1bd374b881badec156868c,
         type: 3}
@@ -22756,6 +22780,7 @@ Transform:
   m_Children:
   - {fileID: 8971290584167018446}
   - {fileID: 5140540510299061655}
+  - {fileID: 584837714}
   m_Father: {fileID: 2085100358}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &7608462404785233736

@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     {
 
         OnRail = PlayerGrind.onRail;
-        Debug.Log("On Rail is " + OnRail);
+        //FOSSILE: Debug.Log("On Rail is " + OnRail);
 
 
         input();

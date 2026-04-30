@@ -8,6 +8,7 @@ public class PlayerGrind : MonoBehaviour
 {
     [Header("Grind Data")]
     public UnityEvent EnterGrindingEvent;
+    public UnityEvent ResetFreelookCam;
     public UnityEvent ExitGrindingEvent;
     public bool onRail;
     public float GrindSpeed = 10f;
@@ -83,12 +84,15 @@ public class PlayerGrind : MonoBehaviour
         // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
         Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
         Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
-        transform.rotation = targetRotation;
-        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * LerpSpeed);
+        PlayerMesh.transform.rotation = targetRotation;
+        
 
-        //force lookat direction
-        transform.LookAt(moveDir);
 
+
+
+        //Remember:
+        //Rotation should be applied to player mesh
+        //Position should be on the script agent.
 
 
         // 6. Increment/Decrement Time based on direction
@@ -158,7 +162,7 @@ public class PlayerGrind : MonoBehaviour
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
         CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerMesh.transform.forward);
-        transform.LookAt(worldForward);
+        PlayerMesh.transform.rotation = Quaternion.LookRotation(worldForward);
 
     }
 
@@ -166,6 +170,7 @@ public class PlayerGrind : MonoBehaviour
     {
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
+        ResetFreelookCam.Invoke();
         //PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         ThrowOffRail(moveDir);
 
@@ -183,19 +188,22 @@ public class PlayerGrind : MonoBehaviour
 
         // 2. Straighten the player out 
         // This keeps the Y rotation (direction) but resets X and Z (tilting)
-        Vector3 currentEuler = transform.rotation.eulerAngles;
-        transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+        Vector3 currentEuler = PlayerMesh.transform.rotation.eulerAngles;
+        PlayerMesh.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
 
         // 3. Maintain momentum
         PlayerRB.linearVelocity = transform.forward * GrindSpeed;
 
-        PlayerRB.isKinematic = false;
-
         //prevent stuck bug
         GetComponent<Collider>().enabled = true;
-        //PlayerRB.AddForce(PlayerMesh.transform.up * moveDir * 100f, ForceMode.Force);
+        PlayerRB.AddForce(transform.up + (PlayerMesh.transform.forward * EjectForce), ForceMode.Impulse);
 
-        PlayerRB.AddForce(transform.up + (moveDir * EjectForce), ForceMode.Impulse);
+
+    
+
+        PlayerRB.isKinematic = false;
+
+        
 
         CurrentRailScript = null;
     }
