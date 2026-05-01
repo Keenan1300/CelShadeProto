@@ -28,15 +28,16 @@ public class PlayerController : MonoBehaviour
     public float movespeed;
 
     //1 or 0, is the player moving with WASD?
-    int InputNum;
+    public int InputNum;
 
 
     [Header("JumpData")]
+
     //Jump
     public float Jumpforce;
     public float JumpForwardforce;
     public float JumpCooldown;
-    private bool JumpCooled;
+    public bool JumpCooled;
     public bool Grounded;
     public float airmultiplier;
     public float gravityMultiplier;

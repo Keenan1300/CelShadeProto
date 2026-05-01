@@ -33,6 +33,9 @@ public class PlayerGrind : MonoBehaviour
 
 
     public float EjectForce;
+    public float JumpoffHeight;
+
+    private Quaternion targetRotation;
 
     private Vector3 moveDir;
 
@@ -47,7 +50,7 @@ public class PlayerGrind : MonoBehaviour
     {
         if (context.started && onRail)
         {
-            JumpOffRail();
+            JumpOffRail(transform.forward);
         }
     }
 
@@ -61,6 +64,8 @@ public class PlayerGrind : MonoBehaviour
 
     void GrindPlayerAlongRail()
     {
+        float HorizontalInput = Input.GetAxisRaw("Horizontal");
+
         if (CurrentRailScript == null || !onRail) return;
 
         // 1. Calculate Progress (0 to 1)
@@ -69,8 +74,40 @@ public class PlayerGrind : MonoBehaviour
         // 2. Check if we've reached the end or beginning of the rail
         if (progress < 0f || progress > 1f)
         {
-            JumpOffRail();
+            JumpOffRail(transform.forward);
             return;
+        }
+
+
+        //Jump logic
+        if (HorizontalInput != 0)
+        {
+            //Facing left?
+            if(HorizontalInput > 1)
+            if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+            {
+                transform.position += transform.up * 10f;
+                JumpOffRail(transform.forward);
+                return;
+            }
+
+            //Facing right?
+            if (HorizontalInput < 0)
+                if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+                {
+                    transform.position += transform.up * 10f;
+                    JumpOffRail(transform.forward);
+                    return;
+                }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+            {
+                transform.position += transform.up * 10f;
+                JumpOffRail(transform.forward);
+                return;
+            }
         }
 
         // 3. Evaluate Spline Position and Rotation
@@ -81,6 +118,12 @@ public class PlayerGrind : MonoBehaviour
         Vector3 worldUp = CurrentRailScript.ConvertLocaltoWorldDirection(localUp);
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
+        Vector3 targetPos = worldPos + (worldUp * HeightOffset);
+
+        PlayerRB.MovePosition(Vector3.Lerp(transform.position, targetPos, Time.fixedDeltaTime * LerpSpeed));
+
+
+
         // 4. Update Position
         // Set position directly to the rail point + offset
         transform.position = Vector3.Lerp(transform.position, worldPos + (worldUp * HeightOffset), Time.deltaTime * LerpSpeed);
@@ -89,7 +132,11 @@ public class PlayerGrind : MonoBehaviour
         // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
         Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
         Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
-        PlayerRotAxis.transform.rotation = targetRotation;
+        
+        
+        //PlayerRotAxis.transform.rotation = targetRotation;
+         PlayerRotAxis.transform.rotation = Quaternion.Slerp(PlayerRotAxis.transform.rotation, targetRotation, Time.fixedDeltaTime * LerpSpeed);
+
         
 
 
@@ -132,7 +179,7 @@ public class PlayerGrind : MonoBehaviour
                 //disable collider, not game object
                 hit.gameObject.GetComponent<Collider>().enabled = false;
                 if (CurrentRailScript == null) return;
-                JumpOffRail();
+                JumpOffRail(targetRotation.eulerAngles);
 
             }
 
@@ -173,11 +220,12 @@ public class PlayerGrind : MonoBehaviour
 
     }
 
-    void JumpOffRail()
+    void JumpOffRail(Vector3 JumpDirection)
     {
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
         ResetFreelookCam.Invoke();
+
         //PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
         ThrowOffRail(moveDir);
 
@@ -185,9 +233,13 @@ public class PlayerGrind : MonoBehaviour
 
     public void ThrowOffRail(Vector3 moveDir)
     {
+        onRail = false;
+        PlayerRB.isKinematic = false;
+        GetComponent<Collider>().enabled = true;
+
         transform.position += moveDir * 70f;
         //transform.position += Vector3.forward * 10f;
-        onRail = false;
+
        
 
         // 1. Clear any 'spinning' forces built up during the grind
@@ -196,26 +248,23 @@ public class PlayerGrind : MonoBehaviour
         // 2. Straighten the player out 
         // This keeps the Y rotation (direction) but resets X and Z (tilting)
         Vector3 currentEuler = PlayerRotAxis.transform.rotation.eulerAngles;
-
-        //this is causing problems
-        //PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
         PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
 
+        // 3.  momentum calc
+        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
+        PlayerRB.linearVelocity = exitDirection * GrindSpeed;
 
-        //should find the route of this... but somewhere in this code theres a line of code that asks the player model to rotate. when I find you its on sight.
-        //PlayerMesh.transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        // 3. Maintain momentum
-        PlayerRB.linearVelocity = transform.forward * GrindSpeed;
+        Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (PlayerRotAxis.transform.forward * EjectForce);
+        PlayerRB.AddForce(ejectVector, ForceMode.Impulse);
 
         //prevent stuck bug
-        GetComponent<Collider>().enabled = true;
-        PlayerRB.AddForce(transform.up + (PlayerRotAxis.transform.forward * EjectForce), ForceMode.Impulse);
+
+        //PlayerRB.AddForce(transform.up * 40f + PlayerRotAxis.transform.forward * EjectForce, ForceMode.Impulse);
+                    //Jump Vertical Calculation    Horizontal calculation\\
+        //PlayerRB.AddForce(transform.up * 40f + transform.forward * EjectForce * PlayerControl.InputNum, ForceMode.Impulse);
 
 
-    
-
-        PlayerRB.isKinematic = false;
+       
 
         
 
