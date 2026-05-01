@@ -7,7 +7,10 @@ public class PlayerCamController : MonoBehaviour
 {
     public Transform orientation;
     public Transform player;
+
+    public Transform PlayerRotAxis;
     public Transform playermesh;
+
     public Transform CameraReset;
     public Rigidbody rb;
 
@@ -20,6 +23,8 @@ public class PlayerCamController : MonoBehaviour
 
     public CinemachineCamera GrindCam;
     public Transform GrindCampos;
+
+    public Vector3 viewDir;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,16 +40,16 @@ public class PlayerCamController : MonoBehaviour
         bool isGrinding = Grinding.onRail;
 
 
+
         if (isGrinding)
         {
             GrindCam.Priority = 20;    // High priority makes this cam active
             Freelook.Priority = 10;
 
             Freelook.transform.position = new Vector3(GrindCam.transform.position.x, player.transform.position.y, GrindCam.transform.position.z);
-
             Freelookpos.position = new Vector3 (GrindCam.transform.position.x, player.transform.position.y, GrindCam.transform.position.z);
 
-            Vector3 viewDir = player.position - Freelook.transform.position;
+            viewDir = player.position - Freelook.transform.position;
             Freelook.transform.rotation = Quaternion.LookRotation(viewDir);
 
         }
@@ -59,12 +64,18 @@ public class PlayerCamController : MonoBehaviour
             //normal operations
            
             
-                //Calc direction Orientation
-                Vector3 viewDir = playermesh.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
+                //this is what makes it so the player can turn the camera, and the player will move forward relative to where the player looks
+                //look control
+                viewDir = player.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
                 orientation.forward = viewDir.normalized;
 
-                //Calc Player object Direction
-                float horizontalinput = Input.GetAxisRaw("Horizontal");
+
+            //viewDir = Camera.main.transform.forward;
+            //viewDir.y = 0; // Keep it horizontal
+            //orientation.forward = viewDir.normalized;
+
+            //Calc Player object Direction
+            float horizontalinput = Input.GetAxisRaw("Horizontal");
                 float VerticalInput = Input.GetAxisRaw("Vertical");
 
           
@@ -101,7 +112,7 @@ public class PlayerCamController : MonoBehaviour
     {
 
         // 1. Get the player's current Y-axis rotation
-        float playerYaw = playermesh.eulerAngles.y;
+        float playerYaw = PlayerRotAxis.eulerAngles.y;
 
         // 2. Access the components
         var panTilt = Freelook.GetComponent<CinemachinePanTilt>();
@@ -114,7 +125,6 @@ public class PlayerCamController : MonoBehaviour
             panTilt.TiltAxis.Value = 0; // Level the camera
         }
 
-        // 3. THE "NO DRIFT" SECRET:
         // If you are using Orbital Follow, it has its own internal offset.
         if (orbital != null)
         {
@@ -130,20 +140,40 @@ public class PlayerCamController : MonoBehaviour
         Freelook.ForceCameraPosition(Freelook.transform.position, Freelook.transform.rotation);
 
 
-
-
         UpdateOrientation();
 
         //Freelook.transform.rotation = Quaternion.LookRotation(viewDir);
         //orientation.transform.rotation = Quaternion.LookRotation(viewDir);
         //Debug.Log("resetcam");
+
     }
 
     void UpdateOrientation()
     {
+
+        // Ensure the Y is perfectly flat to avoid tilting the player's movement vector
+        Vector3 cameraPos = Freelook.transform.position;
+        Vector3 playerPos = player.position;
+
+        viewDir = playerPos - cameraPos;
+        viewDir.y = 0; // Force horizontal only
+
+        if (viewDir.sqrMagnitude > 0.01f)
+        {
+            orientation.forward = viewDir.normalized;
+        }
+
+
+
         // Use the camera's current forward but flatten the Y so you don't move into the ground
-        Vector3 viewDir = player.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
-        orientation.forward = viewDir.normalized;
+        //viewDir = player.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
+        //orientation.forward = viewDir.normalized;
+        //orientation.forward = playermesh.forward;
+
+        //EXP
+        //orientation.transform.rotation = new Vector3(viewDir.x, playermesh.eulerAngles.y, viewDir.z);
+
+
     }
 }
 

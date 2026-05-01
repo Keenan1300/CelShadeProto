@@ -23,7 +23,12 @@ public class PlayerGrind : MonoBehaviour
     RailScript CurrentRailScript;
     PlayerController PlayerControl;
     CapsuleCollider Colliding;
+
+    //try not to touch this :)
     public GameObject PlayerMesh;
+
+
+    public GameObject PlayerRotAxis;
     public bool ForwardOrient;
 
 
@@ -84,7 +89,7 @@ public class PlayerGrind : MonoBehaviour
         // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
         Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
         Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
-        PlayerMesh.transform.rotation = targetRotation;
+        PlayerRotAxis.transform.rotation = targetRotation;
         
 
 
@@ -123,7 +128,9 @@ public class PlayerGrind : MonoBehaviour
             {
                 Debug.Log("Hit end of the line here!");
                 CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-                hit.gameObject.SetActive(false);
+                //hit.gameObject.SetActive(false);
+                //disable collider, not game object
+                hit.gameObject.GetComponent<Collider>().enabled = false;
                 if (CurrentRailScript == null) return;
                 JumpOffRail();
 
@@ -161,8 +168,8 @@ public class PlayerGrind : MonoBehaviour
         SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out _, out float3 localForward, out _);
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
-        CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerMesh.transform.forward);
-        PlayerMesh.transform.rotation = Quaternion.LookRotation(worldForward);
+        CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerRotAxis.transform.forward);
+        PlayerRotAxis.transform.rotation = Quaternion.LookRotation(worldForward);
 
     }
 
@@ -188,15 +195,22 @@ public class PlayerGrind : MonoBehaviour
 
         // 2. Straighten the player out 
         // This keeps the Y rotation (direction) but resets X and Z (tilting)
-        Vector3 currentEuler = PlayerMesh.transform.rotation.eulerAngles;
-        PlayerMesh.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+        Vector3 currentEuler = PlayerRotAxis.transform.rotation.eulerAngles;
+
+        //this is causing problems
+        //PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+        PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+
+
+        //should find the route of this... but somewhere in this code theres a line of code that asks the player model to rotate. when I find you its on sight.
+        //PlayerMesh.transform.rotation = Quaternion.Euler(0, 0, 0);
 
         // 3. Maintain momentum
         PlayerRB.linearVelocity = transform.forward * GrindSpeed;
 
         //prevent stuck bug
         GetComponent<Collider>().enabled = true;
-        PlayerRB.AddForce(transform.up + (PlayerMesh.transform.forward * EjectForce), ForceMode.Impulse);
+        PlayerRB.AddForce(transform.up + (PlayerRotAxis.transform.forward * EjectForce), ForceMode.Impulse);
 
 
     

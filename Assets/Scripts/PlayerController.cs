@@ -8,7 +8,12 @@ public class PlayerController : MonoBehaviour
 {
     public Rigidbody RB;
     private Animator Anim;
+
+    //visual graphic char
     public GameObject PlayerMesh;
+
+    //Rotation logic gameobject
+    public GameObject PlayerRotAxis;
 
     public GameObject JumpDust;
 
@@ -175,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
-        RB.AddForce(transform.up * Jumpforce + (PlayerMesh.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
+        RB.AddForce(transform.up * Jumpforce + (PlayerRotAxis.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
 
     }
 
