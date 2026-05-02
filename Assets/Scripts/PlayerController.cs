@@ -42,7 +42,12 @@ public class PlayerController : MonoBehaviour
     public float airmultiplier;
     public float gravityMultiplier;
     public float VertFallClamp;
+    public float AirTime;
+    public float AirTimeDefault;
+    public float AirTimeGrind;
 
+    //How much can the player move while in air from a grind?
+    public float GrindAirManeuverability;
 
     //Ground Check
     public LayerMask Ground;
@@ -54,6 +59,9 @@ public class PlayerController : MonoBehaviour
 
     public bool OnRail;
 
+    //special air moves with momentum
+    public bool GrindAir;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,6 +69,7 @@ public class PlayerController : MonoBehaviour
     {
         PlayerGrind = GetComponent<PlayerGrind>();
         JumpCooled = true;
+        GrindAir = false;
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
         Anim = PlayerMesh.GetComponent<Animator>();
@@ -99,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (!Grounded) // If the player is falling
         {
             //exponential grav increase as term velo is reached
-            gravityMultiplier += Time.deltaTime;
+            gravityMultiplier += Time.deltaTime * AirTime;
             gravityMultiplier = Mathf.Clamp(gravityMultiplier, 0f, VertFallClamp);
 
 
@@ -108,6 +117,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
+            GrindAir = false;
             Anim.SetBool("Falling", false);
            
         }
@@ -139,28 +149,44 @@ public class PlayerController : MonoBehaviour
 
         if (OnRail)
         {
+        
+            
             //replace with proper grinding anim when the time comes
             Anim.SetBool("Falling", true);
         }
 
         if (!OnRail)
         {
+           
             //find move dir
             MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
         }
         
         if (Grounded && !OnRail)
         {
+            AirTime = AirTimeDefault;
             gravityMultiplier = 0;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
         else if (!Grounded && !OnRail)
         {
-            RB.AddForce((Vector3.down * 0.5f) * gravityMultiplier, ForceMode.Acceleration);
+            RB.AddForce((Vector3.down * AirTime) * gravityMultiplier, ForceMode.Acceleration);
             //RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
 
         }
+
+
+        if (GrindAir)
+        {
+           
+                //AirTime = 0.99f;
+                //gravityMultiplier = 0;
+                RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
+
+            
+        }
+
 
         //Animation
         //Standard Run

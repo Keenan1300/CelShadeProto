@@ -56,15 +56,41 @@ public class PlayerGrind : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float HorizontalInput = Input.GetAxisRaw("Horizontal");
+
         if (onRail)
         {
             GrindPlayerAlongRail();
+
+            //Jump logic
+            if (HorizontalInput != 0 && Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+            {
+                    PlayerControl.GrindAir = true;
+                    PlayerControl.AirTime = PlayerControl.AirTimeGrind;
+                    transform.position += transform.up * 10f;
+                    JumpOffRail(PlayerRotAxis.transform.right * HorizontalInput);
+                    return;
+                
+
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+                {
+                    PlayerControl.GrindAir = true;
+                    PlayerControl.AirTime = PlayerControl.AirTimeGrind;
+                    transform.position += transform.up * 10f;
+                    JumpOffRail(PlayerRotAxis.transform.forward);
+                    return;
+                }
+            }
+            
         }
     }
 
     void GrindPlayerAlongRail()
     {
-        float HorizontalInput = Input.GetAxisRaw("Horizontal");
+        
 
         if (CurrentRailScript == null || !onRail) return;
 
@@ -74,41 +100,12 @@ public class PlayerGrind : MonoBehaviour
         // 2. Check if we've reached the end or beginning of the rail
         if (progress < 0f || progress > 1f)
         {
-            JumpOffRail(transform.forward);
+            JumpOffRail(PlayerRotAxis.transform.forward);
             return;
         }
 
 
-        //Jump logic
-        if (HorizontalInput != 0)
-        {
-            //Facing left?
-            if(HorizontalInput > 1)
-            if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
-            {
-                transform.position += transform.up * 10f;
-                JumpOffRail(transform.forward);
-                return;
-            }
-
-            //Facing right?
-            if (HorizontalInput < 0)
-                if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
-                {
-                    transform.position += transform.up * 10f;
-                    JumpOffRail(transform.forward);
-                    return;
-                }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
-            {
-                transform.position += transform.up * 10f;
-                JumpOffRail(transform.forward);
-                return;
-            }
-        }
+    
 
         // 3. Evaluate Spline Position and Rotation
         // We use the spline's local evaluation and convert to world space via the RailScript
@@ -227,17 +224,17 @@ public class PlayerGrind : MonoBehaviour
         ResetFreelookCam.Invoke();
 
         //PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-        ThrowOffRail(moveDir);
+        ThrowOffRail(JumpDirection);
 
     }
 
-    public void ThrowOffRail(Vector3 moveDir)
+    public void ThrowOffRail(Vector3 LeftRight)
     {
         onRail = false;
         PlayerRB.isKinematic = false;
         GetComponent<Collider>().enabled = true;
 
-        transform.position += moveDir * 70f;
+        transform.position += transform.up * 5f;
         //transform.position += Vector3.forward * 10f;
 
        
@@ -254,7 +251,7 @@ public class PlayerGrind : MonoBehaviour
         Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
         PlayerRB.linearVelocity = exitDirection * GrindSpeed;
 
-        Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (PlayerRotAxis.transform.forward * EjectForce);
+        Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
         PlayerRB.AddForce(ejectVector, ForceMode.Impulse);
 
         //prevent stuck bug
