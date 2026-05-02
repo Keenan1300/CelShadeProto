@@ -4326,6 +4326,7 @@ GameObject:
   - component: {fileID: 1974673694}
   - component: {fileID: 1974673699}
   - component: {fileID: 1974673698}
+  - component: {fileID: 1974673700}
   m_Layer: 3
   m_Name: Img
   m_TagString: Untagged
@@ -4466,6 +4467,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974673693}
   m_CullTransparentMesh: 1
+--- !u!114 &1974673700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974673693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3da80fe18a2cdb14da4e42793e571652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GifScript
+  renderer: {fileID: 1974673695}
 --- !u!1 &1996212860
 GameObject:
   m_ObjectHideFlags: 0
