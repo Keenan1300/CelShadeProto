@@ -63,7 +63,7 @@ public class PlayerGrind : MonoBehaviour
             GrindPlayerAlongRail();
 
             //Jump logic
-            if (HorizontalInput != 0 && Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+            if (HorizontalInput != 0 && Input.GetKeyDown(KeyCode.Space))
             {
                     PlayerControl.GrindAir = true;
                     PlayerControl.AirTime = PlayerControl.AirTimeGrind;
@@ -75,7 +75,7 @@ public class PlayerGrind : MonoBehaviour
             }
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space) && PlayerControl.JumpCooled)
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     PlayerControl.GrindAir = true;
                     PlayerControl.AirTime = PlayerControl.AirTimeGrind;
