@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
@@ -63,6 +64,9 @@ public class PlayerController : MonoBehaviour
     public bool GrindAir;
 
 
+    //UI
+    public GameObject SprayPrompt;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -73,6 +77,7 @@ public class PlayerController : MonoBehaviour
         RB = GetComponent<Rigidbody>();
         RB.freezeRotation = true;
         Anim = PlayerMesh.GetComponent<Animator>();
+        SprayPrompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -96,7 +101,7 @@ public class PlayerController : MonoBehaviour
             JumpCooled = false;
             Jumplogii();
             Invoke(nameof(resetjump), JumpCooldown);
-            
+
             Anim.SetTrigger("Jump");
             Debug.Log("Jump!");
         }
@@ -113,23 +118,23 @@ public class PlayerController : MonoBehaviour
 
 
             RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Impulse);
-            Anim.SetBool("Falling",true);
+            Anim.SetBool("Falling", true);
         }
         else if (Grounded)
         {
             GrindAir = false;
             Anim.SetBool("Falling", false);
-           
+
         }
 
     }
 
     private void FixedUpdate()
     {
-      
-  
-            MovePlayer();
-        
+
+
+        MovePlayer();
+
     }
 
     private void input()
@@ -149,19 +154,19 @@ public class PlayerController : MonoBehaviour
 
         if (OnRail)
         {
-        
-            
+
+
             //replace with proper grinding anim when the time comes
             Anim.SetBool("Falling", true);
         }
 
         if (!OnRail)
         {
-           
+
             //find move dir
             MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
         }
-        
+
         if (Grounded && !OnRail)
         {
             AirTime = AirTimeDefault;
@@ -179,12 +184,12 @@ public class PlayerController : MonoBehaviour
 
         if (GrindAir)
         {
-           
-                //AirTime = 0.99f;
-                //gravityMultiplier = 0;
-                RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
-            
+            //AirTime = 0.99f;
+            //gravityMultiplier = 0;
+            RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
+
+
         }
 
 
@@ -203,7 +208,7 @@ public class PlayerController : MonoBehaviour
     private void Jumplogii()
     {
 
-       Instantiate(JumpDust,new Vector3(transform.position.x, transform.position.y -4f, transform.position.z), Quaternion.identity);
+        Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
 
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
@@ -216,4 +221,11 @@ public class PlayerController : MonoBehaviour
         Anim.ResetTrigger("Jump");
         JumpCooled = true;
     }
+
+    private void popup()
+    {
+      Debug.Log("thing");
+       SprayPrompt.SetActive(true);
+    }
 }
+
