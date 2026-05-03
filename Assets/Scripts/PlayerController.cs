@@ -222,10 +222,17 @@ public class PlayerController : MonoBehaviour
         JumpCooled = true;
     }
 
-    private void popup()
+    public void popup()
     {
       Debug.Log("thing");
        SprayPrompt.SetActive(true);
     }
+
+    public void popupclose()
+    {
+        Debug.Log("thing");
+        SprayPrompt.SetActive(false);
+    }
+
 }
 
