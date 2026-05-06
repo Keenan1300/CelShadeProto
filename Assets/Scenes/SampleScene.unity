@@ -3103,6 +3103,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5870522421457286918, guid: 5450cff1e0873fb4e8183bce718ec99a,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cca173c049fc2ef4d906ad34e8101f28, type: 2}
     - target: {fileID: 6041613435470960824, guid: 5450cff1e0873fb4e8183bce718ec99a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3579,6 +3584,7 @@ GameObject:
   - component: {fileID: 1343870694}
   - component: {fileID: 1343870695}
   - component: {fileID: 1343870696}
+  - component: {fileID: 1343870697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3645,6 +3651,8 @@ MonoBehaviour:
   RB: {fileID: 1343870692}
   PlayerMesh: {fileID: 7123956367740831228}
   PlayerRotAxis: {fileID: 2085100357}
+  GraffitiSprayAnim: {fileID: 3456520796700324163, guid: df87f6fa5a825cd45b52fd3fab889fed,
+    type: 3}
   JumpDust: {fileID: 487821162018929193, guid: 56e4c8ed19543b34198b720871bc126a, type: 3}
   movespeed: 20
   InputNum: 0
@@ -3667,6 +3675,7 @@ MonoBehaviour:
   Orientation: {fileID: 1323500136}
   OnRail: 0
   GrindAir: 0
+  GraffitiRange: 0
   SprayPrompt: {fileID: 1535104002}
 --- !u!114 &1343870695
 MonoBehaviour:
@@ -3757,6 +3766,23 @@ CapsuleCollider:
   m_Height: 12.72
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!320 &1343870697
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343870691}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 7b5ce80a77c0cd44a9b78f71a38d6861, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1001 &1345890133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3855,6 +3881,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5870522421457286918, guid: 5450cff1e0873fb4e8183bce718ec99a,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cca173c049fc2ef4d906ad34e8101f28, type: 2}
     - target: {fileID: 6041613435470960824, guid: 5450cff1e0873fb4e8183bce718ec99a,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -6775,6 +6806,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5870522421457286918, guid: 5450cff1e0873fb4e8183bce718ec99a,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: cca173c049fc2ef4d906ad34e8101f28, type: 2}
     - target: {fileID: 6041613435470960824, guid: 5450cff1e0873fb4e8183bce718ec99a,
         type: 3}
       propertyPath: m_LocalScale.x

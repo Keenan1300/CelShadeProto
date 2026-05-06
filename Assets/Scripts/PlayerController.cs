@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     //Rotation logic gameobject
     public GameObject PlayerRotAxis;
 
+    public GameObject GraffitiSprayAnim;
+
     public GameObject JumpDust;
 
     PlayerGrind PlayerGrind;
@@ -63,6 +65,7 @@ public class PlayerController : MonoBehaviour
     //special air moves with momentum
     public bool GrindAir;
 
+    public bool GraffitiRange;
 
     //UI
     public GameObject SprayPrompt;
@@ -78,6 +81,8 @@ public class PlayerController : MonoBehaviour
         RB.freezeRotation = true;
         Anim = PlayerMesh.GetComponent<Animator>();
         SprayPrompt.SetActive(false);
+
+        GraffitiRange = false;
     }
 
     // Update is called once per frame
@@ -125,6 +130,14 @@ public class PlayerController : MonoBehaviour
             GrindAir = false;
             Anim.SetBool("Falling", false);
 
+        }
+
+        //Spray
+
+        if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
+        {
+            Instantiate(GraffitiSprayAnim,PlayerMesh.transform.position, PlayerMesh.transform.rotation);
+            //make player invisible
         }
 
     }
@@ -226,12 +239,14 @@ public class PlayerController : MonoBehaviour
     {
       Debug.Log("thing");
        SprayPrompt.SetActive(true);
+        GraffitiRange = true;
     }
 
     public void popupclose()
     {
         Debug.Log("thing");
         SprayPrompt.SetActive(false);
+        GraffitiRange = false;
     }
 
 }
