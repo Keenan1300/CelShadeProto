@@ -1,12 +1,14 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
 
 public class PlayerCamController : MonoBehaviour
 {
     public Transform orientation;
     public Transform player;
+    public GameObject playervisibilityToggle;
 
     public Transform PlayerRotAxis;
     public Transform playermesh;
@@ -16,20 +18,36 @@ public class PlayerCamController : MonoBehaviour
 
     public float RotSpeed;
 
+    //to know when player is grinding
     public PlayerGrind Grinding;
+    public PlayerController playerController;
 
+    //to know when player is graffiti spraying
+
+    
+    //Freelook mode
     public CinemachineCamera Freelook;
     public Transform Freelookpos;
 
+
+    //Grind Mode
     public CinemachineCamera GrindCam;
     public Transform GrindCampos;
 
+
+    //Graffiti Mode
+    public CinemachineCamera GraffitiCam;
+    public GameObject BlackBars;
+    public GameObject GraffitiPopup;
+
     public Vector3 viewDir;
 
+    public bool SprayScene;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        BlackBars.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -38,36 +56,61 @@ public class PlayerCamController : MonoBehaviour
     void Update()
     {
         bool isGrinding = Grinding.onRail;
+        SprayScene = playerController.SprayScene;
 
 
+        if (SprayScene && !isGrinding && GraffitiCam != null) 
+        {
+            
+                GraffitiCam.Priority = 20;
+                GrindCam.Priority = 1;
+                Freelook.Priority = 10;
+            
+        }
+        else
+        {
+            if (GraffitiCam != null)
+            {
+                GraffitiCam.Priority = 0;
+            }
+        }
 
         if (isGrinding)
         {
             GrindCam.Priority = 20;    // High priority makes this cam active
             Freelook.Priority = 10;
 
+            if (GraffitiCam != null)
+            {
+                GraffitiCam.Priority = 1;
+            }
+
             Freelook.transform.position = new Vector3(GrindCam.transform.position.x, player.transform.position.y, GrindCam.transform.position.z);
-            Freelookpos.position = new Vector3 (GrindCam.transform.position.x, player.transform.position.y, GrindCam.transform.position.z);
+            Freelookpos.position = new Vector3(GrindCam.transform.position.x, player.transform.position.y, GrindCam.transform.position.z);
 
             viewDir = player.position - Freelook.transform.position;
             Freelook.transform.rotation = Quaternion.LookRotation(viewDir);
 
         }
-        else
+        else if (!SprayScene)
         {
             //Cam switch 
 
             GrindCam.Priority = 10;
             Freelook.Priority = 20;
-            
-            
+
+            if (GraffitiCam != null)
+            {
+                GraffitiCam.Priority = 1;
+            }
+
             //normal operations
-           
-            
-                //this is what makes it so the player can turn the camera, and the player will move forward relative to where the player looks
-                //look control
-                viewDir = player.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
-                orientation.forward = viewDir.normalized;
+
+
+            //this is what makes it so the player can turn the camera, and the player will move forward relative to where the player looks
+            //look control
+            viewDir = player.position - new Vector3(Freelook.transform.position.x, player.position.y, Freelook.transform.position.z);
+            orientation.forward = viewDir.normalized;
 
 
             //viewDir = Camera.main.transform.forward;
@@ -76,35 +119,48 @@ public class PlayerCamController : MonoBehaviour
 
             //Calc Player object Direction
             float horizontalinput = Input.GetAxisRaw("Horizontal");
-                float VerticalInput = Input.GetAxisRaw("Vertical");
+            float VerticalInput = Input.GetAxisRaw("Vertical");
 
-          
+
 
 
             Vector3 InputDir = orientation.forward * VerticalInput + orientation.right * horizontalinput;
 
-                if (InputDir != Vector3.zero)
+            if (InputDir != Vector3.zero)
+            {
+                if (horizontalinput != 0 || VerticalInput != 0)
                 {
-                    if (horizontalinput != 0 || VerticalInput != 0)
-                    {
-                        playermesh.forward = Vector3.Slerp(playermesh.forward, InputDir.normalized, Time.deltaTime * RotSpeed);
-                    }
+                    playermesh.forward = Vector3.Slerp(playermesh.forward, InputDir.normalized, Time.deltaTime * RotSpeed);
                 }
+            }
 
 
-                // Debug Tweak
-                if (Input.GetKey(KeyCode.Escape))
-                {
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.None;
-                }
-            
+            // Debug Tweak
+            if (Input.GetKey(KeyCode.Escape))
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
         }
 
 
     
 
 
+    }
+
+    public void DisableSprayScene()
+    {
+        playerController.SprayScene = false;
+        playervisibilityToggle.SetActive(true);
+        BlackBars.SetActive(false);
+    }
+
+    public void CinematicBlackBars()
+    {
+        GraffitiPopup.SetActive(false);
+        BlackBars.SetActive(true);
     }
 
     public void resetCampos()
@@ -174,6 +230,12 @@ public class PlayerCamController : MonoBehaviour
         //orientation.transform.rotation = new Vector3(viewDir.x, playermesh.eulerAngles.y, viewDir.z);
 
 
+    }
+
+
+    public void GraffitingspraySwitch()
+    {
+        //GraffitiCam = GetComponent
     }
 }
 

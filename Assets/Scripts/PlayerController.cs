@@ -16,7 +16,9 @@ public class PlayerController : MonoBehaviour
     //Rotation logic gameobject
     public GameObject PlayerRotAxis;
 
+    //Spray Data
     public GameObject GraffitiSprayAnim;
+    public Vector3 GraffitLoc;
 
     public GameObject JumpDust;
 
@@ -61,6 +63,7 @@ public class PlayerController : MonoBehaviour
     public Transform Orientation;
 
     public bool OnRail;
+    public bool SprayScene;
 
     //special air moves with momentum
     public bool GrindAir;
@@ -83,6 +86,7 @@ public class PlayerController : MonoBehaviour
         SprayPrompt.SetActive(false);
 
         GraffitiRange = false;
+        SprayScene = false;
     }
 
     // Update is called once per frame
@@ -134,13 +138,28 @@ public class PlayerController : MonoBehaviour
 
         //Spray
 
+
+        if (SprayScene)
+        {
+            SprayPrompt.SetActive(false);
+        }
+
         if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(GraffitiSprayAnim,PlayerMesh.transform.position, PlayerMesh.transform.rotation);
+            
+            Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;
+            Graflookdir.x = 0f;
+            Quaternion lookthere = Quaternion.LookRotation(Graflookdir);
+
+            SprayScene = true;
+            Instantiate(GraffitiSprayAnim,PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
             //make player invisible
+            gameObject.SetActive(false);
         }
 
     }
+
+
 
     private void FixedUpdate()
     {
@@ -152,7 +171,7 @@ public class PlayerController : MonoBehaviour
 
     private void input()
     {
-        if (!OnRail)
+        if (!OnRail && !SprayScene)
         {
             //Calc Player input
             horizontalinput = Input.GetAxisRaw("Horizontal");

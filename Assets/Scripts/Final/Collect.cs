@@ -8,11 +8,16 @@ public class Collect : MonoBehaviour
    
 
     public GameObject Player;
+    public bool PlayerInRange;
     private Collider EnterRange;
     public Collider playerbody;
     public Collision player;
     public UnityEvent Popup;
     public UnityEvent Popupclose;
+
+    public UnityEvent DrawGraffiti;
+
+  
 
     public Vector3 startPos;
 
@@ -25,18 +30,21 @@ public class Collect : MonoBehaviour
         Collider EnterRange = GetComponent<Collider>();
         Vector3 Rot = transform.eulerAngles;
         startPos = transform.position;
-
+        PlayerInRange = false;
+       
     }
 
     public void OnTriggerEnter(Collider player) // Use OnTriggerEnter for 3D
     {
+        PlayerInRange = true;
        // Destroy(gameObject);
         // Check if the object entering the trigger is the Player
         if (player.CompareTag("Player"))
         {
             // Add code here to increase player score (optional)
             Debug.Log("enter");
-            playerController = player.GetComponent<PlayerController>(); 
+            playerController = player.GetComponent<PlayerController>();
+            playerController.GraffitLoc = transform.position;
             Popup.Invoke();
 
             // Destroy the coin object
@@ -48,7 +56,7 @@ public class Collect : MonoBehaviour
 
     public void OnTriggerExit(Collider player)
     {
-
+        PlayerInRange = false;
         // Check if the object entering the trigger is the Player
         if (player.CompareTag("Player"))
         {
@@ -69,6 +77,15 @@ public class Collect : MonoBehaviour
     // Update is called once per frame
     void Update()
        {
+
+        if (PlayerInRange && Input.GetKeyDown(KeyCode.E))
+        {
+
+
+            //Popupclose.Invoke();
+            DrawGraffiti.Invoke();
+            Destroy(gameObject);
+        }
 
         Vector3 Rot = transform.rotation.eulerAngles;
         Rot.y += 3;
