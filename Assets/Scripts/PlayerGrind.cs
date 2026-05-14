@@ -60,6 +60,7 @@ public class PlayerGrind : MonoBehaviour
 
         if (onRail)
         {
+            //Uhh, Ignore this ugly code down here, wanna add a lean in for grinds so this will be needed later :/
             GrindPlayerAlongRail();
 
             //Jump logic
@@ -73,6 +74,7 @@ public class PlayerGrind : MonoBehaviour
                 
 
             }
+    
             else
             {
                 if (Input.GetKeyDown(KeyCode.Space))
@@ -187,7 +189,9 @@ public class PlayerGrind : MonoBehaviour
     {
         EnterGrindingEvent.Invoke();
         GetComponent<Collider>().enabled = false;
-      
+
+        PlayerControl.JumpCooldown = 0f;
+
         onRail = true;
         PlayerRB.isKinematic = true;
 

@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Vector3 GraffitLoc;
 
     public GameObject JumpDust;
+    bool Touchpoint;
 
     PlayerGrind PlayerGrind;
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
     public float JumpCooldown;
     public bool JumpCooled;
     public bool Grounded;
+
     public float airmultiplier;
     public float gravityMultiplier;
     public float VertFallClamp;
@@ -94,6 +96,9 @@ public class PlayerController : MonoBehaviour
     {
 
         OnRail = PlayerGrind.onRail;
+
+        Anim.SetBool("Grinding", OnRail);
+
         //FOSSILE: Debug.Log("On Rail is " + OnRail);
 
 
@@ -128,11 +133,21 @@ public class PlayerController : MonoBehaviour
 
             RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Impulse);
             Anim.SetBool("Falling", true);
+
+            Touchpoint = true;
         }
         else if (Grounded)
         {
+           
             GrindAir = false;
+            Anim.SetBool("GrindAir", false);
             Anim.SetBool("Falling", false);
+
+            //aesthetics
+            if(Touchpoint == true)
+            {
+                Createdustcloud();
+            }
 
         }
 
@@ -187,9 +202,9 @@ public class PlayerController : MonoBehaviour
         if (OnRail)
         {
 
-
+            Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes
-            Anim.SetBool("Falling", true);
+            Anim.SetBool("Grinding", true);
         }
 
         if (!OnRail)
@@ -216,7 +231,7 @@ public class PlayerController : MonoBehaviour
 
         if (GrindAir)
         {
-
+            Anim.SetBool("GrindAir", true);
             //AirTime = 0.99f;
             //gravityMultiplier = 0;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
@@ -252,6 +267,8 @@ public class PlayerController : MonoBehaviour
     {
         Anim.ResetTrigger("Jump");
         JumpCooled = true;
+
+
     }
 
     public void popup()
@@ -266,6 +283,14 @@ public class PlayerController : MonoBehaviour
         Debug.Log("thing");
         SprayPrompt.SetActive(false);
         GraffitiRange = false;
+    }
+
+    public void Createdustcloud()
+    {
+
+        Touchpoint = false;
+        //land dust
+        Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
     }
 
 }
