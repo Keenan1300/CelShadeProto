@@ -3724,13 +3724,14 @@ MonoBehaviour:
   JumpDust: {fileID: 487821162018929193, guid: 56e4c8ed19543b34198b720871bc126a, type: 3}
   movespeed: 30
   InputNum: 0
-  Jumpforce: 50
+  Jumpforce: 88.4
   JumpForwardforce: 50
-  JumpCooldown: 0.8
+  JumpCooldown: 1
   JumpCooled: 0
   Grounded: 0
   airmultiplier: 4.64
-  gravityMultiplier: 20
+  gravitytimer: 0
+  gravityMultiplier: 150
   VertFallClamp: 500
   AirTime: 1.5
   AirTimeDefault: 1.5
@@ -3805,13 +3806,13 @@ MonoBehaviour:
         m_CallState: 2
   onRail: 0
   GrindSpeed: 70
-  HeightOffset: 4
+  HeightOffset: 5.54
   LerpSpeed: 4
   PlayerMesh: {fileID: 8235692210852808840}
   PlayerRotAxis: {fileID: 2085100357}
   ForwardOrient: 0
   EjectForce: 80
-  JumpoffHeight: 80
+  JumpoffHeight: 107.3
 --- !u!136 &1343870696
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3831,7 +3832,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.97
+  m_Radius: 3.03
   m_Height: 12.72
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -39264,7 +39265,7 @@ Transform:
   m_GameObject: {fileID: 8235692210852808840}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: -6.3, z: 1.84}
+  m_LocalPosition: {x: 1, y: -6.3, z: -1.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

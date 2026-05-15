@@ -11,6 +11,7 @@ public class PlayerGrind : MonoBehaviour
     public UnityEvent ResetFreelookCam;
     public UnityEvent ExitGrindingEvent;
     public bool onRail;
+
     public float GrindSpeed = 10f;
     public float HeightOffset = 1.0f;
     public float LerpSpeed = 10f;
@@ -32,6 +33,7 @@ public class PlayerGrind : MonoBehaviour
     public bool ForwardOrient;
 
 
+    [Header("Jumping off pole hieght")]
     public float EjectForce;
     public float JumpoffHeight;
 

@@ -47,7 +47,12 @@ public class PlayerController : MonoBehaviour
     public bool Grounded;
 
     public float airmultiplier;
+
+    //how long is player affected by gravity?
+    public float gravitytimer;
+    //how strong is this gravity?
     public float gravityMultiplier;
+
     public float VertFallClamp;
     public float AirTime;
     public float AirTimeDefault;
@@ -113,6 +118,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
         {
             JumpCooled = false;
+            Anim.SetBool("Jump", true);
             Jumplogii();
             Invoke(nameof(resetjump), JumpCooldown);
 
@@ -127,11 +133,11 @@ public class PlayerController : MonoBehaviour
         if (!Grounded) // If the player is falling
         {
             //exponential grav increase as term velo is reached
-            gravityMultiplier += Time.deltaTime * AirTime;
-            gravityMultiplier = Mathf.Clamp(gravityMultiplier, 0f, VertFallClamp);
+            gravitytimer += Time.deltaTime * AirTime;
+            gravitytimer = Mathf.Clamp(gravitytimer, 0f, VertFallClamp);
 
 
-            RB.AddForce(Vector3.down * gravityMultiplier * 2f, ForceMode.Impulse);
+            RB.AddForce(Vector3.down * gravitytimer * 2f, ForceMode.Impulse);
             Anim.SetBool("Falling", true);
 
             Touchpoint = true;
@@ -217,13 +223,13 @@ public class PlayerController : MonoBehaviour
         if (Grounded && !OnRail)
         {
             AirTime = AirTimeDefault;
-            gravityMultiplier = 0;
+            gravitytimer = 0;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
         else if (!Grounded && !OnRail)
         {
-            RB.AddForce((Vector3.down * AirTime) * gravityMultiplier, ForceMode.Acceleration);
+            RB.AddForce((Vector3.down * AirTime) * gravitytimer * gravityMultiplier, ForceMode.Acceleration);
             //RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
 
         }
@@ -231,12 +237,19 @@ public class PlayerController : MonoBehaviour
 
         if (GrindAir)
         {
+
             Anim.SetBool("GrindAir", true);
             //AirTime = 0.99f;
-            //gravityMultiplier = 0;
+            gravityMultiplier = 70;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
+            //overtime decrease back to gravity
+            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f), ForceMode.Acceleration);
 
+        }
+        else if (!GrindAir)
+        {
+            gravityMultiplier = 150;
         }
 
 
@@ -256,7 +269,7 @@ public class PlayerController : MonoBehaviour
     {
 
         Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
-
+        
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
         RB.AddForce(transform.up * Jumpforce + (PlayerRotAxis.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
@@ -265,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
     private void resetjump()
     {
-        Anim.ResetTrigger("Jump");
+      
         JumpCooled = true;
 
 
