@@ -899,7 +899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.018349258, y: -0.0000000016452165, z: -3.0193584e-11, w: 0.9998317}
+  m_LocalRotation: {x: -0.01834926, y: 0.00000014979295, z: 0.000000002749052, w: 0.9998317}
   m_LocalPosition: {x: -0.096540004, y: 6.903189, z: -27.942451}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1955,6 +1955,7 @@ GameObject:
   - component: {fileID: 654862861}
   - component: {fileID: 654862860}
   - component: {fileID: 654862859}
+  - component: {fileID: 654862865}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -2180,13 +2181,52 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654862858}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.018349255, y: -0.0000000016452162, z: -3.0193573e-11, w: 0.9998317}
+  m_LocalRotation: {x: -0.018349256, y: 0.00000014979292, z: 0.0000000027490512, w: 0.9998317}
   m_LocalPosition: {x: 0.22, y: -1.167131, z: -29.627161}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1109868791}
   m_LocalEulerAnglesHint: {x: 0, y: 1.338, z: 0}
+--- !u!114 &654862865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654862858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe43d662878a7c43bcd44d43c9e2094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
+  CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 8
+  IgnoreTag: 
+  TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  MinimumDistanceFromTarget: 0.3
+  AvoidObstacles:
+    Enabled: 1
+    DistanceLimit: 0
+    MinimumOcclusionTime: 0
+    CameraRadius: 0.4
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Strategy: 0
+    MaximumEffort: 4
+    SmoothingTime: 0
+    Damping: 0.4
+    DampingWhenOccluded: 0.2
+  ShotQualityEvaluation:
+    Enabled: 0
+    OptimalDistance: 10
+    NearLimit: 5
+    FarLimit: 30
+    MaxQualityBoost: 0.2
 --- !u!1 &672454583
 GameObject:
   m_ObjectHideFlags: 0
