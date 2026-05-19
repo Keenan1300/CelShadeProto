@@ -26,11 +26,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Highlight:
-        m_Texture: {fileID: 2800000, guid: 425cdd328cb1d2e4693f0f2c3d6e090a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35ba59a7cf11c674f8e23a406af6c31d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _HighlightText:
-        m_Texture: {fileID: 2800000, guid: 425cdd328cb1d2e4693f0f2c3d6e090a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 35ba59a7cf11c674f8e23a406af6c31d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Overlay:
@@ -38,7 +38,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _shadow:
-        m_Texture: {fileID: 2800000, guid: 7e119168d89441c4aafb69e0bc2b13b3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 786854f40d53bd343aa12b6d8090c1bb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
