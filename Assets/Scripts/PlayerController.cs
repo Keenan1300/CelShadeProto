@@ -168,12 +168,14 @@ public class PlayerController : MonoBehaviour
         if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
         {
             
+
             Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;
             Graflookdir.x = 0f;
             Quaternion lookthere = Quaternion.LookRotation(Graflookdir);
 
             SprayScene = true;
             Instantiate(GraffitiSprayAnim,PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
+            
             //make player invisible
             gameObject.SetActive(false);
         }

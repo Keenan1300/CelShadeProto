@@ -82,7 +82,7 @@ public class Collect : MonoBehaviour
         {
 
 
-            //Popupclose.Invoke();
+            Popupclose.Invoke();
             DrawGraffiti.Invoke();
             Destroy(gameObject);
         }
