@@ -23,11 +23,11 @@ Material:
   m_Name: DiffuseTriplanar 4
   m_Shader: {fileID: -6465566751694194690, guid: 1dd3454104fa9244e8019a1db90042da,
     type: 3}
-  m_Parent: {fileID: 0}
+  m_Parent: {fileID: 2100000, guid: 9141f66e1cb0d374c92731134965a749, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -42,26 +42,8 @@ Material:
         m_Texture: {fileID: 2800000, guid: 9bb53ac64dbb0ec4287836d187de2e1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blend: 1
-    - _Em: 0
-    - _Metallic: 0
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _Roughness: 0
     - _Tile: 0.08
     m_Colors: []
   m_BuildTextureStacks: []
