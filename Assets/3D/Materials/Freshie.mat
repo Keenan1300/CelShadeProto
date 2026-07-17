@@ -73,11 +73,13 @@ Material:
     - _QueueOffset: 0
     - _ShadeAdjust: 0.65
     m_Colors:
+    - _HighlightTweak: {r: 0.9245283, g: 0.76839083, b: 0.5276789, a: 1}
     - _Highlight_1: {r: 1, g: 0.024691358, b: 0, a: 0}
     - _MetalColorHigh: {r: 0.13008898, g: 0.4391309, b: 0.4566037, a: 0}
     - _MetalShadow: {r: 0.335849, g: 0.08047701, b: 0.3239712, a: 0}
     - _MetalSlimmer: {r: 0.1764706, g: 0.4862745, b: 0.49411765, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _Shadow: {r: 0.5924529, g: 0.37447494, b: 0.5138411, a: 0}
+    - _ShadowTweak: {r: 0.9433962, g: 0.5054997, b: 0.43164828, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
