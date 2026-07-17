@@ -48,8 +48,15 @@ public class PlayerCamController : MonoBehaviour
     void Start()
     {
         BlackBars.SetActive(false);
+        Invoke(nameof(LockTheCursor), 0.1f);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    void LockTheCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.visible = false;
     }
 
     // Update is called once per frame

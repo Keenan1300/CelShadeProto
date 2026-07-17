@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public float playerhieght;
 
+    //Dance
+    public bool Dancing;
+    public float DanceDuration;
+    public GameObject Dancer;
+
     //Direction Calc
     Vector3 MoveDirection;
     public Transform Orientation;
@@ -92,6 +97,7 @@ public class PlayerController : MonoBehaviour
         Anim = PlayerMesh.GetComponent<Animator>();
         SprayPrompt.SetActive(false);
 
+        Dancing = false;
         GraffitiRange = false;
         SprayScene = false;
     }
@@ -100,12 +106,21 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
+     
+
         OnRail = PlayerGrind.onRail;
 
         Anim.SetBool("Grinding", OnRail);
 
-        //FOSSILE: Debug.Log("On Rail is " + OnRail);
-
+        //Dancing!
+        if (Input.GetKeyDown(KeyCode.E) && Grounded && !OnRail)
+        {
+            RB.isKinematic = true;
+            Dancing = true;
+            PlayerMesh.SetActive(false);
+           
+            Invoke(nameof(Dance), DanceDuration);
+        }
 
         input();
 
@@ -118,6 +133,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
         {
             JumpCooled = false;
+            PlayerGrind.JumpCooldown = false;
+
             Anim.SetBool("Jump", true);
             Jumplogii();
             Invoke(nameof(resetjump), JumpCooldown);
@@ -182,13 +199,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Dance()
+    {
+        Instantiate(Dancer,PlayerMesh.transform.position, Quaternion.identity);
+        //Dancing = false;
+    }
 
 
     private void FixedUpdate()
     {
 
-
-        MovePlayer();
+        if (!Dancing)
+        {
+            MovePlayer();
+        }
 
     }
 
@@ -200,16 +224,23 @@ public class PlayerController : MonoBehaviour
             horizontalinput = Input.GetAxisRaw("Horizontal");
             VerticalInput = Input.GetAxisRaw("Vertical");
             InputNum = (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Vertical") > 0) ? 1 : 0;
+
+            //if (Dancing && horizontalinput != 0 || VerticalInput != 0)
+            //{
+              //  PlayerMesh.SetActive(true);
+            //}
+
         }
 
     }
 
     private void MovePlayer()
     {
+       
 
         if (OnRail)
         {
-
+            Debug.Log("Hortiz" + Input.GetAxisRaw("Horizontal"));
             Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes
             Anim.SetBool("Grinding", true);
@@ -226,6 +257,8 @@ public class PlayerController : MonoBehaviour
         {
             AirTime = AirTimeDefault;
             gravitytimer = 0;
+
+           
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
@@ -282,7 +315,7 @@ public class PlayerController : MonoBehaviour
     {
       
         JumpCooled = true;
-
+        PlayerGrind.JumpCooldown = true;
 
     }
 

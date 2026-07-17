@@ -36,6 +36,7 @@ public class PlayerGrind : MonoBehaviour
     [Header("Jumping off pole hieght")]
     public float EjectForce;
     public float JumpoffHeight;
+    public bool JumpCooldown;
 
     private Quaternion targetRotation;
 
@@ -59,14 +60,15 @@ public class PlayerGrind : MonoBehaviour
     private void FixedUpdate()
     {
         float HorizontalInput = Input.GetAxisRaw("Horizontal");
+       
 
         if (onRail)
         {
             //Uhh, Ignore this ugly code down here, wanna add a lean in for grinds so this will be needed later :/
-            GrindPlayerAlongRail();
+           
 
             //Jump logic
-            if (HorizontalInput != 0 && Input.GetKeyDown(KeyCode.Space))
+            if (HorizontalInput != 0 && Input.GetKey(KeyCode.Space) && JumpCooldown)
             {
                     PlayerControl.GrindAir = true;
                     PlayerControl.AirTime = PlayerControl.AirTimeGrind;
@@ -79,13 +81,17 @@ public class PlayerGrind : MonoBehaviour
     
             else
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (HorizontalInput == 0 && Input.GetKey(KeyCode.Space) && JumpCooldown)
                 {
                     PlayerControl.GrindAir = true;
                     PlayerControl.AirTime = PlayerControl.AirTimeGrind;
                     transform.position += transform.up * 10f;
                     JumpOffRail(PlayerRotAxis.transform.forward);
                     return;
+                }
+                else
+                {
+                    GrindPlayerAlongRail();
                 }
             }
             
