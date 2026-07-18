@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         Anim.SetBool("Grinding", OnRail);
 
         //Dancing!
-        if (Input.GetKeyDown(KeyCode.E) && Grounded && !OnRail)
+        if (Input.GetKeyDown(KeyCode.Q) && Grounded && !OnRail)
         {
             RB.isKinematic = true;
             Dancing = true;
@@ -124,10 +124,14 @@ public class PlayerController : MonoBehaviour
 
         input();
 
+
+
         //ground check
-        Grounded = Physics.Raycast(transform.position, Vector3.down, playerhieght * 0.5f + 0.2f, Ground);
+        Grounded = Physics.SphereCast(transform.position, 2f, Vector3.down, out RaycastHit hit, playerhieght * 0.5f + 0.2f, Ground);
         Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
         Anim.SetBool("Grounded", Grounded);
+
+
 
         //Jump logic
         if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
