@@ -171,9 +171,7 @@ public class PlayerGrind : MonoBehaviour
             if (hit.gameObject.CompareTag("Rail") && !onRail)
             {
                 CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-                if (CurrentRailScript == null) 
-                if (CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-            return;
+                if (CurrentRailScript == null) return;
 
                 EnterRail();
               
