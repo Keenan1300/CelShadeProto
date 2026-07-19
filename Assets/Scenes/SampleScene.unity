@@ -3417,12 +3417,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8056441014856740195}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &585827942 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 727953881043851370, guid: a53ec9d952f4f4144a043485d54b5040,
-    type: 3}
-  m_PrefabInstance: {fileID: 8056441014856740195}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &585827943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3614335257872146502, guid: a53ec9d952f4f4144a043485d54b5040,
@@ -6307,6 +6301,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -1.883, y: 20.029, z: -84.638}
+--- !u!1 &1127354058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7118241058386677684, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 8056441014856740195}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142577371
 GameObject:
   m_ObjectHideFlags: 0
@@ -24205,7 +24205,7 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerRotAxis
       value: 
-      objectReference: {fileID: 585827942}
+      objectReference: {fileID: 1127354058}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: airmultiplier
