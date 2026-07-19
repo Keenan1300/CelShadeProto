@@ -58,8 +58,13 @@ public class PlayerController : MonoBehaviour
     public float AirTimeDefault;
     public float AirTimeGrind;
 
+
+    //Grind Jump special air movement\\
+
     //How much can the player move while in air from a grind?
     public float GrindAirManeuverability;
+    public bool GrindAir;
+
 
     //Ground Check
     public LayerMask Ground;
@@ -77,8 +82,6 @@ public class PlayerController : MonoBehaviour
     public bool OnRail;
     public bool SprayScene;
 
-    //special air moves with momentum
-    public bool GrindAir;
 
     public bool GraffitiRange;
 
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-     
+
 
         OnRail = PlayerGrind.onRail;
 
@@ -118,7 +121,7 @@ public class PlayerController : MonoBehaviour
             RB.isKinematic = true;
             Dancing = true;
             PlayerMesh.SetActive(false);
-           
+
             Invoke(nameof(Dance), DanceDuration);
         }
 
@@ -165,13 +168,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
-           
+
             GrindAir = false;
             Anim.SetBool("GrindAir", false);
             Anim.SetBool("Falling", false);
 
             //aesthetics
-            if(Touchpoint == true)
+            if (Touchpoint == true)
             {
                 Createdustcloud();
             }
@@ -188,15 +191,15 @@ public class PlayerController : MonoBehaviour
 
         if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
         {
-            
+
 
             Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;
             Graflookdir.x = 0f;
             Quaternion lookthere = Quaternion.LookRotation(Graflookdir);
 
             SprayScene = true;
-            Instantiate(GraffitiSprayAnim,PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
-            
+            Instantiate(GraffitiSprayAnim, PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
+
             //make player invisible
             gameObject.SetActive(false);
         }
@@ -205,13 +208,30 @@ public class PlayerController : MonoBehaviour
 
     public void Dance()
     {
-        Instantiate(Dancer,PlayerMesh.transform.position, Quaternion.identity);
+        Instantiate(Dancer, PlayerMesh.transform.position, Quaternion.identity);
         //Dancing = false;
     }
 
 
     private void FixedUpdate()
     {
+
+        if (GrindAir)
+        {
+
+            Anim.SetBool("GrindAir", true);
+            //AirTime = 0.99f;
+            gravityMultiplier = 20;
+            RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
+
+            //overtime decrease back to gravity
+            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f), ForceMode.Acceleration);
+
+        }
+            else if (!GrindAir)
+            {
+                gravityMultiplier = 150;
+            }
 
         if (!Dancing)
         {
@@ -231,7 +251,7 @@ public class PlayerController : MonoBehaviour
 
             //if (Dancing && horizontalinput != 0 || VerticalInput != 0)
             //{
-              //  PlayerMesh.SetActive(true);
+            //  PlayerMesh.SetActive(true);
             //}
 
         }
@@ -240,7 +260,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-       
+
 
         if (OnRail)
         {
@@ -262,7 +282,7 @@ public class PlayerController : MonoBehaviour
             AirTime = AirTimeDefault;
             gravitytimer = 0;
 
-           
+
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 
         }
@@ -306,9 +326,9 @@ public class PlayerController : MonoBehaviour
 
     private void Jumplogii()
     {
-
+        //Jump dust
         Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
-        
+
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
         RB.AddForce(transform.up * Jumpforce + (PlayerRotAxis.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
@@ -317,11 +337,22 @@ public class PlayerController : MonoBehaviour
 
     private void resetjump()
     {
-      
+
         JumpCooled = true;
         PlayerGrind.JumpCooldown = true;
 
     }
+
+    private void JumpBuffer()
+    {
+        JumpCooled = false;
+        PlayerGrind.JumpCooldown = false;
+        Invoke(nameof(resetjump), 0.5f);
+    }
+
+
+
+    //UI ELEMENTS
 
     public void popup()
     {
@@ -336,6 +367,9 @@ public class PlayerController : MonoBehaviour
         SprayPrompt.SetActive(false);
         GraffitiRange = false;
     }
+
+
+    //Dust Cloud settings
 
     public void Createdustcloud()
     {

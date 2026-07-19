@@ -13,8 +13,19 @@ public class RailScript : MonoBehaviour
     public SplineContainer RailSp;
     public float RailLength;
 
+
+    [Header("Special Wall Data")]
+    public bool IsWall;
+    public Collider RailCollider;
+
+   
+
+   
+
     void Start()
     {
+        if (RailCollider == null) return;
+        RailCollider = RailCollider.GetComponent<Collider>();
         RailSp = GetComponent<SplineContainer>();
         UpdateRailPoints();
     }
@@ -82,6 +93,25 @@ public class RailScript : MonoBehaviour
 
         // Recalculate length so PlayerGrind speed stays consistent
         RailLength = RailSp.CalculateLength();
+    }
+
+    public void turnoffcollisions()
+    {
+        //turn off collision temporarily, then turn it on.
+        if (IsWall)
+        {
+            //RailCollider = GetComponent<Collider>();
+            RailCollider.enabled = false;
+            Invoke(nameof(turnoncollision), 1f);
+        }
+
+    }
+
+
+    public void turnoncollision()
+    {
+        //RailCollider = GetComponent<Collider>();
+        RailCollider.enabled = true;
     }
 }
 

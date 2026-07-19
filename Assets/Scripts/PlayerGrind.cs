@@ -21,7 +21,7 @@ public class PlayerGrind : MonoBehaviour
 
     [Header("Scripts")]
     Rigidbody PlayerRB;
-    RailScript CurrentRailScript;
+    public RailScript CurrentRailScript;
     PlayerController PlayerControl;
     CapsuleCollider Colliding;
 
@@ -60,31 +60,34 @@ public class PlayerGrind : MonoBehaviour
     private void FixedUpdate()
     {
         float HorizontalInput = Input.GetAxisRaw("Horizontal");
-       
+
 
         if (onRail)
         {
             //Uhh, Ignore this ugly code down here, wanna add a lean in for grinds so this will be needed later :/
-           
+
 
             //Jump logic
             if (HorizontalInput != 0 && Input.GetKey(KeyCode.Space) && JumpCooldown)
             {
-                    PlayerControl.GrindAir = true;
-                    PlayerControl.AirTime = PlayerControl.AirTimeGrind;
-                    transform.position += transform.up * 10f;
-                    JumpOffRail(PlayerRotAxis.transform.right * HorizontalInput);
-                    return;
+                PlayerControl.GrindAir = true;
                 
+                PlayerControl.AirTime = PlayerControl.AirTimeGrind;
+                transform.position += transform.up * 10f;
+                JumpOffRail(PlayerRotAxis.transform.right * HorizontalInput * 2f);
+                return;
+
 
             }
-    
+
             else
             {
                 if (HorizontalInput == 0 && Input.GetKey(KeyCode.Space) && JumpCooldown)
                 {
                     PlayerControl.GrindAir = true;
                     PlayerControl.AirTime = PlayerControl.AirTimeGrind;
+
+                    
                     transform.position += transform.up * 10f;
                     JumpOffRail(PlayerRotAxis.transform.forward);
                     return;
@@ -94,35 +97,44 @@ public class PlayerGrind : MonoBehaviour
                     GrindPlayerAlongRail();
                 }
             }
-            
+
         }
     }
 
     void GrindPlayerAlongRail()
     {
-        
+
 
         if (CurrentRailScript == null || !onRail) return;
 
         // 1. Calculate Progress (0 to 1)
         float progress = elapsedTime / totalRailDuration;
 
-        // 2. Check if we've reached the end or beginning of the rail
+        // 2. Check if we've reached the end of the rail
         if (progress < 0f || progress > 1f)
         {
-            JumpOffRail(PlayerRotAxis.transform.forward);
+            if (CurrentRailScript.IsWall == false)
+            {
+                ThrowOffRail(PlayerRotAxis.transform.forward);
+                //JumpOffRail(PlayerRotAxis.transform.forward);
+            }
+            else
+            {
+                if (CurrentRailScript.ForwardOrient) ThrowOffRail(CurrentRailScript.PointA.transform.forward);
+                else ThrowOffRail(CurrentRailScript.PointA.transform.forward * -1);
+                //JumpOffRail(CurrentRailScript.PointA.transform.right);
+            }
+
             return;
         }
-
-
-    
 
         // 3. Evaluate Spline Position and Rotation
         // We use the spline's local evaluation and convert to world space via the RailScript
         SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, progress, out float3 localPos, out float3 localForward, out float3 localUp);
 
         Vector3 worldPos = CurrentRailScript.ConvertLocaltoWorld(localPos);
-        Vector3 worldUp = CurrentRailScript.ConvertLocaltoWorldDirection(localUp);
+        //Vector3 worldUp = CurrentRailScript.ConvertLocaltoWorldDirection(localUp);
+        Vector3 worldUp = CurrentRailScript.PointA.up;
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
         Vector3 targetPos = worldPos + (worldUp * HeightOffset);
@@ -139,12 +151,12 @@ public class PlayerGrind : MonoBehaviour
         // Face the direction of travel (ForwardOrient accounts for the 2-way logic)
         Vector3 moveDir = CurrentRailScript.ForwardOrient ? worldForward : -worldForward;
         Quaternion targetRotation = Quaternion.LookRotation(moveDir, worldUp);
-        
-        
-        //PlayerRotAxis.transform.rotation = targetRotation;
-         PlayerRotAxis.transform.rotation = Quaternion.Slerp(PlayerRotAxis.transform.rotation, targetRotation, Time.fixedDeltaTime * LerpSpeed);
 
-        
+
+        //PlayerRotAxis.transform.rotation = targetRotation;
+        PlayerRotAxis.transform.rotation = Quaternion.Slerp(PlayerRotAxis.transform.rotation, targetRotation, Time.fixedDeltaTime * LerpSpeed);
+
+
 
 
 
@@ -161,36 +173,36 @@ public class PlayerGrind : MonoBehaviour
             elapsedTime -= Time.deltaTime;
 
 
-       
+
     }
 
     private void OnCollisionEnter(Collision hit)
     {
-       
-        
-            if (hit.gameObject.CompareTag("Rail") && !onRail)
-            {
-                CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-                if (CurrentRailScript == null) return;
 
-                EnterRail();
-              
-            }
 
-            //Boot Player off if end is reached
-            if (hit.gameObject.CompareTag("RailExit") && onRail)
-            {
-                Debug.Log("Hit end of the line here!");
-                CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-                //hit.gameObject.SetActive(false);
-                //disable collider, not game object
-                hit.gameObject.GetComponent<Collider>().enabled = false;
-                if (CurrentRailScript == null) return;
-                JumpOffRail(targetRotation.eulerAngles);
+        if (hit.gameObject.CompareTag("Rail") && !onRail)
+        {
+            CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
+            if (CurrentRailScript == null) return;
 
-            }
+            EnterRail();
 
-        
+        }
+
+        //Boot Player off if end is reached
+        if (hit.gameObject.CompareTag("RailExit") && onRail)
+        {
+            Debug.Log("Hit end of the line here!");
+            CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
+            //hit.gameObject.SetActive(false);
+            //disable collider, not game object
+            hit.gameObject.GetComponent<Collider>().enabled = false;
+            if (CurrentRailScript == null) return;
+            ThrowOffRail(targetRotation.eulerAngles);
+
+        }
+
+
     }
 
     void EnterRail()
@@ -198,8 +210,10 @@ public class PlayerGrind : MonoBehaviour
         EnterGrindingEvent.Invoke();
         GetComponent<Collider>().enabled = false;
 
-        PlayerControl.JumpCooldown = 0f;
+        //PlayerControl.JumpCooldown = 0f;
 
+
+        JumpBuffer(0.1f);
         onRail = true;
         PlayerRB.isKinematic = true;
 
@@ -217,8 +231,8 @@ public class PlayerGrind : MonoBehaviour
         Startpos.y = splinePoint.y + HeightOffset;
         transform.position = Startpos;
 
-      // Set our elapsed time relative to the total duration
-      elapsedTime = totalRailDuration * normalizedTime;
+        // Set our elapsed time relative to the total duration
+        elapsedTime = totalRailDuration * normalizedTime;
 
         // Determine if we are facing with or against the spline direction
         SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out _, out float3 localForward, out _);
@@ -231,25 +245,53 @@ public class PlayerGrind : MonoBehaviour
 
     void JumpOffRail(Vector3 JumpDirection)
     {
+        JumpBuffer(0.2f);
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
         ResetFreelookCam.Invoke();
 
-        //PlayerRB.AddForce(Vector3.up * 5f, ForceMode.Impulse);
-        ThrowOffRail(JumpDirection);
+        onRail = false;
+        PlayerRB.isKinematic = false;
+        PlayerControl.GrindAir = true;
+
+        //Turn on player physics on exit
+        GetComponent<Collider>().enabled = true;
+
+
+        Vector3 currentEuler = PlayerRotAxis.transform.rotation.eulerAngles;
+        PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
+
+        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
+        PlayerRB.linearVelocity = exitDirection * GrindSpeed;
+
+        JumpDirection = CurrentRailScript.ForwardOrient ? JumpDirection : -JumpDirection;
+
+        Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (JumpDirection * EjectForce);
+        
+
+        PlayerRB.AddForce(ejectVector + exitDirection, ForceMode.Impulse);
+
+        //prevent stuck bug
+        CurrentRailScript.turnoffcollisions();
+
+        CurrentRailScript = null;
 
     }
 
     public void ThrowOffRail(Vector3 LeftRight)
     {
+        Debug.Log("PlayerThrownOffRail");
+
         onRail = false;
         PlayerRB.isKinematic = false;
+
+      
+
+
+        //Turn on player physics on exit
         GetComponent<Collider>().enabled = true;
 
-        transform.position += transform.up * 5f;
-        //transform.position += Vector3.forward * 10f;
 
-       
 
         // 1. Clear any 'spinning' forces built up during the grind
         //PlayerRB.angularVelocity = Vector3.zero;
@@ -263,20 +305,45 @@ public class PlayerGrind : MonoBehaviour
         Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
         PlayerRB.linearVelocity = exitDirection * GrindSpeed;
 
-        Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
-        PlayerRB.AddForce(ejectVector, ForceMode.Impulse);
+        LeftRight = CurrentRailScript.ForwardOrient ? LeftRight : -LeftRight;
+
+        Vector3 ejectVector = (new Vector3 (Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"),0) * JumpoffHeight) + (LeftRight * EjectForce);
+        //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
+        //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (exitDirection * EjectForce);
+        PlayerRB.AddForce(ejectVector + exitDirection, ForceMode.Impulse);
+
 
         //prevent stuck bug
+        CurrentRailScript.turnoffcollisions();
+
 
         //PlayerRB.AddForce(transform.up * 40f + PlayerRotAxis.transform.forward * EjectForce, ForceMode.Impulse);
-                    //Jump Vertical Calculation    Horizontal calculation\\
+        //Jump Vertical Calculation    Horizontal calculation\\
         //PlayerRB.AddForce(transform.up * 40f + transform.forward * EjectForce * PlayerControl.InputNum, ForceMode.Impulse);
 
 
-       
 
-        
+
+
 
         CurrentRailScript = null;
     }
+
+
+    private void resetjump()
+    {
+        
+        JumpCooldown = true;
+        PlayerControl.JumpCooled = true;
+    }
+
+    private void JumpBuffer(float buffertime)
+    {
+        JumpCooldown = false;
+        PlayerControl.JumpCooled = false;
+       
+        Invoke(nameof(resetjump), buffertime);
+    }
+
+
 }
