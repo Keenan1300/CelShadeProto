@@ -305,7 +305,7 @@ public class PlayerController : MonoBehaviour
 
             Anim.SetBool("GrindAir", true);
            
-            gravityMultiplier = 70;
+           // gravityMultiplier = 70;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
             //overtime decrease back to gravity

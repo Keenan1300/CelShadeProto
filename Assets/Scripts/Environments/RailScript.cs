@@ -18,14 +18,33 @@ public class RailScript : MonoBehaviour
     public bool IsWall;
     public Collider RailCollider;
 
-   
+    [Header("Rail with multi-colliders")]
+    public bool CompoundRail;
+    public Collider ACollider;
+    public Collider BCollider;
 
-   
+
+
+
 
     void Start()
     {
-        if (RailCollider == null) return;
-        RailCollider = RailCollider.GetComponent<Collider>();
+
+
+
+        if (IsWall)
+        {
+            RailCollider = RailCollider.GetComponent<Collider>();
+            return;
+        }
+
+        if (CompoundRail)
+        {
+            ACollider = ACollider.GetComponent<Collider>();
+            BCollider = BCollider.GetComponent<Collider>();
+
+        }
+
         RailSp = GetComponent<SplineContainer>();
         UpdateRailPoints();
     }
@@ -105,13 +124,31 @@ public class RailScript : MonoBehaviour
             Invoke(nameof(turnoncollision), 1f);
         }
 
+        if (CompoundRail)
+        {
+            ACollider.enabled = false;
+            BCollider.enabled = false;
+            Invoke(nameof(turnoncollision), 1f);
+        }
+
     }
 
 
     public void turnoncollision()
     {
-        //RailCollider = GetComponent<Collider>();
-        RailCollider.enabled = true;
+
+        if (IsWall)
+        {
+            RailCollider.enabled = true;
+
+        }
+
+        if (CompoundRail)
+        {
+            ACollider.enabled = true;
+            BCollider.enabled = true;
+
+        }
     }
 }
 
