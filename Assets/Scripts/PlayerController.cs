@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
 
     //How much can the player move while in air from a grind?
     public float GrindAirManeuverability;
+    public float specialAirGrindHeight;
     public bool GrindAir;
 
 
@@ -168,7 +169,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
-
+            
             GrindAir = false;
             Anim.SetBool("GrindAir", false);
             Anim.SetBool("Falling", false);
@@ -212,16 +213,20 @@ public class PlayerController : MonoBehaviour
         //Dancing = false;
     }
 
+    private void ResetGravity()
+    {
+        gravityMultiplier = 150f;
+    }
 
     private void FixedUpdate()
     {
 
         if (GrindAir)
         {
-
+            Anim.SetBool("Grinding", false);
             Anim.SetBool("GrindAir", true);
             //AirTime = 0.99f;
-            gravityMultiplier = 20;
+            gravityMultiplier = specialAirGrindHeight;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
             //overtime decrease back to gravity
@@ -230,7 +235,8 @@ public class PlayerController : MonoBehaviour
         }
             else if (!GrindAir)
             {
-                gravityMultiplier = 150;
+
+              Invoke(nameof(ResetGravity), 0.5f);
             }
 
         if (!Dancing)
@@ -272,7 +278,7 @@ public class PlayerController : MonoBehaviour
 
         if (!OnRail)
         {
-
+            
             //find move dir
             MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
         }
@@ -289,7 +295,7 @@ public class PlayerController : MonoBehaviour
         else if (!Grounded && !OnRail)
         {
             RB.AddForce((Vector3.down * AirTime) * gravitytimer * gravityMultiplier, ForceMode.Acceleration);
-            //RB.AddForce(MoveDirection.normalized * movespeed * 10f * airmultiplier, ForceMode.Force);
+           
 
         }
 
@@ -298,7 +304,7 @@ public class PlayerController : MonoBehaviour
         {
 
             Anim.SetBool("GrindAir", true);
-            //AirTime = 0.99f;
+           
             gravityMultiplier = 70;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
@@ -380,4 +386,3 @@ public class PlayerController : MonoBehaviour
     }
 
 }
-
