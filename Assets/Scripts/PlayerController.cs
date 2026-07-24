@@ -133,20 +133,24 @@ public class PlayerController : MonoBehaviour
             YCast = hit.distance;
         }
 
-        if (Physics.Raycast(CPoint, PlayerMesh.transform.forward, out hit, XLimitCast))
+        if (Physics.Raycast(transform.position, PlayerMesh.transform.forward, out hit, XLimitCast))
         {
             // Extract the distance as a float
             XCast = hit.distance;
         }
 
         //YCast to floor Calc
-        CPoint = (transform.position - new Vector3(0, 6, 0)) + PlayerRotAxis.transform.forward * XCast;
+        CPoint = (transform.position) + PlayerRotAxis.transform.forward * XCast;
         BPoint = new Vector3(CPoint.x, CPoint.y - YCast, CPoint.z);
 
         //X rotation calculation
         float angleARadians = Mathf.Atan2(YCast, XCast);
         float angleADeg = angleARadians * Mathf.Rad2Deg;
+
+      
         DrawDebugTriangle();
+
+        
 
 
         OnRail = PlayerGrind.onRail;
@@ -210,7 +214,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
-            
+            //Test
+            //PlayerRotAxis
+            if (angleADeg > 30f)
+            {
+                transform.rotation = Quaternion.Euler(angleADeg, PlayerRotAxis.transform.rotation.y, PlayerRotAxis.transform.rotation.z);
+            }
+
             GrindAir = false;
             Anim.SetBool("GrindAir", false);
             Anim.SetBool("Falling", false);
@@ -252,8 +262,8 @@ public class PlayerController : MonoBehaviour
     public void DrawDebugTriangle()
     {
      
-        Debug.DrawLine(transform.position - new Vector3(0,6,0), BPoint);
-        Debug.DrawLine(CPoint, transform.position - new Vector3(0, 6, 0));
+        Debug.DrawLine(transform.position, BPoint);
+        Debug.DrawLine(CPoint, transform.position);
         Debug.DrawLine(BPoint, CPoint);
     }
 
@@ -327,14 +337,18 @@ public class PlayerController : MonoBehaviour
             Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes
             //Anim.SetBool("Grinding", true);
-           
+
         }
 
         if (!OnRail)
         {
-            
+
             //find move dir
             MoveDirection = Orientation.forward * VerticalInput + Orientation.right * horizontalinput;
+
+            
+            
+
         }
 
         if (Grounded && !OnRail)
