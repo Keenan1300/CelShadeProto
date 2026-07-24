@@ -8,7 +8,7 @@ using static UnityEngine.Rendering.DebugUI;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody RB;
-    private Animator Anim;
+    public Animator Anim;
 
     //visual graphic char
     public GameObject PlayerMesh;
@@ -71,6 +71,11 @@ public class PlayerController : MonoBehaviour
     public LayerMask Ground;
     public float playerhieght;
 
+    //Grind Check
+    public bool RailGrind;
+    public bool WallGrindR;
+    public bool WallGrindL;
+
     //Dance
     public bool Dancing;
     public float DanceDuration;
@@ -114,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
         OnRail = PlayerGrind.onRail;
 
-        Anim.SetBool("Grinding", OnRail);
+        //Anim.SetBool("Grinding", OnRail);
 
         //Dancing!
         if (Input.GetKeyDown(KeyCode.Q) && Grounded && !OnRail)
@@ -133,8 +138,12 @@ public class PlayerController : MonoBehaviour
         //ground check
         Grounded = Physics.SphereCast(transform.position, 2f, Vector3.down, out RaycastHit hit, playerhieght * 0.5f + 0.2f, Ground);
         Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
-        Anim.SetBool("Grounded", Grounded);
 
+        //Anim updates
+        Anim.SetBool("Grounded", Grounded);
+        Anim.SetBool("Grinding", RailGrind);
+        Anim.SetBool("WallGrindR", WallGrindR);
+        Anim.SetBool("WallGrindL", WallGrindL);
 
 
         //Jump logic
@@ -223,7 +232,10 @@ public class PlayerController : MonoBehaviour
 
         if (GrindAir)
         {
-            Anim.SetBool("Grinding", false);
+            RailGrind = false;
+            WallGrindR = false;
+            WallGrindL = false;
+
             Anim.SetBool("GrindAir", true);
             //AirTime = 0.99f;
             gravityMultiplier = specialAirGrindHeight;
@@ -273,7 +285,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Hortiz" + Input.GetAxisRaw("Horizontal"));
             Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes
-            Anim.SetBool("Grinding", true);
+            //Anim.SetBool("Grinding", true);
+           
         }
 
         if (!OnRail)
@@ -287,7 +300,7 @@ public class PlayerController : MonoBehaviour
         {
             AirTime = AirTimeDefault;
             gravitytimer = 0;
-
+            //RB.Move(Vector3.down * 0.5f);
 
             RB.AddForce(MoveDirection.normalized * movespeed * 10f, ForceMode.Force);
 

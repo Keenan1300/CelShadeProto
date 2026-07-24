@@ -124,6 +124,32 @@ public class PlayerGrind : MonoBehaviour
                     // GrindPlayerAlongRail();
                 }
             }
+
+
+            //animation protocols
+           
+            PlayerControl.GrindAir = false;
+            if (CurrentRailScript.IsWall)
+            {
+                if (CurrentRailScript.ForwardOrient)
+                {
+                    PlayerControl.WallGrindR = true;
+                    PlayerControl.WallGrindL = false;
+                }
+                else if (CurrentRailScript.ForwardOrient == false)
+                {
+                    PlayerControl.WallGrindR = false;
+                    PlayerControl.WallGrindL = true;
+                }
+
+
+            }
+            else
+            {
+                PlayerControl.RailGrind = true;
+            }
+
+
             GrindPlayerAlongRail();
 
         }
@@ -133,7 +159,15 @@ public class PlayerGrind : MonoBehaviour
     {
 
 
-        if (CurrentRailScript == null || !onRail) return;
+        //if (CurrentRailScript == null || !onRail)
+        //{
+        //    //Reset anim
+        //    PlayerControl.WallGrindR = false;
+        //    PlayerControl.WallGrindL = false;
+            
+        //    PlayerControl.RailGrind = false;
+        //    return;
+        //}
 
         // 1. Calculate Progress (0 to 1)
         float progress = elapsedTime / totalRailDuration;
@@ -143,10 +177,15 @@ public class PlayerGrind : MonoBehaviour
         {
             if (CurrentRailScript.IsWall == false)
             {
+                PlayerControl.RailGrind = true;
                 ThrowOffRail(PlayerRotAxis.transform.forward * ThrowForce + (PlayerRotAxis.transform.up * 2f));
             }
             else
             {
+
+
+         
+
                 ThrowOffRail(PlayerRotAxis.transform.forward * (ThrowForce *2f) + (CurrentRailScript.PointA.transform.forward * 2f));
                 //ThrowOffRail(CurrentRailScript.PointA.transform.forward);
             }
@@ -210,6 +249,7 @@ public class PlayerGrind : MonoBehaviour
         {
             CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
             if (CurrentRailScript == null) return;
+          
 
             EnterRail();
 
@@ -267,6 +307,32 @@ public class PlayerGrind : MonoBehaviour
         CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerRotAxis.transform.forward);
         PlayerRotAxis.transform.rotation = Quaternion.LookRotation(worldForward);
 
+
+        //Animation stuff
+
+        //Is this wall? DIRECTIONAL LOGII
+        if (CurrentRailScript.IsWall)
+        {          
+            if (CurrentRailScript.ForwardOrient)
+            {
+                PlayerControl.WallGrindR = true;
+                PlayerControl.WallGrindL = false;
+            }
+            else if (CurrentRailScript.ForwardOrient == false)
+            {
+                PlayerControl.WallGrindR = false;
+                PlayerControl.WallGrindL = true;
+            }
+
+
+        }
+
+        // Is this rail?
+        if (CurrentRailScript.IsWall == false)
+        {
+            PlayerControl.RailGrind = true;
+        }
+
     }
 
     void JumpOffRail(Vector3 JumpDirection)
@@ -297,7 +363,7 @@ public class PlayerGrind : MonoBehaviour
 
         //Jumping
         //transform.up* Jumpforce +(PlayerRotAxis.transform.forward * JumpForwardforce * InputNum)
-       
+
         //Vector3 ejectVector = (transform.up * JumpoffHeight) + (JumpDirection * EjectForce);
         Vector3 ejectVector = (transform.up * JumpoffHeight) + (PlayerControl.PlayerRotAxis.transform.forward + JumpDirection * EjectForce);
 
@@ -307,6 +373,13 @@ public class PlayerGrind : MonoBehaviour
         CurrentRailScript.turnoffcollisions();
 
         CurrentRailScript = null;
+
+
+        //Animation stuff
+        PlayerControl.WallGrindR = false;
+        PlayerControl.WallGrindL = false;
+        PlayerControl.RailGrind = false;
+
 
     }
 
@@ -361,6 +434,12 @@ public class PlayerGrind : MonoBehaviour
 
 
         CurrentRailScript = null;
+
+        
+        //Animation stuff
+        PlayerControl.WallGrindR = false;
+        PlayerControl.WallGrindL = false;
+        PlayerControl.RailGrind = false;
     }
 
 
