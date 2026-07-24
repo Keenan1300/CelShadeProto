@@ -29537,16 +29537,6 @@ PrefabInstance:
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: XCast
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
-        type: 3}
-      propertyPath: XLimitCast
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
-        type: 3}
-      propertyPath: YLimitCast
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
