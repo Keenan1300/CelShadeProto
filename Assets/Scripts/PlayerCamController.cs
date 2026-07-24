@@ -11,6 +11,8 @@ public class PlayerCamController : MonoBehaviour
     public GameObject playervisibilityToggle;
 
     public Transform PlayerRotAxis;
+
+    [Header("PutEulers instead of playermesh")]
     public Transform playermesh;
 
     public Transform CameraReset;
