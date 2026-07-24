@@ -81,10 +81,12 @@ public class Collect : MonoBehaviour
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
 
-
+            //UI
             Popupclose.Invoke();
+
+            //Visibility
             DrawGraffiti.Invoke();
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }
 
         Vector3 Rot = transform.rotation.eulerAngles;

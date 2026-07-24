@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
+using static UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour
     public float DanceDuration;
     public GameObject Dancer;
 
-    //Direction Calc
+    //Direction Calc Y
     Vector3 MoveDirection;
     public Transform Orientation;
 
@@ -90,6 +91,16 @@ public class PlayerController : MonoBehaviour
 
 
     public bool GraffitiRange;
+
+
+    //Direction Calc X
+    public float XCast;
+    public float YCast;
+    public float XLimitCast;
+    public float YLimitCast;
+    private Vector3 CPoint;
+    private Vector3 BPoint;
+
 
     //UI
     public GameObject SprayPrompt;
@@ -114,7 +125,28 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        RaycastHit hit;
 
+        if (Physics.Raycast(CPoint, Vector3.down, out hit, YLimitCast))
+        {
+            // Extract the distance as a float
+            YCast = hit.distance;
+        }
+
+        if (Physics.Raycast(CPoint, PlayerMesh.transform.forward, out hit, XLimitCast))
+        {
+            // Extract the distance as a float
+            XCast = hit.distance;
+        }
+
+        //YCast to floor Calc
+        CPoint = (transform.position - new Vector3(0, 6, 0)) + PlayerRotAxis.transform.forward * XCast;
+        BPoint = new Vector3(CPoint.x, CPoint.y - YCast, CPoint.z);
+
+        //X rotation calculation
+        float angleARadians = Mathf.Atan2(YCast, XCast);
+        float angleADeg = angleARadians * Mathf.Rad2Deg;
+        DrawDebugTriangle();
 
 
         OnRail = PlayerGrind.onRail;
@@ -136,7 +168,7 @@ public class PlayerController : MonoBehaviour
 
 
         //ground check
-        Grounded = Physics.SphereCast(transform.position, 2f, Vector3.down, out RaycastHit hit, playerhieght * 0.5f + 0.2f, Ground);
+        Grounded = Physics.SphereCast(transform.position, 2f, Vector3.down, out RaycastHit hit2, playerhieght * 0.5f + 0.2f, Ground);
         Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
 
         //Anim updates
@@ -214,6 +246,15 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
+    }
+
+
+    public void DrawDebugTriangle()
+    {
+     
+        Debug.DrawLine(transform.position - new Vector3(0,6,0), BPoint);
+        Debug.DrawLine(CPoint, transform.position - new Vector3(0, 6, 0));
+        Debug.DrawLine(BPoint, CPoint);
     }
 
     public void Dance()
