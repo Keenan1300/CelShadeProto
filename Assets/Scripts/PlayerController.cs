@@ -135,11 +135,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
 
 
-            OnRail = PlayerGrind.onRail;
+        OnRail = PlayerGrind.onRail;
 
         //Anim.SetBool("Grinding", OnRail);
 
@@ -188,7 +187,11 @@ public class PlayerController : MonoBehaviour
 
         if (!Grounded) // If the player is falling
         {
-       
+
+            //Air fix
+            Quaternion rf = Quaternion.Euler(0, 0, 0);
+            rf = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,0,0), AnimCurve.Evaluate(Timer + 1f));
+            transform.rotation = Quaternion.Euler(rf.eulerAngles.x, rf.eulerAngles.y, rf.eulerAngles.z);
 
             //exponential grav increase as term velo is reached
             gravitytimer += Time.deltaTime * AirTime;
@@ -251,6 +254,8 @@ public class PlayerController : MonoBehaviour
     public void SurfaceAlign()
     {
         Ray ray = new Ray(transform.position, -transform.up);
+       
+
         RaycastHit info = new RaycastHit();
         Quaternion rf = Quaternion.Euler(0, 0, 0);
 
@@ -261,8 +266,11 @@ public class PlayerController : MonoBehaviour
             //  transform.rotation = Quaternion.Euler(rf.eulerAngles.x, transform.eulerAngles.y,rf.eulerAngles.z);
 
             rf = Quaternion.Lerp(transform.rotation, Quaternion.FromToRotation(Vector3.up, info.normal), AnimCurve.Evaluate(Timer));
-            transform.rotation = Quaternion.Euler(rf.eulerAngles.x, transform.eulerAngles.y, rf.eulerAngles.z);
+            transform.rotation = Quaternion.Euler(rf.eulerAngles.x, rf.eulerAngles.y, rf.eulerAngles.z);
+           
         }
+
+
 
         if (YCast > 5f && YCast < 10f)
         {
