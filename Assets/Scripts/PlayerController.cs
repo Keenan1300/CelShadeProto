@@ -10,6 +10,9 @@ using static UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {
+
+
+
     public Rigidbody RB;
     public Animator Anim;
 
@@ -325,7 +328,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
+       
         if (GrindAir)
         {
             RailGrind = false;
@@ -378,6 +381,8 @@ public class PlayerController : MonoBehaviour
 
         if (OnRail)
         {
+          
+
             Debug.Log("Hortiz" + Input.GetAxisRaw("Horizontal"));
             Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes

@@ -7,6 +7,11 @@ using UnityEngine.Splines;
 
 public class PlayerGrind : MonoBehaviour
 {
+    //SFX
+    public AudioClip Grind;
+    public AudioClip Wallburn;
+    public AudioSource SFX;
+
     [Header("Grind Data")]
     public UnityEvent EnterGrindingEvent;
     public UnityEvent ResetFreelookCam;
@@ -49,6 +54,7 @@ public class PlayerGrind : MonoBehaviour
 
     void Start()
     {
+        SFX = GetComponent<AudioSource>();
         PlayerRB = GetComponent<Rigidbody>();
         Colliding = GetComponent<CapsuleCollider>();
         PlayerControl = GetComponent<PlayerController>();
@@ -273,6 +279,9 @@ public class PlayerGrind : MonoBehaviour
 
     void EnterRail()
     {
+
+      
+
         EnterGrindingEvent.Invoke();
         GetComponent<Collider>().enabled = false;
 
@@ -312,7 +321,11 @@ public class PlayerGrind : MonoBehaviour
 
         //Is this wall? DIRECTIONAL LOGII
         if (CurrentRailScript.IsWall)
-        {          
+        {
+            //SFX
+            SFX.clip = Wallburn;
+            SFX.Play();
+
             if (CurrentRailScript.ForwardOrient)
             {
                 PlayerControl.WallGrindR = true;
@@ -330,6 +343,10 @@ public class PlayerGrind : MonoBehaviour
         // Is this rail?
         if (CurrentRailScript.IsWall == false)
         {
+            //SFX
+            SFX.clip = Grind;
+            SFX.Play();
+
             PlayerControl.RailGrind = true;
         }
 
