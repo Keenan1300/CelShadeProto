@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 
 public class Collect : MonoBehaviour
 {
     public float timer;
     public float loopTime = 3f;
-   
 
+    public AudioSource MusicPlayer;
     public GameObject Player;
     public bool PlayerInRange;
     private Collider EnterRange;
@@ -15,6 +16,8 @@ public class Collect : MonoBehaviour
     public UnityEvent Popup;
     public UnityEvent Popupclose;
 
+   
+    public AudioClip SpraySound;
     public UnityEvent DrawGraffiti;
 
   
@@ -26,6 +29,7 @@ public class Collect : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioSource MusicPlayer = GetComponent<AudioSource>();
         Collider Playr = Player.GetComponent<Collider>();
         Collider EnterRange = GetComponent<Collider>();
         Vector3 Rot = transform.eulerAngles;
@@ -81,10 +85,14 @@ public class Collect : MonoBehaviour
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
 
+            MusicPlayer.PlayOneShot(SpraySound);
 
+            //UI
             Popupclose.Invoke();
+
+            //Visibility
             DrawGraffiti.Invoke();
-            Destroy(gameObject);
+            Destroy(gameObject,0.1f);
         }
 
         Vector3 Rot = transform.rotation.eulerAngles;

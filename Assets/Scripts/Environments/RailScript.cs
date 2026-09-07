@@ -140,14 +140,14 @@ public class RailScript : MonoBehaviour
         if (IsWall)
         {
             RailCollider.enabled = true;
-          
+
         }
 
         if (CompoundRail)
         {
             ACollider.enabled = true;
             BCollider.enabled = true;
-           
+
         }
     }
 }

@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class CSGrafBlackOut : MonoBehaviour
 {
+    public AudioClip Spray;
+    public AudioClip FinishSound;
+    public AudioSource AudioSource;
 
 
     public CinemachineCamera ShowtimeCam;
@@ -15,6 +18,7 @@ public class CSGrafBlackOut : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         //Cam Holder Func
         ConnectToCamHolder();
     }
@@ -23,6 +27,11 @@ public class CSGrafBlackOut : MonoBehaviour
     void Update()
     {
           
+    }
+
+    public void PlaySound(AudioClip Sound)
+    {
+        AudioSource.PlayOneShot(Sound);
     }
 
     void ConnectToCamHolder()
