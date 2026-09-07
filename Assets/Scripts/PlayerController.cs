@@ -64,6 +64,8 @@ public class PlayerController : MonoBehaviour
     public float AirTimeDefault;
     public float AirTimeGrind;
 
+    [Header("Surface Align")]
+    public bool DebugSurfaceAlign;
 
     //Grind Jump special air movement\\
 
@@ -215,7 +217,11 @@ public class PlayerController : MonoBehaviour
             //    transform.rotation = Quaternion.Euler(angleADeg, PlayerRotAxis.transform.rotation.y, PlayerRotAxis.transform.rotation.z);
             //}
 
-            SurfaceAlign();
+            if (DebugSurfaceAlign)
+            {
+                SurfaceAlign();
+            }
+
             GrindAir = false;
             Anim.SetBool("GrindAir", false);
             Anim.SetBool("Falling", false);
