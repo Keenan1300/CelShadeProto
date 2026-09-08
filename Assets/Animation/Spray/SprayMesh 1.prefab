@@ -880,6 +880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ae814333e1b8a469cf2fd94420d144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Spray: {fileID: 0}
   FinishSound: {fileID: 8300000, guid: 8b11e9a839f771f4d80ec2d2fc99b600, type: 3}
   AudioSource: {fileID: 0}
   ShowtimeCam: {fileID: 287615437044794197}
@@ -899,7 +900,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 37d1a3515901ed14a960281bb4b54099, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.98
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
