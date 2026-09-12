@@ -43,6 +43,7 @@ public class PlayerGrind : MonoBehaviour
     public float EjectForce;
     public float ThrowForce;
 
+    public float DefaultJumpBufferTime;
 
 
     public float JumpoffHeight;
@@ -357,7 +358,7 @@ public class PlayerGrind : MonoBehaviour
 
 
         PlayerControl.AirTime = 0.4f;
-        JumpBuffer(0.5f);
+        JumpBuffer(DefaultJumpBufferTime);
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
         ResetFreelookCam.Invoke();
