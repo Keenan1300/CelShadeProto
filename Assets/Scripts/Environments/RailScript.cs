@@ -83,9 +83,15 @@ public class RailScript : MonoBehaviour
         // Using Dot product is slightly more performant for "is it facing same way?"
         float dot = Vector3.Dot(worldRailForward.normalized, playerForward.normalized);
 
-        // If dot is positive, we are facing the same way. If negative, opposite.
-        ForwardOrient = dot > 0;
+     
+        
+            // If dot is positive, we are facing the same way. If negative, opposite.
+            ForwardOrient = dot >= 0;
+        
     }
+
+
+
 
     void Update()
     {
@@ -94,6 +100,11 @@ public class RailScript : MonoBehaviour
         {
             UpdateRailPoints();
         }
+    }
+
+    public void SetOrient(bool orient)
+    {
+        ForwardOrient = orient;
     }
 
     void UpdateRailPoints()

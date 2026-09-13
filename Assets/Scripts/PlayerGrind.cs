@@ -12,6 +12,8 @@ public class PlayerGrind : MonoBehaviour
     public AudioClip Wallburn;
     public AudioSource SFX;
 
+    public bool OnWall;
+
     [Header("Grind Data")]
     public UnityEvent EnterGrindingEvent;
     public UnityEvent ResetFreelookCam;
@@ -314,7 +316,11 @@ public class PlayerGrind : MonoBehaviour
         SplineUtility.Evaluate(CurrentRailScript.RailSp.Spline, normalizedTime, out _, out float3 localForward, out _);
         Vector3 worldForward = CurrentRailScript.ConvertLocaltoWorldDirection(localForward);
 
+        //Calc using player forward
         CurrentRailScript.CalcDirection(worldForward, PlayerControl.PlayerRotAxis.transform.forward);
+        
+       
+       
         PlayerRotAxis.transform.rotation = Quaternion.LookRotation(worldForward);
 
 
@@ -323,6 +329,9 @@ public class PlayerGrind : MonoBehaviour
         //Is this wall? DIRECTIONAL LOGII
         if (CurrentRailScript.IsWall)
         {
+            //Bool talks with cam holder
+            OnWall = true;
+
             //SFX
             SFX.clip = Wallburn;
             SFX.Play();
@@ -344,6 +353,7 @@ public class PlayerGrind : MonoBehaviour
         // Is this rail?
         if (CurrentRailScript.IsWall == false)
         {
+            OnWall = false;
             //SFX
             SFX.clip = Grind;
             SFX.Play();
@@ -363,6 +373,7 @@ public class PlayerGrind : MonoBehaviour
         ExitGrindingEvent.Invoke();
         ResetFreelookCam.Invoke();
 
+        OnWall = false;
         onRail = false;
         PlayerRB.isKinematic = false;
         PlayerControl.GrindAir = true;
@@ -398,6 +409,8 @@ public class PlayerGrind : MonoBehaviour
         PlayerControl.WallGrindL = false;
         PlayerControl.RailGrind = false;
 
+        //Fix annoying failed entry bug
+        //CurrentRailScript.ForwardOrient = !CurrentRailScript.ForwardOrient;
 
     }
 
@@ -405,6 +418,7 @@ public class PlayerGrind : MonoBehaviour
     {
         Debug.Log("PlayerThrownOffRail");
 
+        OnWall = false;
         onRail = false;
         PlayerRB.isKinematic = false;
 
@@ -458,6 +472,8 @@ public class PlayerGrind : MonoBehaviour
         PlayerControl.WallGrindR = false;
         PlayerControl.WallGrindL = false;
         PlayerControl.RailGrind = false;
+
+
     }
 
 

@@ -84,7 +84,7 @@ public class PlayerCamController : MonoBehaviour
             }
         }
 
-        if (isGrinding)
+        if (isGrinding && Grinding.GetComponent<PlayerGrind>().OnWall == true)
         {
             GrindCam.Priority = 20;    // High priority makes this cam active
             Freelook.Priority = 10;
