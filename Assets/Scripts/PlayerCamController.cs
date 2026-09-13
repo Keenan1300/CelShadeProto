@@ -135,7 +135,7 @@ public class PlayerCamController : MonoBehaviour
 
             Vector3 InputDir = orientation.forward * VerticalInput + orientation.right * horizontalinput;
 
-            if (InputDir != Vector3.zero)
+            if (InputDir != Vector3.zero && Grinding.GetComponent<PlayerGrind>().onRail == false)
             {
                 if (horizontalinput != 0 || VerticalInput != 0)
                 {
