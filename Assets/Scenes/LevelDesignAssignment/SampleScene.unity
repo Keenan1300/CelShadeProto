@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 300232084}
   - component: {fileID: 300232083}
   - component: {fileID: 300232082}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cube (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1641,7 +1641,7 @@ GameObject:
   - component: {fileID: 536049422}
   - component: {fileID: 536049421}
   - component: {fileID: 536049420}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cube (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2281,8 +2281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654862858}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.013966032, y: -0.00000013359485, z: -0.0000000018659707,
-    w: 0.9999025}
+  m_LocalRotation: {x: -0.013985296, y: 0.00000010816609, z: 0.0000000015128826, w: 0.99990225}
   m_LocalPosition: {x: 55.33654, y: 103.76255, z: -494.6395}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2303,8 +2302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDeoccluder
   CollideAgainst:
     serializedVersion: 2
-    m_Bits: 8
-  IgnoreTag: 
+    m_Bits: 72
+  IgnoreTag: CamPasstrhough
   TransparentLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3376,7 +3375,7 @@ GameObject:
   - component: {fileID: 1159236364}
   - component: {fileID: 1159236363}
   - component: {fileID: 1159236362}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cube (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3426,7 +3425,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_ForceMeshLod: -1
   m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 21961c8279e7a6d4bb16f0f0edeb4a69, type: 2}
@@ -5506,7 +5505,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ebd57b3bd31bb2940b7ebd87471435c6, type: 2}
+  - {fileID: 2100000, guid: e9140ba0cc8cec84385aeefa079a6dc4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7556,7 +7555,7 @@ GameObject:
   - component: {fileID: 2050779072}
   - component: {fileID: 2050779071}
   - component: {fileID: 2050779070}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Cube (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20277,7 +20276,7 @@ PrefabInstance:
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: JumpoffHeight
-      value: 117.5
+      value: 148.6
       objectReference: {fileID: 0}
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
@@ -21121,8 +21120,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6641294613940307638, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
+      propertyPath: IgnoreTag
+      value: CamPasstrhough
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641294613940307638, guid: 9cffa418d522c21458a4a0870c98a0f1,
+        type: 3}
       propertyPath: CollideAgainst.m_Bits
-      value: 8
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6641294613940307638, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
@@ -21876,8 +21880,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
+      propertyPath: MaxSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
+        type: 3}
+      propertyPath: Jumpforce
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
+        type: 3}
       propertyPath: movespeed
-      value: 23
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}

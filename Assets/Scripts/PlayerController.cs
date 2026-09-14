@@ -108,6 +108,10 @@ public class PlayerController : MonoBehaviour
     public float YCast;
     public float XLimitCast;
     public float YLimitCast;
+
+    //speed limit
+    public float MaxSpeed;
+
     private Vector3 CPoint;
     private Vector3 BPoint;
 
@@ -143,7 +147,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        //Make sure player can only go at a speed limit
+        RB.linearVelocity = Vector3.ClampMagnitude(RB.linearVelocity, MaxSpeed);
 
         //Always check if player is on a rail
         OnRail = PlayerGrind.onRail;
@@ -208,7 +214,7 @@ public class PlayerController : MonoBehaviour
 
             if (GrindAir)
             {
-                RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 100f * Time.deltaTime), ForceMode.VelocityChange);
+                RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 60f * Time.deltaTime), ForceMode.VelocityChange);
             }
             else 
             {
