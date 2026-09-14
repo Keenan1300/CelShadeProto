@@ -21238,6 +21238,16 @@ PrefabInstance:
       propertyPath: SprayPrompt
       value: 
       objectReference: {fileID: 1535104002}
+    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
+        type: 3}
+      propertyPath: JumpForwardforce
+      value: 103.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
+        type: 3}
+      propertyPath: FloorGravityMultiplier
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 8697246142167338485, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

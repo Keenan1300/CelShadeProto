@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     //how strong is this gravity?
     public float gravityMultiplier;
 
+    public float FloorGravityMultiplier;
+    public float AirGravMultiplier;
+
     public float VertFallClamp;
     public float AirTime;
     public float AirTimeDefault;
@@ -329,7 +332,7 @@ public class PlayerController : MonoBehaviour
 
     private void ResetGravity()
     {
-        gravityMultiplier = 150f;
+        gravityMultiplier = FloorGravityMultiplier;
     }
 
     private void FixedUpdate()
@@ -449,7 +452,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (!GrindAir)
         {
-            gravityMultiplier = 150;
+            gravityMultiplier = FloorGravityMultiplier;
         }
 
 
@@ -485,7 +488,7 @@ public class PlayerController : MonoBehaviour
 
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
-        RB.AddForce(transform.up * Jumpforce + (PlayerRotAxis.transform.forward * JumpForwardforce * InputNum), ForceMode.VelocityChange);
+        RB.AddForce(transform.up * Jumpforce + (PlayerRotAxis.transform.forward * JumpForwardforce * InputNum), ForceMode.Impulse);
 
     }
 

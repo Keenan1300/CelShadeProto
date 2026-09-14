@@ -7,6 +7,9 @@ using UnityEngine.Splines;
 
 public class PlayerGrind : MonoBehaviour
 {
+    [Header ("Test")]
+    public float progress;
+
     //SFX
     public AudioClip Grind;
     public AudioClip Wallburn;
@@ -173,20 +176,26 @@ public class PlayerGrind : MonoBehaviour
         //    //Reset anim
         //    PlayerControl.WallGrindR = false;
         //    PlayerControl.WallGrindL = false;
-            
+
         //    PlayerControl.RailGrind = false;
         //    return;
         //}
 
         // 1. Calculate Progress (0 to 1)
-        float progress = elapsedTime / totalRailDuration;
+        
+        progress = elapsedTime / totalRailDuration;
+
+        
+
 
         // 2. Check if we've reached the end of the rail
-        if (progress < 0f || progress > 1f)
+        //Fixed player entry bug.. Progress needs buffer or else player may enter at -0.10001f etc
+        if (progress < -0.1f || progress > 1.1f)
         {
+            
             if (CurrentRailScript.IsWall == false)
             {
-                PlayerControl.RailGrind = true;
+               // PlayerControl.RailGrind = true;
                 ThrowOffRail(PlayerRotAxis.transform.forward * ThrowForce + (PlayerRotAxis.transform.up * 2f));
             }
             else
