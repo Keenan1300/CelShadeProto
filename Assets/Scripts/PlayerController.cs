@@ -206,10 +206,21 @@ public class PlayerController : MonoBehaviour
             gravitytimer = Mathf.Clamp(gravitytimer, 0f, VertFallClamp);
 
 
-            RB.AddForce(Vector3.down + (Vector3.down * gravitytimer), ForceMode.VelocityChange);
-            Anim.SetBool("Falling", true);
+            if (GrindAir)
+            {
+                RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 100f * Time.deltaTime), ForceMode.VelocityChange);
+            }
+            else 
+            {
+                RB.AddForce(Vector3.down + (Vector3.down * gravitytimer), ForceMode.VelocityChange);
+            }
+
+
+                Anim.SetBool("Falling", true);
 
             Touchpoint = true;
+
+
         }
         else if (Grounded)
         {

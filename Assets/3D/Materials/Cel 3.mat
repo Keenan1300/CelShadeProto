@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Cel 2
+  m_Name: Cel 3
   m_Shader: {fileID: -6465566751694194690, guid: 8fe8c2ee1a596134abb0cc5cfe9f20c4,
     type: 3}
   m_Parent: {fileID: 0}
@@ -72,9 +72,9 @@ Material:
     - _UVTile: 0.39
     m_Colors:
     - _Color: {r: 1, g: 0.51692367, b: 0, a: 0}
-    - _HighlightTint: {r: 0.9528302, g: 0.9528302, b: 0.9528302, a: 1}
+    - _HighlightTint: {r: 0, g: 0.9345236, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
-    - _ShadowTint: {r: 1, g: 0.61403674, b: 0.3160377, a: 1}
+    - _ShadowTint: {r: 1, g: 0.3176471, b: 0.5599716, a: 1}
     - _Tile: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
