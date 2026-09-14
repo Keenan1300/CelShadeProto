@@ -46,6 +46,7 @@ public class PlayerGrind : MonoBehaviour
 
     [Header("Jumping off pole hieght")]
     public float EjectForce;
+    public float ForwardForce;
     public float ThrowForce;
 
     public float DefaultJumpBufferTime;
@@ -97,8 +98,8 @@ public class PlayerGrind : MonoBehaviour
                 PlayerControl.AirTime = PlayerControl.AirTimeGrind;
                 transform.position += transform.up * 10f;
 
-                if (CurrentRailScript.ForwardOrient) JumpOffRail(PlayerRotAxis.transform.forward + (PlayerRotAxis.transform.right * HorizontalInput)  * 10f );
-                else if (CurrentRailScript.ForwardOrient == false) JumpOffRail(PlayerRotAxis.transform.forward + (PlayerRotAxis.transform.right * HorizontalInput) * -10f);
+               JumpOffRail(PlayerRotAxis.transform.forward + (PlayerRotAxis.transform.right * HorizontalInput)  * 1f );
+                
                 return;
             }
 
@@ -111,8 +112,8 @@ public class PlayerGrind : MonoBehaviour
                 transform.position += transform.up * 10f;
 
 
-                if (CurrentRailScript.ForwardOrient) JumpOffRail(PlayerRotAxis.transform.forward * HorizontalInput * 8f);
-                else if (CurrentRailScript.ForwardOrient == false) JumpOffRail(PlayerRotAxis.transform.forward * HorizontalInput * -8f);
+                if (CurrentRailScript.ForwardOrient) JumpOffRail(PlayerRotAxis.transform.forward * HorizontalInput *1f);
+                else if (CurrentRailScript.ForwardOrient == false) JumpOffRail(PlayerRotAxis.transform.forward * HorizontalInput * -1f);
 
                 return;
 
@@ -127,8 +128,9 @@ public class PlayerGrind : MonoBehaviour
 
 
                     transform.position += transform.up * 10f;
-                    if (CurrentRailScript.ForwardOrient) JumpOffRail(PlayerRotAxis.transform.forward * 2f);
-                    else if (CurrentRailScript.ForwardOrient == false) JumpOffRail(PlayerRotAxis.transform.forward * -2f);
+                    Debug.Log("Jump w/ not horizontal");
+                   JumpOffRail(PlayerRotAxis.transform.forward * (ForwardForce * 3));
+                  
                     return;
                 }
                 else
@@ -204,7 +206,7 @@ public class PlayerGrind : MonoBehaviour
 
          
 
-                ThrowOffRail(PlayerRotAxis.transform.forward * (ThrowForce *2f) + (CurrentRailScript.PointA.transform.forward * 2f));
+                ThrowOffRail(PlayerRotAxis.transform.forward * (ThrowForce));
                 //ThrowOffRail(CurrentRailScript.PointA.transform.forward);
             }
 
@@ -259,7 +261,7 @@ public class PlayerGrind : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision hit)
+    private void OnCollisionStay(Collision hit)
     {
 
 
@@ -272,19 +274,6 @@ public class PlayerGrind : MonoBehaviour
             EnterRail();
 
         }
-
-        ////Boot Player off if end is reached
-        //if (hit.gameObject.CompareTag("RailExit") && onRail)
-        //{
-        //    Debug.Log("Hit end of the line here!");
-        //    CurrentRailScript = hit.transform.root.gameObject.GetComponent<RailScript>();
-        //    //hit.gameObject.SetActive(false);
-        //    //disable collider, not game object
-        //    hit.gameObject.GetComponent<Collider>().enabled = false;
-        //    if (CurrentRailScript == null) return;
-        //    ThrowOffRail(targetRotation.eulerAngles);
-
-        //}
 
 
     }
@@ -385,27 +374,25 @@ public class PlayerGrind : MonoBehaviour
         OnWall = false;
         onRail = false;
         PlayerRB.isKinematic = false;
+
+        
         PlayerControl.GrindAir = true;
 
         //Turn on player physics on exit
         GetComponent<Collider>().enabled = true;
 
-
+        //Reset Rotation
         Vector3 currentEuler = PlayerRotAxis.transform.rotation.eulerAngles;
         PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
 
-        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
-        PlayerRB.linearVelocity = exitDirection * GrindSpeed;
+       
+        PlayerRB.linearVelocity = JumpDirection * ForwardForce;
 
-        JumpDirection = CurrentRailScript.ForwardOrient ? JumpDirection : -JumpDirection;
-
-        //Jumping
-        //transform.up* Jumpforce +(PlayerRotAxis.transform.forward * JumpForwardforce * InputNum)
-
-        //Vector3 ejectVector = (transform.up * JumpoffHeight) + (JumpDirection * EjectForce);
-        Vector3 ejectVector = (transform.up * JumpoffHeight) + (PlayerControl.PlayerRotAxis.transform.forward + JumpDirection * EjectForce);
-
-        PlayerRB.AddForce(ejectVector + exitDirection, ForceMode.Impulse);
+        //only affects 'up' movement
+        Vector3 ejectVector = (transform.up * JumpoffHeight);
+        
+        
+        PlayerRB.AddForce(ejectVector + JumpDirection, ForceMode.Impulse);
 
         //prevent stuck bug
         CurrentRailScript.turnoffcollisions();
@@ -421,6 +408,11 @@ public class PlayerGrind : MonoBehaviour
         //Fix annoying failed entry bug
         //CurrentRailScript.ForwardOrient = !CurrentRailScript.ForwardOrient;
 
+    }
+
+    public void setKinematicAgain()
+    {
+        PlayerRB.isKinematic = false;
     }
 
     public void ThrowOffRail(Vector3 LeftRight)

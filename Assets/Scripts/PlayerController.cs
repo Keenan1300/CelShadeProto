@@ -143,12 +143,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
-
-
+        //Always check if player is on a rail
         OnRail = PlayerGrind.onRail;
 
-        //Anim.SetBool("Grinding", OnRail);
 
         //Dancing!
         if (Input.GetKeyDown(KeyCode.Q) && Grounded && !OnRail)
@@ -195,6 +194,7 @@ public class PlayerController : MonoBehaviour
 
         if (!Grounded) // If the player is falling
         {
+           
 
             //Air fix
             Quaternion rf = Quaternion.Euler(0, 0, 0);
@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
             gravitytimer = Mathf.Clamp(gravitytimer, 0f, VertFallClamp);
 
 
-            RB.AddForce(Vector3.down * gravitytimer * 2f, ForceMode.Impulse);
+            RB.AddForce(Vector3.down + (Vector3.down * gravitytimer), ForceMode.VelocityChange);
             Anim.SetBool("Falling", true);
 
             Touchpoint = true;
@@ -262,7 +262,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
+    //On the fence about this function
     public void SurfaceAlign()
     {
         Ray ray = new Ray(transform.position, -transform.up);
@@ -356,7 +356,7 @@ public class PlayerController : MonoBehaviour
             else if (!GrindAir)
             {
 
-              Invoke(nameof(ResetGravity), 0.5f);
+              Invoke(nameof(ResetGravity), 0.3f);
             }
 
         if (!Dancing)
@@ -440,14 +440,14 @@ public class PlayerController : MonoBehaviour
 
         if (GrindAir)
         {
-
+            AirTime = AirTimeGrind;
             Anim.SetBool("GrindAir", true);
            
            // gravityMultiplier = 70;
             RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
 
             //overtime decrease back to gravity
-            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f), ForceMode.Acceleration);
+            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f) *(Time.deltaTime*4), ForceMode.Acceleration);
 
         }
         else if (!GrindAir)
