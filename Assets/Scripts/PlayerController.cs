@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     //Char Data
     public float movespeed;
+    private float ySpeed;
 
     //1 or 0, is the player moving with WASD?
     public int InputNum;
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour
 
     //Direction Calc Y
     Vector3 MoveDirection;
+    public float SurfaceTraction = -1f;
+
     public Transform Orientation;
 
     public bool OnRail;
@@ -301,9 +304,10 @@ public class PlayerController : MonoBehaviour
 
 
 
-        if (YCast > 5f && YCast < 10f)
+        if (YCast < 5f && YCast > 10f)
         {
-            transform.position -= Vector3.down;
+            //transform.position -= Vector3.down;
+            RB.AddForce(MoveDirection * 3);
         }
 
         //Ground 'move gap' Fix on slopes
@@ -401,9 +405,25 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private Vector3 AdjustVelocityToSlope(Vector3 velocity)
+    {
+        var Ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(Ray, out RaycastHit hitInfo, 0.2f))
+        {
+            var slopeRot = Quaternion.FromToRotation(Vector3.up, hitInfo.normal);
+            var adjustedVelo = slopeRot * velocity;
+            if(adjustedVelo.y < 0)
+            {
+                return adjustedVelo;
+            }
+            
+        }
+        return velocity;
+    }
+
     private void MovePlayer()
     {
-
+        
 
         if (OnRail)
         {
@@ -428,10 +448,19 @@ public class PlayerController : MonoBehaviour
         {
             AirTime = AirTimeDefault;
             gravitytimer = 0;
-           
+
+            ySpeed = SurfaceTraction;
+            float magnitude = Mathf.Clamp01(MoveDirection.magnitude) * movespeed;
+            Vector3 velocity = MoveDirection * magnitude;
+            AdjustVelocityToSlope(velocity);
+            velocity.y = ySpeed;
+            velocity.x = 0;
+            velocity.z = 0;
+            RB.AddForce(velocity, ForceMode.VelocityChange);
 
             if (OnSlope())
             {
+                
                 Vector3 slopeMoveDirection = Vector3.ProjectOnPlane(MoveDirection, slopeHit.normal).normalized;
                 angularmomentum = angle / 100f;
                 RB.linearVelocity = slopeMoveDirection * movespeed * angularmomentum * 7;
