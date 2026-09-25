@@ -1,5 +1,6 @@
 
 using Unity.Mathematics;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -197,7 +198,7 @@ public class PlayerGrind : MonoBehaviour
             
             if (CurrentRailScript.IsWall == false)
             {
-               // PlayerControl.RailGrind = true;
+               // Player is grinding on rail;
                 ThrowOffRail(PlayerRotAxis.transform.forward * ThrowForce + (PlayerRotAxis.transform.up * 2f));
             }
             else
@@ -424,7 +425,8 @@ public class PlayerGrind : MonoBehaviour
         PlayerRB.isKinematic = false;
 
 
-
+        Vector3 JumpoffVector = CurrentRailScript.ForwardOrient ? CurrentRailScript.transform.forward : -CurrentRailScript.transform.forward;
+        Debug.Log($"{JumpoffVector} Is this zero?");
 
         //Turn on player physics on exit
         GetComponent<Collider>().enabled = true;
@@ -442,15 +444,15 @@ public class PlayerGrind : MonoBehaviour
 
 
         // 3.  momentum calc
-        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? transform.forward : -transform.forward;
+        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? CurrentRailScript.transform.forward : -CurrentRailScript.transform.forward;
         PlayerRB.linearVelocity = exitDirection * GrindSpeed;
 
         //LeftRight = CurrentRailScript.ForwardOrient ? LeftRight : -1 * LeftRight;
 
-        Vector3 ejectVector = (CurrentRailScript.PointA.up * JumpoffHeight) + (LeftRight * EjectForce);
+        Vector3 ejectVector = (CurrentRailScript.PointA.up * JumpoffHeight);
         //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
         //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (exitDirection * EjectForce);
-        PlayerRB.AddForce(ejectVector + exitDirection, ForceMode.Impulse);
+        PlayerRB.AddForce(ejectVector + exitDirection * EjectForce, ForceMode.Impulse);
 
 
         //prevent stuck bug

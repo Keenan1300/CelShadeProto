@@ -743,8 +743,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 4, z: 25.542095}
-  m_Center: {x: 0.69, y: 1.4999967, z: 7.4968643}
+  m_Size: {x: 4, y: 3.9999998, z: 30.102455}
+  m_Center: {x: 0.69000006, y: 1.4999971, z: 6.756303}
 --- !u!4 &259026377
 Transform:
   m_ObjectHideFlags: 0
@@ -754,8 +754,8 @@ Transform:
   m_GameObject: {fileID: 259026375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.57432, y: -2.1, z: 4.2}
-  m_LocalScale: {x: 2.0752587, y: 1, z: 3.6616428}
+  m_LocalPosition: {x: -0.6, y: -4.8, z: 8.4}
+  m_LocalScale: {x: 2.0752587, y: 1.88, z: 2.7154503}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2146057390}
@@ -1892,6 +1892,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1133539601}
   BCollider: {fileID: 1133539601}
+  CollisionTurnOffBuffer: 0.2
 --- !u!23 &640121205
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3096,6 +3097,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1852004662}
   BCollider: {fileID: 1852004662}
+  CollisionTurnOffBuffer: 0.2
 --- !u!23 &1016333850
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4902,6 +4904,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1927400059}
   BCollider: {fileID: 1927400059}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1505110072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7699,14 +7702,14 @@ MonoBehaviour:
     Prefab: {fileID: 919132149155446097, guid: bc6a4c297dd1bd4418084065f78bad30, type: 3}
     probability: 0
     Probability: 0
-  m_Method: 1
+  m_Method: 2
   m_Space: 0
-  m_Spacing: {x: 16.42, y: 16.42}
+  m_Spacing: {x: 12.37, y: 12.37}
   m_Up: 1
   m_Forward: 3
   m_PositionOffset:
     setup: 1
-    min: {x: 0, y: -3.92, z: 13.24}
+    min: {x: 0, y: -3.76, z: 6.11}
     max: {x: 0, y: 0, z: 13.24}
     randomX: 0
     randomY: 0
@@ -7721,8 +7724,8 @@ MonoBehaviour:
     randomZ: 0
     space: 0
   m_ScaleOffset:
-    setup: 1
-    min: {x: 0, y: 1.38, z: 3.6}
+    setup: 3
+    min: {x: 0, y: -1.3, z: 3.88}
     max: {x: 0, y: 1.71, z: 10.63}
     randomX: 0
     randomY: 0
@@ -7753,6 +7756,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 259026376}
   BCollider: {fileID: 259026376}
+  CollisionTurnOffBuffer: 0.2
 --- !u!23 &2146057388
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7891,8 +7895,8 @@ Transform:
   m_GameObject: {fileID: 2146057385}
   serializedVersion: 2
   m_LocalRotation: {x: -0.004080112, y: 0.70709443, z: 0.004080095, w: 0.7070956}
-  m_LocalPosition: {x: 84.2, y: 108.6, z: -496}
-  m_LocalScale: {x: 1, y: 1, z: 1.0679592}
+  m_LocalPosition: {x: 89.888, y: 108.67, z: -496}
+  m_LocalScale: {x: 1, y: 1, z: 0.88753814}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1923953761}
@@ -20246,7 +20250,7 @@ PrefabInstance:
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: EjectForce
-      value: 5.65
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
@@ -20276,7 +20280,7 @@ PrefabInstance:
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: JumpoffHeight
-      value: 148.6
+      value: 109.5
       objectReference: {fileID: 0}
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
@@ -21886,7 +21890,7 @@ PrefabInstance:
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: Jumpforce
-      value: 150
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 8634853653003441521, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}

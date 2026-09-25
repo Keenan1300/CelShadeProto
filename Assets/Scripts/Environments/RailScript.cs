@@ -23,7 +23,7 @@ public class RailScript : MonoBehaviour
     public Collider ACollider;
     public Collider BCollider;
 
-
+    public float CollisionTurnOffBuffer = 0.2f;
 
 
 
@@ -132,14 +132,14 @@ public class RailScript : MonoBehaviour
         {
             //RailCollider = GetComponent<Collider>();
             RailCollider.enabled = false;
-            Invoke(nameof(turnoncollision), 1f);
+            Invoke(nameof(turnoncollision), CollisionTurnOffBuffer);
         }
 
         if (CompoundRail)
         {
             ACollider.enabled = false;
             BCollider.enabled = false;
-            Invoke(nameof(turnoncollision), 1f);
+            Invoke(nameof(turnoncollision), CollisionTurnOffBuffer);
         }
 
     }
