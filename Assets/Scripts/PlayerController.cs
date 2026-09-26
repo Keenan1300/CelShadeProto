@@ -158,15 +158,16 @@ public class PlayerController : MonoBehaviour
         OnRail = PlayerGrind.onRail;
 
 
+        //Fun function but doesnt need to be in game for this assignment
         //Dancing!
-        if (Input.GetKeyDown(KeyCode.Q) && Grounded && !OnRail)
-        {
-            RB.isKinematic = true;
-            Dancing = true;
-            PlayerMesh.SetActive(false);
+        //if (Input.GetKeyDown(KeyCode.Q) && Grounded && !OnRail && !Dancing)
+        //{
+        //    RB.isKinematic = true;
+        //    Dancing = true;
+        //    PlayerMesh.SetActive(false);
 
-            Invoke(nameof(Dance), DanceDuration);
-        }
+        //    Invoke(nameof(Dance), DanceDuration);
+        //}
 
         input();
 
