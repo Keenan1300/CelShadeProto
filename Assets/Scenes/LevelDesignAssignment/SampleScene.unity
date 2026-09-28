@@ -1032,7 +1032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00065939163, y: -0.76235193, z: 0.6471619, w: 0.0007767584}
+  m_LocalRotation: {x: -0.013985299, y: 0.00000010816611, z: 0.0000000015128832, w: 0.99990225}
   m_LocalPosition: {x: 55.02, y: 111.83287, z: -560.6548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 446311656}
   - component: {fileID: 446311661}
   m_Layer: 0
-  m_Name: Coins (5)
+  m_Name: TagSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6123,7 +6123,7 @@ GameObject:
   - component: {fileID: 1596195981}
   - component: {fileID: 1596195986}
   m_Layer: 0
-  m_Name: Coins (6)
+  m_Name: TagSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7179,7 +7179,7 @@ GameObject:
   - component: {fileID: 1925481836}
   - component: {fileID: 1925481841}
   m_Layer: 0
-  m_Name: Coins (4)
+  m_Name: TagSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11385,7 +11385,7 @@ GameObject:
   - component: {fileID: 3054629827035227848}
   - component: {fileID: 6041613434244829402}
   m_Layer: 0
-  m_Name: Coins (1)
+  m_Name: TagSpot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
