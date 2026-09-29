@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
 
-public class Collect : MonoBehaviour
+public class GraffitiSpray : MonoBehaviour
 {
     public float timer;
     public float loopTime = 3f;
@@ -99,7 +99,9 @@ public class Collect : MonoBehaviour
         Rot.y += 3;
         transform.eulerAngles = Rot;
 
+        
 
+        //Floaty coin fun
 
         // Increment timer
         timer += Time.deltaTime;
