@@ -169,6 +169,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1347393828}
   BCollider: {fileID: 1347393828}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &29510253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3346,6 +3347,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1343870694}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: GraffitiCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startPos: {x: 163.4, y: 178.3, z: -482.3}
   playerController: {fileID: 0}
 --- !u!135 &446311657
@@ -4731,6 +4744,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1947751965}
   BCollider: {fileID: 1947751965}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &628771776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5012,6 +5026,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1133539601}
   BCollider: {fileID: 1133539601}
+  CollisionTurnOffBuffer: 0.2
 --- !u!23 &640121205
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6969,6 +6984,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1852004662}
   BCollider: {fileID: 1852004662}
+  CollisionTurnOffBuffer: 0.2
 --- !u!23 &1016333850
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7469,7 +7485,7 @@ Transform:
   m_GameObject: {fileID: 1122987717}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 100.1, y: -19.6, z: -46.2}
+  m_LocalPosition: {x: 100.1, y: -6, z: -46.2}
   m_LocalScale: {x: 104.628555, y: 109.543976, z: 38.05253}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7825,6 +7841,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1716156761}
   BCollider: {fileID: 1716156761}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1142577373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10797,6 +10814,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1927400059}
   BCollider: {fileID: 1927400059}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1505110072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12928,6 +12946,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1241221983}
   BCollider: {fileID: 1241221983}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1751408553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13268,6 +13287,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 503920467}
   BCollider: {fileID: 503920467}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1807114407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13818,6 +13838,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1343870694}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: GraffitiCheck
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   startPos: {x: 0, y: 0, z: 0}
   playerController: {fileID: 0}
 --- !u!135 &1925481837
@@ -14211,6 +14243,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1292878628}
   BCollider: {fileID: 1292878628}
+  CollisionTurnOffBuffer: 0.2
 --- !u!114 &1940109618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22830,6 +22863,7 @@ MonoBehaviour:
   CompoundRail: 1
   ACollider: {fileID: 1938922615}
   BCollider: {fileID: 841773296}
+  CollisionTurnOffBuffer: 0.2
 --- !u!1 &4766860516322135343
 GameObject:
   m_ObjectHideFlags: 0

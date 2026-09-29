@@ -68,7 +68,7 @@ Material:
     - _Outline_Thickness: 1.52
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Tile: 0.03
+    - _Tile: 0.08227
     - _UVTile: 0.39
     m_Colors:
     - _Color: {r: 1, g: 0.51692367, b: 0, a: 0}

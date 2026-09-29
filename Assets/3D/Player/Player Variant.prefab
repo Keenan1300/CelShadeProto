@@ -10123,6 +10123,21 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
+      propertyPath: RB
+      value: 
+      objectReference: {fileID: 8265962880153079456}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: Anim
+      value: 
+      objectReference: {fileID: 6970954100130244949}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: XCast
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
       propertyPath: Dancer
       value: 
       objectReference: {fileID: 5668091156999292259, guid: ae96240b5e3ea934db64755893e0817a,
@@ -10130,7 +10145,22 @@ PrefabInstance:
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: AirTime
-      value: 0.5
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: Grounded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: MaxSpeed
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: Jumpforce
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
@@ -10139,28 +10169,68 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
+      propertyPath: JumpCooled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: PlayerMesh
+      value: 
+      objectReference: {fileID: 5292953482927452385}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: Orientation
+      value: 
+      objectReference: {fileID: 8809678519237494313}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
       propertyPath: AirTimeGrind
-      value: 0.62
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: JumpCooldown
-      value: 0.59
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: PlayerRotAxis
+      value: 
+      objectReference: {fileID: 2425044997365557055}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: VertFallClamp
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: airmultiplier
-      value: 1.5
+      value: 16.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: AirTimeDefault
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: JumpForwardforce
-      value: 73.2
+      value: 131.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: gravityMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
       propertyPath: specialAirGrindHeight
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
+        type: 3}
+      propertyPath: FloorGravityMultiplier
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3799708436845035002, guid: a53ec9d952f4f4144a043485d54b5040,
         type: 3}
@@ -10270,6 +10340,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6641294613940307638}
   m_SourcePrefab: {fileID: 100100000, guid: a53ec9d952f4f4144a043485d54b5040, type: 3}
+--- !u!1 &2425044997365557055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7118241058386677684, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 4858943183678269579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2805526679305840145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7314220395070295706, guid: a53ec9d952f4f4144a043485d54b5040,
@@ -10315,6 +10391,18 @@ MonoBehaviour:
     NearLimit: 5
     FarLimit: 30
     MaxQualityBoost: 0.2
+--- !u!1 &5292953482927452385 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 727953881043851370, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 4858943183678269579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6970954100130244949 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2581585986679079390, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 4858943183678269579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7892693038451899657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3379412298487387522, guid: a53ec9d952f4f4144a043485d54b5040,
@@ -10324,6 +10412,18 @@ Transform:
 --- !u!4 &8162455262600448205 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3614335257872146502, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 4858943183678269579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8265962880153079456 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3591891617031923243, guid: a53ec9d952f4f4144a043485d54b5040,
+    type: 3}
+  m_PrefabInstance: {fileID: 4858943183678269579}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8809678519237494313 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4119717120835104418, guid: a53ec9d952f4f4144a043485d54b5040,
     type: 3}
   m_PrefabInstance: {fileID: 4858943183678269579}
   m_PrefabAsset: {fileID: 0}
