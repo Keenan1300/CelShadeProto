@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     public float FloorGravityMultiplier;
     public float AirGravMultiplier;
 
-    public float VertFallClamp;
+    [Tooltip ("Acts as the force pulling the player back to ground. Not Gravity")]public float VertFallClamp;
     public float AirTime;
     public float AirTimeDefault;
     public float AirTimeGrind;
@@ -147,8 +147,32 @@ public class PlayerController : MonoBehaviour
         SprayScene = false;
     }
 
+    private void Update()
+    {
+
+        //Jump logic for tap
+        if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
+        {
+            JumpCooled = false;
+            PlayerGrind.JumpCooldown = false;
+
+            Anim.SetBool("Jump", true);
+            Jumplogii();
+            Invoke(nameof(resetjump), JumpCooldown);
+
+            Anim.SetTrigger("Jump");
+            Debug.Log("Jump!");
+        }
+        else
+        {
+            Anim.SetBool("Jump", false);
+        }
+
+        input();
+
+    }
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         //Make sure player can only go at a speed limit
@@ -169,7 +193,7 @@ public class PlayerController : MonoBehaviour
         //    Invoke(nameof(Dance), DanceDuration);
         //}
 
-        input();
+      
 
 
 
@@ -184,31 +208,18 @@ public class PlayerController : MonoBehaviour
         Anim.SetBool("WallGrindL", WallGrindL);
 
 
-        //Jump logic
-        if (Input.GetKeyDown(KeyCode.Space) && Grounded && JumpCooled)
-        {
-            JumpCooled = false;
-            PlayerGrind.JumpCooldown = false;
 
-            Anim.SetBool("Jump", true);
-            Jumplogii();
-            Invoke(nameof(resetjump), JumpCooldown);
 
-            Anim.SetTrigger("Jump");
-            Debug.Log("Jump!");
-        }
-        else
-        {
-            Anim.SetBool("Jump", false);
-        }
+
+      
 
         if (!Grounded) // If the player is falling
         {
-           
+
 
             //Air fix
-            Quaternion rf = Quaternion.Euler(0, 0, 0);
-            rf = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0,0,0), AnimCurve.Evaluate(Timer + 1f));
+            Quaternion rf = Quaternion.identity;
+            rf = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), AnimCurve.Evaluate(Timer + 1f));
             transform.rotation = Quaternion.Euler(rf.eulerAngles.x, rf.eulerAngles.y, rf.eulerAngles.z);
 
             //exponential grav increase as term velo is reached
@@ -220,13 +231,13 @@ public class PlayerController : MonoBehaviour
             {
                 RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 60f * Time.deltaTime), ForceMode.VelocityChange);
             }
-            else 
+            else
             {
                 RB.AddForce(Vector3.down + (Vector3.down * gravitytimer), ForceMode.VelocityChange);
             }
 
 
-                Anim.SetBool("Falling", true);
+            Anim.SetBool("Falling", true);
 
             Touchpoint = true;
 
@@ -258,7 +269,33 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Spray
+        if (GrindAir)
+        {
+            RailGrind = false;
+            WallGrindR = false;
+            WallGrindL = false;
+
+            Anim.SetBool("GrindAir", true);
+            //AirTime = 0.99f;
+            gravityMultiplier = specialAirGrindHeight;
+            RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
+
+            //overtime decrease back to gravity
+            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f), ForceMode.Acceleration);
+
+        }
+        else if (!GrindAir)
+        {
+
+            Invoke(nameof(ResetGravity), 0.3f);
+        }
+
+        if (!Dancing)
+        {
+            MovePlayer();
+        }
+
+        //GRAFFIT SPRAY LOGIC HERE
 
 
         if (SprayScene)
@@ -268,7 +305,15 @@ public class PlayerController : MonoBehaviour
 
         if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
         {
+            GraffitiCheck();
+        }
+    }
 
+    public void GraffitiCheck()
+    {
+
+
+            Debug.Log("spraying right now... should cut to cutscene");
 
             Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;
             Graflookdir.x = 0f;
@@ -279,7 +324,9 @@ public class PlayerController : MonoBehaviour
 
             //make player invisible
             gameObject.SetActive(false);
-        }
+            GraffitiRange = false;
+
+        
 
     }
 
@@ -357,36 +404,12 @@ public class PlayerController : MonoBehaviour
         gravityMultiplier = FloorGravityMultiplier;
     }
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
        
-        if (GrindAir)
-        {
-            RailGrind = false;
-            WallGrindR = false;
-            WallGrindL = false;
+        
 
-            Anim.SetBool("GrindAir", true);
-            //AirTime = 0.99f;
-            gravityMultiplier = specialAirGrindHeight;
-            RB.AddForce(MoveDirection.normalized * movespeed * 10f / GrindAirManeuverability, ForceMode.Force);
-
-            //overtime decrease back to gravity
-            RB.AddForce((Vector3.down * gravityMultiplier) * (gravitytimer * 3f), ForceMode.Acceleration);
-
-        }
-            else if (!GrindAir)
-            {
-
-              Invoke(nameof(ResetGravity), 0.3f);
-            }
-
-        if (!Dancing)
-        {
-            MovePlayer();
-        }
-
-    }
+    }*/
 
     private void input()
     {
@@ -530,6 +553,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jumplogii()
     {
+       
         //Jump dust
         Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
 
