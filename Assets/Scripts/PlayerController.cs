@@ -11,8 +11,11 @@ using static UnityEngine.UI.Image;
 public class PlayerController : MonoBehaviour
 {
 
+    //Game State Manager
+    public int GrafCanCount;
+    [Tooltip("Ensure this is connected to Game manager game object")]public GameManager GameManager;
 
-
+    //Physics
     public Rigidbody RB;
     public Animator Anim;
 
@@ -53,7 +56,14 @@ public class PlayerController : MonoBehaviour
     public bool JumpCooled;
     public bool Grounded;
 
+    //relevant to HP
+    public float PlayerHP;
+    public float MaxFallDamage;
+    private float FallDamage;
+    private float distanceToground;
+    public float FallLimit;
     public float airmultiplier;
+    public float FallDamageMultiplier;
 
     //how long is player affected by gravity?
     public float gravitytimer;
@@ -145,6 +155,9 @@ public class PlayerController : MonoBehaviour
         Dancing = false;
         GraffitiRange = false;
         SprayScene = false;
+
+        //Graf Can count
+        GrafCanCount = 0;
     }
 
     private void Update()
@@ -193,8 +206,8 @@ public class PlayerController : MonoBehaviour
         //    Invoke(nameof(Dance), DanceDuration);
         //}
 
-      
 
+        //Fall Damage Chec
 
 
         //ground check
@@ -215,7 +228,11 @@ public class PlayerController : MonoBehaviour
 
         if (!Grounded) // If the player is falling
         {
-
+            if (!OnRail)
+            {
+                //If player is in the air for X frames,, Set fall damage.
+                FallDamageCalc();
+            }
 
             //Air fix
             Quaternion rf = Quaternion.identity;
@@ -229,6 +246,7 @@ public class PlayerController : MonoBehaviour
 
             if (GrindAir)
             {
+                FallDamageCalc();
                 RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 60f * Time.deltaTime), ForceMode.VelocityChange);
             }
             else
@@ -245,6 +263,14 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
+            //Only apply fall damage
+            if (FallDamage > FallLimit)
+            {
+                Mathf.Clamp(FallDamage, 0, MaxFallDamage);
+                TakeDamage(FallDamage);
+                FallDamage = 0;
+            }
+
             //Test
             //PlayerRotAxis
             //if (angleADeg < 45f)
@@ -303,16 +329,23 @@ public class PlayerController : MonoBehaviour
             SprayPrompt.SetActive(false);
         }
 
-        if (GraffitiRange && Grounded && Input.GetKeyDown(KeyCode.E))
-        {
-            GraffitiCheck();
-        }
     }
 
+    public void FallDamageCalc()
+    {
+        
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+             distanceToground = hit.distance;
+        }
+         FallDamage = distanceToground;
+    }
+    //Activated EXTERNALLY Via Events
     public void GraffitiCheck()
     {
 
-
+            RemoveCan(1);
             Debug.Log("spraying right now... should cut to cutscene");
 
             Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;
@@ -451,8 +484,8 @@ public class PlayerController : MonoBehaviour
 
         if (OnRail)
         {
-          
 
+            FallDamage = 0;
             Debug.Log("Hortiz" + Input.GetAxisRaw("Horizontal"));
             Anim.SetBool("GrindAir", false);
             //replace with proper grinding anim when the time comes
@@ -549,6 +582,29 @@ public class PlayerController : MonoBehaviour
             return angle > 0 && angle < 45f;
         }
         return false;
+    }
+
+    public void AddCan(int AddAmount)
+    {
+        GrafCanCount += AddAmount;
+        GameManager.CanCount = GrafCanCount;
+        GameManager.UpdateStatsData();
+
+    }
+
+    public void RemoveCan(int RemoveAmount)
+    {
+        GrafCanCount -= RemoveAmount;
+        GameManager.CanCount = GrafCanCount;
+        GameManager.UpdateStatsData();
+
+    }
+
+    public void TakeDamage(float Damage)
+    {
+        PlayerHP -= Damage * FallDamageMultiplier;
+        GameManager.PlayerHP = PlayerHP;
+        GameManager.UpdateStatsData();
     }
 
     private void Jumplogii()

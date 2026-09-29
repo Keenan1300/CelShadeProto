@@ -5,11 +5,19 @@ public class GameManager : MonoBehaviour
 {
     public float CountDown;
     public float CountDownTime;
+    public float PlayerHP;
+    public int CanCount;
+
+    public GameObject HealthBar;
 
     //find all tags, if they're all gone, player wins.
 
     //tag remains while clock is zero, loss condition.+
 
+    //Graffiti text
+    public GameObject GrafCanCount;
+
+    //Timer Text
     public GameObject CountText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,5 +43,11 @@ public class GameManager : MonoBehaviour
 
         }
     }
-    
+
+    public void UpdateStatsData()
+    {
+        GrafCanCount.GetComponent<TextMeshProUGUI>().text = CanCount.ToString();
+        HealthBar.GetComponent<HealthBar>().SetHealth(PlayerHP);
+    }
+
 }

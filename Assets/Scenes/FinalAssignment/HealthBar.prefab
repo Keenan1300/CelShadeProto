@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4911734082844485422}
   - component: {fileID: 6023948475197949463}
   - component: {fileID: 6533827102603639757}
-  - component: {fileID: 5470620346297382380}
+  - component: {fileID: 8545368361022942762}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5470620346297382380
+--- !u!114 &8545368361022942762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86,15 +86,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 600560894343312616}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63ace869730558d4394a9114d0ead7ec, type: 3}
+  m_Script: {fileID: 11500000, guid: f707aa09abd68134892351c8d465a351, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::HealthBar
   Health: 100
   MaxHealth: 100
   Width: 100
   Height: 100
   healthbar: {fileID: 3683154732755767}
-  bb: {fileID: 0}
   deadUI: {fileID: 0}
   Player: {fileID: 0}
 --- !u!1 &6236786564267037017
@@ -155,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.6213611, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

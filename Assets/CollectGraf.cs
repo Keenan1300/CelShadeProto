@@ -1,10 +1,8 @@
 using UnityEngine;
-using UnityEngine.Audio;
 using UnityEngine.Events;
 
-public class Collect : MonoBehaviour
+public class CollectGraf : MonoBehaviour
 {
-    private int CanCount;
     public float timer;
     public float loopTime = 3f;
 
@@ -14,14 +12,12 @@ public class Collect : MonoBehaviour
     private Collider EnterRange;
     public Collider playerbody;
     public Collision player;
-    public UnityEvent Popup;
-    public UnityEvent Popupclose;
 
-   
-    public AudioClip SpraySound;
+
+    public AudioClip SprayCollect;
     public UnityEvent DrawGraffiti;
 
-  
+
 
     public Vector3 startPos;
 
@@ -30,39 +26,11 @@ public class Collect : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        AudioSource MusicPlayer = GetComponent<AudioSource>();
-        Collider Playr = Player.GetComponent<Collider>();
-        Collider EnterRange = GetComponent<Collider>();
-        Vector3 Rot = transform.eulerAngles;
-        startPos = transform.position;
-        PlayerInRange = false;
-       
+        startPos = transform.position;  
     }
 
-    public void OnTriggerEnter(Collider player) // Use OnTriggerEnter for 3D
-    {
-        PlayerInRange = true;
-       // Destroy(gameObject);
-        // Check if the object entering the trigger is the Player
-        if (player.CompareTag("Player"))
-        {
-            // Add code here to increase player score (optional)
-            Debug.Log("enter");
-            playerController = player.GetComponent<PlayerController>();
-            playerController.GraffitLoc = transform.position;
-            CanCount = playerController.GrafCanCount;
-            Popup.Invoke();
 
-
-
-            // Destroy the coin object
-            //Destroy(gameObject);
-        }
-     
-
-    }
-
-    public void OnTriggerExit(Collider player)
+    public void OnTriggerEnter(Collider player)
     {
         PlayerInRange = false;
         // Check if the object entering the trigger is the Player
@@ -71,34 +39,21 @@ public class Collect : MonoBehaviour
             // Add code here to increase player score (optional)
             Debug.Log("leavingradius");
             playerController = player.GetComponent<PlayerController>();
-            Popupclose.Invoke();
+            playerController.AddCan(1);
 
             // Destroy the coin object
             //Destroy(gameObject);
         }
-        
+
+        MusicPlayer.PlayOneShot(SprayCollect);
+        Destroy(gameObject);
+
     }
-
-    
-
 
     // Update is called once per frame
     void Update()
-       {
-
-        if (CanCount > 0 && PlayerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-
-            MusicPlayer.PlayOneShot(SpraySound);
-
-            //UI
-            Popupclose.Invoke();
-
-            //Visibility
-            DrawGraffiti.Invoke();
-            Destroy(gameObject,0.1f);
-        }
-
+    {
+        //hover
         Vector3 Rot = transform.rotation.eulerAngles;
         Rot.y += 3;
         transform.eulerAngles = Rot;
