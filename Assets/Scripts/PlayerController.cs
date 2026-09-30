@@ -346,6 +346,7 @@ public class PlayerController : MonoBehaviour
     {
 
             RemoveCan(1);
+            GameManager.RemoveGrafPoint();
             Debug.Log("spraying right now... should cut to cutscene");
 
             Vector3 Graflookdir = GraffitLoc - PlayerRotAxis.transform.position;

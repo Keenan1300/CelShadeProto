@@ -8,6 +8,8 @@ TagManager:
   - RailExit
   - CamHolder
   - CamPasstrhough
+  - GraffitiLocation
+  - TagPoint
   layers:
   - Default
   - TransparentFX
