@@ -22,6 +22,7 @@ public class CollectGraf : MonoBehaviour
     public Vector3 startPos;
 
     public PlayerController playerController;
+    public GrindCanCollect GrindCollect;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,8 +39,21 @@ public class CollectGraf : MonoBehaviour
         {
             // Add code here to increase player score (optional)
             Debug.Log("leavingradius");
+
             playerController = player.GetComponent<PlayerController>();
-            playerController.AddCan(1);
+
+            if (playerController != null)
+            {
+                playerController.AddCan(1);
+            }
+            else
+            {
+                GrindCollect = player.GetComponent<GrindCanCollect>();
+                GrindCollect.CollectGraffitiCan.Invoke();
+            }
+
+
+
 
             // Destroy the coin object
             //Destroy(gameObject);
