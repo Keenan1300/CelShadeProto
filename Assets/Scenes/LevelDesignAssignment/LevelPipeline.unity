@@ -2273,12 +2273,12 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[1].Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -2303,7 +2303,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -2318,7 +2318,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -4693,19 +4693,19 @@ MonoBehaviour:
         y: 27.44
         z: 45
       TangentIn:
-        x: 0
-        y: 0
-        z: -0
+        x: -0
+        y: -0
+        z: -6.2073703
       TangentOut:
         x: 0
         y: 0
-        z: 0
+        z: 6.2073703
       Rotation:
         value:
-          x: 0
-          y: 0
-          z: 0.00000029099374
-          w: 1
+          x: -0.13746694
+          y: -0.60023224
+          z: -0.105675526
+          w: 0.7808053
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -4713,7 +4713,7 @@ MonoBehaviour:
       Tension: 0.5
     - Mode: 0
       Tension: 0.5
-    - Mode: 2
+    - Mode: 0
       Tension: 0.5
     m_Closed: 0
     m_IntData:
@@ -6359,7 +6359,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.013985299, y: 0.00000010816611, z: 0.0000000015128832, w: 0.99990225}
+  m_LocalRotation: {x: 0.00065939163, y: -0.76235193, z: 0.6471619, w: 0.0007767584}
   m_LocalPosition: {x: 55.02, y: 111.83287, z: -560.6548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12771,12 +12771,12 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].Mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[1].Mode
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -12791,42 +12791,42 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.z
-      value: -0.098000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.z
-      value: -0.098000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentOut.z
-      value: 0.098000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentOut.z
-      value: 0.098000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -27615,12 +27615,12 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[1].Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -27645,7 +27645,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -27660,7 +27660,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -30126,12 +30126,12 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[0].Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_MetaData.Array.data[1].Mode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -30156,7 +30156,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[0].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
@@ -30171,7 +30171,7 @@ PrefabInstance:
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
       propertyPath: m_Splines.Array.data[0].m_Knots.Array.data[1].TangentIn.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7187097106033971171, guid: 0baee1bb458c9e8408e79d71c5ca8439,
         type: 3}
