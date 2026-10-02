@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
 
     //Spray Data
     public GameObject GraffitiSprayAnim;
+    public GameObject AirGraffitiSprayAnim;
+
     public Vector3 GraffitLoc;
 
     public GameObject JumpDust;
@@ -212,6 +214,32 @@ public class PlayerController : MonoBehaviour
 
         //ground check
         Grounded = Physics.SphereCast(PlayerRotAxis.transform.position, 2f, Vector3.down, out RaycastHit hit2, playerhieght * 0.5f + 0.2f, Ground);
+
+
+        if (Grounded && RB.linearVelocity.y < -FallLimit & gravitytimer > 3.5f)
+        {
+            FallDamage = -RB.linearVelocity.y * FallDamageMultiplier;
+
+            
+            if (FallDamage >= MaxFallDamage)
+            {
+                TakeDamage(MaxFallDamage);
+                Debug.Log($"Player took {FallDamage} fall damage");
+                FallDamage = 0;
+            }
+            else 
+            {
+                TakeDamage(FallDamage);
+                Debug.Log($"Player took {FallDamage} fall damage");
+                FallDamage = 0;
+            }
+            
+
+            RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
+            Debug.Log("FALL DAMAGE");
+            
+        }
+
         Debug.DrawRay(transform.position, Vector3.down * (playerhieght * 0.5f + 0.2f), Color.red);
 
         //Anim updates
@@ -228,11 +256,7 @@ public class PlayerController : MonoBehaviour
 
         if (!Grounded) // If the player is falling
         {
-            if (!OnRail)
-            {
-                //If player is in the air for X frames,, Set fall damage.
-                FallDamageCalc();
-            }
+         
 
             //Air fix
             Quaternion rf = Quaternion.identity;
@@ -246,7 +270,7 @@ public class PlayerController : MonoBehaviour
 
             if (GrindAir)
             {
-                FallDamageCalc();
+                
                 RB.AddForce(Vector3.down + (Vector3.down * gravitytimer) + (Vector3.down * 60f * Time.deltaTime), ForceMode.VelocityChange);
             }
             else
@@ -263,13 +287,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (Grounded)
         {
-            //Only apply fall damage
-            if (FallDamage > FallLimit)
-            {
-                Mathf.Clamp(FallDamage, 0, MaxFallDamage);
-                TakeDamage(FallDamage);
-                FallDamage = 0;
-            }
+           
 
             //Test
             //PlayerRotAxis
@@ -331,16 +349,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void FallDamageCalc()
-    {
-        
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-             distanceToground = hit.distance;
-        }
-         FallDamage = distanceToground;
-    }
+  
     //Activated EXTERNALLY Via Events
     public void GraffitiCheck()
     {
@@ -354,7 +363,9 @@ public class PlayerController : MonoBehaviour
             Quaternion lookthere = Quaternion.LookRotation(Graflookdir);
 
             SprayScene = true;
-            Instantiate(GraffitiSprayAnim, PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
+
+        if (Grounded) Instantiate(GraffitiSprayAnim, PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
+        if (!Grounded) Instantiate(AirGraffitiSprayAnim, PlayerMesh.transform.position, PlayerRotAxis.transform.rotation);
 
             //make player invisible
             gameObject.SetActive(false);

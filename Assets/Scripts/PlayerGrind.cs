@@ -22,6 +22,9 @@ public class PlayerGrind : MonoBehaviour
     public UnityEvent EnterGrindingEvent;
     public UnityEvent ResetFreelookCam;
     public UnityEvent ExitGrindingEvent;
+
+    //so the player can collect graf cans while on rail
+    public Collider GrindGrafCollector;
     public bool onRail;
 
     public float GrindSpeed = 10f;
@@ -62,6 +65,9 @@ public class PlayerGrind : MonoBehaviour
 
     void Start()
     {
+        //players not grinding right now
+        GrindGrafCollector.enabled = false;
+
         SFX = GetComponent<AudioSource>();
         PlayerRB = GetComponent<Rigidbody>();
         Colliding = GetComponent<CapsuleCollider>();
@@ -281,8 +287,8 @@ public class PlayerGrind : MonoBehaviour
 
     void EnterRail()
     {
-
-      
+        PlayerControl.gravitytimer = 0;
+        GrindGrafCollector.enabled = true;
 
         EnterGrindingEvent.Invoke();
         GetComponent<Collider>().enabled = false;
@@ -364,7 +370,7 @@ public class PlayerGrind : MonoBehaviour
 
     void JumpOffRail(Vector3 JumpDirection)
     {
-
+        GrindGrafCollector.enabled = false;
 
         PlayerControl.AirTime = 0.4f;
         JumpBuffer(DefaultJumpBufferTime);
@@ -418,6 +424,8 @@ public class PlayerGrind : MonoBehaviour
 
     public void ThrowOffRail(Vector3 LeftRight)
     {
+        GrindGrafCollector.enabled = false;
+
         Debug.Log("PlayerThrownOffRail");
 
         OnWall = false;

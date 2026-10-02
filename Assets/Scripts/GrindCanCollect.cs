@@ -5,6 +5,7 @@ public class GrindCanCollect : MonoBehaviour
 {
     public UnityEvent CollectGraffitiCan;
     public GameObject TouchedCan;
+    public Vector3 GraffitLoc;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
