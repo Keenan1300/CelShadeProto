@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4751394111658822592}
   - component: {fileID: 297221445242676788}
   m_Layer: 0
-  m_Name: Rail
+  m_Name: GrindPipe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

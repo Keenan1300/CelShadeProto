@@ -48,8 +48,12 @@ public class CollectGraf : MonoBehaviour
             }
             else
             {
+                //Delete this can
                 GrindCollect = player.GetComponent<GrindCanCollect>();
+                GrindCollect.TouchedCan = gameObject;
                 GrindCollect.CollectGraffitiCan.Invoke();
+               
+
             }
 
 
