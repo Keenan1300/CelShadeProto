@@ -621,9 +621,10 @@ public class PlayerController : MonoBehaviour
 
     private void Jumplogii()
     {
-       
+
+    
         //Jump dust
-        Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
+        Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 5f, transform.position.z), Quaternion.identity);
 
         RB.linearVelocity = new Vector3(RB.linearVelocity.x, RB.linearVelocity.y, RB.linearVelocity.z);
 
