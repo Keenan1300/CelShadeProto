@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     //relevant to HP
     public float PlayerHP;
     public float MaxFallDamage;
+    public float MinFallDamage;
     private float FallDamage;
     private float distanceToground;
     public float FallLimit;
@@ -216,18 +217,22 @@ public class PlayerController : MonoBehaviour
         Grounded = Physics.SphereCast(PlayerRotAxis.transform.position, 2f, Vector3.down, out RaycastHit hit2, playerhieght * 0.5f + 0.2f, Ground);
 
 
-        if (Grounded && RB.linearVelocity.y < -FallLimit & gravitytimer > 3.5f)
+        if (Grounded && RB.linearVelocity.y < -FallLimit)
         {
+            //Current problem is that the player can move fast near the floor... fall dam shouldnt apply there. 
+            //Solution would be to get raycast distance at peak of jump...
             FallDamage = -RB.linearVelocity.y * FallDamageMultiplier;
 
             
-            if (FallDamage >= MaxFallDamage)
+            if (-FallDamage >= MaxFallDamage)
             {
                 TakeDamage(MaxFallDamage);
                 Debug.Log($"Player took {FallDamage} fall damage");
                 FallDamage = 0;
             }
             else 
+
+            if(-FallDamage >= MinFallDamage)
             {
                 TakeDamage(FallDamage);
                 Debug.Log($"Player took {FallDamage} fall damage");
@@ -236,7 +241,7 @@ public class PlayerController : MonoBehaviour
             
 
             RB.linearVelocity = new Vector3(RB.linearVelocity.x, 0f, RB.linearVelocity.z);
-            Debug.Log("FALL DAMAGE");
+            Debug.Log($"FALL DAMAGE = {FallDamage}");
             
         }
 

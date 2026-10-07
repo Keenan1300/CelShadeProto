@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
+using static UnityEngine.LightAnchor;
 
 public class PlayerGrind : MonoBehaviour
 {
@@ -100,10 +101,10 @@ public class PlayerGrind : MonoBehaviour
             //Wall jump logic
             if (CurrentRailScript.IsWall && Input.GetKey(KeyCode.Space) && JumpCooldown)
             {
-                PlayerControl.GrindAir = true;
+                //Avoiding Grind Air addition as there's too much maneuverability options 
 
-                PlayerControl.AirTime = PlayerControl.AirTimeGrind;
-                transform.position += transform.up * 10f;
+                //PlayerControl.AirTime = PlayerControl.AirTimeGrind;
+                //transform.position += transform.up * 10f;
 
                JumpOffRail(PlayerRotAxis.transform.forward + (PlayerRotAxis.transform.right * HorizontalInput)  * 1f );
                 
@@ -211,9 +212,9 @@ public class PlayerGrind : MonoBehaviour
             {
 
 
-         
-
-                ThrowOffRail(PlayerRotAxis.transform.forward * (ThrowForce));
+                Vector3 JumpDirection = CurrentRailScript.ForwardOrient ? -PlayerRotAxis.transform.right : PlayerRotAxis.transform.right;
+      
+                ThrowOffRail(JumpDirection);
                 //ThrowOffRail(CurrentRailScript.PointA.transform.forward);
             }
 
@@ -341,6 +342,7 @@ public class PlayerGrind : MonoBehaviour
             SFX.clip = Wallburn;
             SFX.Play();
 
+            //Animation stuff
             if (CurrentRailScript.ForwardOrient)
             {
                 PlayerControl.WallGrindR = true;
@@ -372,7 +374,7 @@ public class PlayerGrind : MonoBehaviour
     {
         GrindGrafCollector.enabled = false;
 
-        PlayerControl.AirTime = 0.4f;
+       
         JumpBuffer(DefaultJumpBufferTime);
         // Add an upward burst for the jump
         ExitGrindingEvent.Invoke();
@@ -382,8 +384,8 @@ public class PlayerGrind : MonoBehaviour
         onRail = false;
         PlayerRB.isKinematic = false;
 
+
         
-        PlayerControl.GrindAir = true;
 
         //Turn on player physics on exit
         GetComponent<Collider>().enabled = true;
@@ -392,14 +394,26 @@ public class PlayerGrind : MonoBehaviour
         Vector3 currentEuler = PlayerRotAxis.transform.rotation.eulerAngles;
         PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
 
-       
-        PlayerRB.linearVelocity = JumpDirection * ForwardForce;
 
-        //only affects 'up' movement
-        Vector3 ejectVector = (transform.up * JumpoffHeight);
-        
-        
-        PlayerRB.AddForce(ejectVector + JumpDirection, ForceMode.Impulse);
+        //Important distinciton: If the player jumps from a wall they will move right of its orient. If rail, more freedom applies.
+        if (CurrentRailScript.IsWall) 
+        { 
+            JumpDirection = CurrentRailScript.ForwardOrient? -PlayerRotAxis.transform.right : PlayerRotAxis.transform.right;
+            PlayerRB.linearVelocity = JumpDirection * ForwardForce * 40;
+            PlayerRB.AddForce(JumpDirection, ForceMode.Impulse);
+        }
+
+        //Rail logic.. only get grind air from railings
+        if (CurrentRailScript.IsWall == false)
+        {
+            PlayerControl.AirTime = 0.4f;
+            PlayerControl.GrindAir = true;
+            PlayerRB.linearVelocity = JumpDirection * ForwardForce;
+            //only affects 'up' movement
+            Vector3 ejectVector = (transform.up * JumpoffHeight);
+            PlayerRB.AddForce(ejectVector + JumpDirection, ForceMode.Impulse);
+        }
+     
 
         //prevent stuck bug
         CurrentRailScript.turnoffcollisions();
@@ -450,17 +464,29 @@ public class PlayerGrind : MonoBehaviour
         PlayerRotAxis.transform.rotation = Quaternion.Euler(0, currentEuler.y, 0);
 
 
+        if (CurrentRailScript.IsWall) 
+        {
+            
 
-        // 3.  momentum calc
-        Vector3 exitDirection = CurrentRailScript.ForwardOrient ? CurrentRailScript.transform.forward : -CurrentRailScript.transform.forward;
-        PlayerRB.linearVelocity = exitDirection * GrindSpeed;
+            Vector3 JumpDirection = CurrentRailScript.ForwardOrient ? -PlayerRotAxis.transform.right : PlayerRotAxis.transform.right;
+            PlayerRB.linearVelocity = JumpDirection * ForwardForce * 40;
+            PlayerRB.AddForce(JumpDirection + (PlayerRotAxis.transform.forward * ForwardForce * 40), ForceMode.Impulse);
+        }
+        else 
+        {
+            // 3.  momentum calc
+            Vector3 exitDirection = CurrentRailScript.ForwardOrient ? CurrentRailScript.transform.forward : -CurrentRailScript.transform.forward;
+            PlayerRB.linearVelocity = exitDirection * GrindSpeed;
 
-        //LeftRight = CurrentRailScript.ForwardOrient ? LeftRight : -1 * LeftRight;
+            //LeftRight = CurrentRailScript.ForwardOrient ? LeftRight : -1 * LeftRight;
 
-        Vector3 ejectVector = (CurrentRailScript.PointA.up * JumpoffHeight);
-        //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
-        //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (exitDirection * EjectForce);
-        PlayerRB.AddForce(ejectVector + exitDirection * EjectForce, ForceMode.Impulse);
+            Vector3 ejectVector = (CurrentRailScript.PointA.up * JumpoffHeight);
+            //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (LeftRight * EjectForce);
+            //Vector3 ejectVector = (Vector3.up * JumpoffHeight) + (exitDirection * EjectForce);
+            PlayerRB.AddForce(ejectVector + exitDirection * EjectForce, ForceMode.Impulse);
+
+        }
+       
 
 
         //prevent stuck bug
