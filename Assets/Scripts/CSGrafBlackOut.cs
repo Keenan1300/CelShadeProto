@@ -74,6 +74,18 @@ public class CSGrafBlackOut : MonoBehaviour
         }
     }
 
+    public void GameOverScreen()
+    {
+
+        
+
+        if (Camerascript != null)
+        {
+            Camerascript.GameOverSequence();
+
+        }
+    }
+
     public void ChangetoPreviewCamera()
     {
         Debug.Log("See your work!");

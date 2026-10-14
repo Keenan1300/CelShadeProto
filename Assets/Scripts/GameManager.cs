@@ -1,8 +1,9 @@
-using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 using Unity.VectorGraphics;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject HealthBar;
 
+    public GameObject Player;
     public GameObject WinText;
     public GameObject LoseText;
+    public GameObject LoseMesh;
 
+    private bool GameStateActive = true;
     //find all tags, if they're all gone, player wins.
 
     //tag remains while clock is zero, loss condition.+
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
-            if (TotalTagPoints > 0)
+            if (TotalTagPoints > 0 && GameStateActive)
             {
                 GameLostFunc();
             }
@@ -85,6 +89,12 @@ public class GameManager : MonoBehaviour
     {
         //LoadSceneByName(LoseScene);
         LoseText.SetActive(true);
+        Vector3 Spawnloc = Player.transform.position;
+        Spawnloc.y -= 1f;
+        Instantiate(LoseMesh, new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.y), Quaternion.identity);
+        Player.SetActive(false);
+        GameStateActive = false;
+
     }
 
     public void RemoveGrafPoint()

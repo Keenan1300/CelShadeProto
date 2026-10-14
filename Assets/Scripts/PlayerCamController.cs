@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerCamController : MonoBehaviour
 {
+    public Camera MainCam;
     public Transform orientation;
     public Transform player;
     public GameObject playervisibilityToggle;
@@ -49,6 +50,8 @@ public class PlayerCamController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MainCam = GetComponent<Camera>();
+        MainCam.cullingMask = -1;
         BlackBars.SetActive(false);
         Invoke(nameof(LockTheCursor), 0.1f);
         Cursor.lockState = CursorLockMode.Locked;
@@ -157,6 +160,13 @@ public class PlayerCamController : MonoBehaviour
     
 
 
+    }
+
+    //Game over screen
+    public void GameOverSequence()
+    {
+        //Show Only this layer..
+        MainCam.cullingMask = 1 << LayerMask.NameToLayer("Player");
     }
 
     public void DisableSprayScene()
