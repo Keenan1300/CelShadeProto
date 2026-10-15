@@ -91,7 +91,8 @@ public class GameManager : MonoBehaviour
         LoseText.SetActive(true);
         Vector3 Spawnloc = Player.transform.position;
         Spawnloc.y -= 1f;
-        Instantiate(LoseMesh, new Vector3(Player.transform.position.x, Player.transform.position.y, Player.transform.position.y), Quaternion.identity);
+        Vector3 Offset = new Vector3(0, -8, 0);
+        Instantiate(LoseMesh,(Player.transform.position + Offset), Quaternion.identity);
         Player.SetActive(false);
         GameStateActive = false;
 

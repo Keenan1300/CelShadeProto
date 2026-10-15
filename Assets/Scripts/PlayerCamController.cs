@@ -50,7 +50,8 @@ public class PlayerCamController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        MainCam = GetComponent<Camera>();
+        MainCam = Camera.main;
+        MainCam.cullingMask = -1;
         MainCam.cullingMask = -1;
         BlackBars.SetActive(false);
         Invoke(nameof(LockTheCursor), 0.1f);
