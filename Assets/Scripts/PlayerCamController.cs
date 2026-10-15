@@ -168,6 +168,7 @@ public class PlayerCamController : MonoBehaviour
     {
         //Show Only this layer..
         MainCam.cullingMask = 1 << LayerMask.NameToLayer("Player");
+        MainCam.cullingMask = 1 << LayerMask.NameToLayer("UI");
     }
 
     public void DisableSprayScene()

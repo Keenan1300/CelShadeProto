@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     public GameObject LoseText;
     public GameObject LoseMesh;
 
+
+
     private bool GameStateActive = true;
     //find all tags, if they're all gone, player wins.
 
@@ -26,8 +28,9 @@ public class GameManager : MonoBehaviour
 
     //Graffiti text
     public GameObject GrafCanCount;
+    public GameObject GrafText;
 
-
+    public GameObject RetryButton;
     public GameObject[] TagPoints;
     //Timer Text
     public GameObject CountText;
@@ -52,6 +55,11 @@ public class GameManager : MonoBehaviour
     public void startTimer(float CountDownTime)
     {
         //CountText.GetComponent<Timer+>
+    }
+
+    public void LoadScene(string  sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     // Update is called once per frame
@@ -92,9 +100,20 @@ public class GameManager : MonoBehaviour
         Vector3 Spawnloc = Player.transform.position;
         Spawnloc.y -= 1f;
         Vector3 Offset = new Vector3(0, -8, 0);
-        Instantiate(LoseMesh,(Player.transform.position + Offset), Quaternion.identity);
+        Instantiate(LoseMesh, (Player.transform.position + Offset), Quaternion.identity);
         Player.SetActive(false);
         GameStateActive = false;
+
+        //Switch off Game layer UI
+        CountText.SetActive(false);
+        HealthBar.SetActive(false);
+        GrafCanCount.SetActive(false);
+        GrafText.SetActive(false);
+        //Retry Button
+        RetryButton.SetActive(true);
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
 
     }
 

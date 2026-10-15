@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/LevelDesignAssignment/LevelPipeline.unity
+    guid: 6ba3b87f6ab1795449255d7574d1ec34
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2ef0bf95812f6f047a69e7f123d17ddd,
       type: 3}
