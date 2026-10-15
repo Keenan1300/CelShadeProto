@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
         {
 
             CountDown -= Time.deltaTime;
-            CountText.GetComponent<TextMeshProUGUI>().text = CountDown.ToString();
+            float CleanedUpCountDown = Mathf.Round(CountDown * 10f) / 10f;
+            CountText.GetComponent<TextMeshProUGUI>().text = CleanedUpCountDown.ToString();
 
         }
         else 
