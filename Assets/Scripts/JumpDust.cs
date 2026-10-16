@@ -13,7 +13,7 @@ public class JumpDust : MonoBehaviour
     {
         transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);   
         alph = GetComponent<MeshRenderer>();
-        Destroy(gameObject, 0.6f);
+        Destroy(gameObject, 0.3f);
         //alph.material.color = opaq;
     }
 

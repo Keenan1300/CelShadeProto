@@ -678,7 +678,7 @@ public class PlayerController : MonoBehaviour
 
         Touchpoint = false;
         //land dust
-        Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
+        //Instantiate(JumpDust, new Vector3(transform.position.x, transform.position.y - 4f, transform.position.z), Quaternion.identity);
     }
 
 
