@@ -13860,7 +13860,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005583839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11729636, y: 0.00439271, z: -0.0005188356, w: 0.9930872}
+  m_LocalRotation: {x: 0.117294736, y: 0.0068580606, z: -0.00081002526, w: 0.99307317}
   m_LocalPosition: {x: -266.28, y: 113.012665, z: -964.38245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42037,7 +42037,7 @@ PrefabInstance:
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
       propertyPath: GrindSpeed
-      value: 100
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4161368743731533132, guid: 9cffa418d522c21458a4a0870c98a0f1,
         type: 3}
