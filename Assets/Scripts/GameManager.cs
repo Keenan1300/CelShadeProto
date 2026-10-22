@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public GameObject GrafCanCount;
     public GameObject GrafText;
 
+    public GameObject WinMesh;
     public GameObject RetryButton;
     public GameObject[] TagPoints;
     //Timer Text
@@ -83,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         if (TotalTagPoints < 1)
         {
-            GameWinFunc();
+            Invoke(nameof(GameWinFunc),2f);
         }
     }
 
@@ -92,6 +93,22 @@ public class GameManager : MonoBehaviour
     {
         // LoadSceneByName(WinScene);
         WinText.SetActive(true);
+        Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
+
+        Player.SetActive(false);
+        GameStateActive = false;
+
+        //Switch off Game layer UI
+        CountText.SetActive(false);
+        HealthBar.SetActive(false);
+        GrafCanCount.SetActive(false);
+        GrafText.SetActive(false);
+        //Retry Button
+        RetryButton.SetActive(true);
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        UnityEngine.Cursor.visible = true;
+
+
     }
 
     public void GameLostFunc()
