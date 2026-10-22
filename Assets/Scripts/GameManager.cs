@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.Cinemachine;
 using Unity.VectorGraphics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject GrafCanCount;
     public GameObject GrafText;
 
+    public GameObject Dancer;
     public GameObject WinMesh;
     public GameObject RetryButton;
     public GameObject[] TagPoints;
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
         // LoadSceneByName(WinScene);
         WinText.SetActive(true);
         Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
-
+        Instantiate(Dancer, Player.transform.position, Quaternion.identity);
         Player.SetActive(false);
         GameStateActive = false;
 

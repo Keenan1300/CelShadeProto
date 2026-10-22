@@ -90,6 +90,8 @@ public class PlayerGrind : MonoBehaviour
 
         if (onRail)
         {
+            //GrindGrafCollector.enabled = true;
+
             //Uhh, Ignore this ugly code down here, wanna add a lean in for grinds so this will be needed later :/
 
             //rotation math -

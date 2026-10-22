@@ -25,11 +25,13 @@ public class Collect : MonoBehaviour
 
     public Vector3 startPos;
 
+    public GrindCanCollect GrafCollect;
     public PlayerController playerController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        PlayerController playerController = GetComponent<PlayerController>();
         //GameObject Player = GameObject.FindGameObjectWithTag("Player");
         //Collider playerbody = Player.GetComponent<Rigidbody>();
         AudioSource MusicPlayer = GetComponent<AudioSource>();
@@ -49,11 +51,25 @@ public class Collect : MonoBehaviour
         if (player.CompareTag("Player"))
         {
             // Add code here to increase player score (optional)
+
+            //GameObject collidedPlayer = player.gameObject;
+
             Debug.Log("enter");
-            playerController = player.GetComponent<PlayerController>();
-            playerController.GraffitLoc = transform.position;
-            CanCount = playerController.GrafCanCount;
-            Popup.Invoke();
+            //playerController = collidedPlayer.GetComponent<PlayerController>();
+
+            if (playerController != null)
+            {
+                playerController.GraffitLoc = transform.position;
+                CanCount = playerController.GrafCanCount;
+                Popup.Invoke();
+            }
+            else
+            {
+                Debug.Log("Cant access player controller!");
+               // if (player.CompareTag("PlayerRail"))
+                Popup.Invoke();
+                PlayerInRange = true;
+            }
 
 
 
@@ -72,7 +88,7 @@ public class Collect : MonoBehaviour
         {
             // Add code here to increase player score (optional)
             Debug.Log("leavingradius");
-            playerController = player.GetComponent<PlayerController>();
+            //playerController = player.GetComponent<PlayerController>();
             Popupclose.Invoke();
 
             // Destroy the coin object
@@ -88,9 +104,9 @@ public class Collect : MonoBehaviour
     void Update()
        {
 
-        if (CanCount > 0 && PlayerInRange && Input.GetKeyDown(KeyCode.E))
+        if (CanCount > 0 && PlayerInRange == true && Input.GetKeyDown(KeyCode.E))
         {
-
+            Debug.Log("should be all set Graff");
             MusicPlayer.PlayOneShot(SpraySound);
 
             //UI

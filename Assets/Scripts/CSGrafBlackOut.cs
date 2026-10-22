@@ -58,6 +58,11 @@ public class CSGrafBlackOut : MonoBehaviour
             Camerascript.DisableSprayScene();
             Destroy(gameObject);
         }
+        else
+        {
+            Camerascript.DisableSprayScene();
+            Destroy(gameObject);
+        }
 
   
     }    
