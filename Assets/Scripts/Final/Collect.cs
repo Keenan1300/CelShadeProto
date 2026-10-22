@@ -30,6 +30,8 @@ public class Collect : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //GameObject Player = GameObject.FindGameObjectWithTag("Player");
+        //Collider playerbody = Player.GetComponent<Rigidbody>();
         AudioSource MusicPlayer = GetComponent<AudioSource>();
         Collider Playr = Player.GetComponent<Collider>();
         Collider EnterRange = GetComponent<Collider>();
