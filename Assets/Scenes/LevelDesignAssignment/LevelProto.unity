@@ -14532,6 +14532,7 @@ MonoBehaviour:
   GraffitiCam: {fileID: 0}
   BlackBars: {fileID: 76004085}
   GraffitiPopup: {fileID: 1535104002}
+  GrindGrafCollector: {fileID: 0}
   viewDir: {x: 0, y: 0, z: 0}
   SprayScene: 0
 --- !u!1 &1111912986

@@ -286,7 +286,7 @@ public class PlayerGrind : MonoBehaviour
 
     }
 
-    void EnterRail()
+    public void EnterRail()
     {
         PlayerControl.gravitytimer = 0;
         GrindGrafCollector.enabled = true;

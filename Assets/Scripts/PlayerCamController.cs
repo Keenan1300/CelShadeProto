@@ -43,6 +43,8 @@ public class PlayerCamController : MonoBehaviour
     public GameObject BlackBars;
     public GameObject GraffitiPopup;
 
+    public Collider GrindGrafCollector;
+
     public Vector3 viewDir;
 
     public bool SprayScene;
@@ -175,6 +177,17 @@ public class PlayerCamController : MonoBehaviour
     {
         playerController.SprayScene = false;
         playervisibilityToggle.SetActive(true);
+
+        //Fix cant spray on rail after 1
+        //GrindGrafCollector.enabled = true;
+        if (playervisibilityToggle.GetComponent<PlayerGrind>().onRail != false)
+        {
+            GrindGrafCollector.enabled = true;
+            Debug.Log("Rail spray problem");
+            playervisibilityToggle.GetComponent<PlayerGrind>().EnterRail();
+        }
+
+
         BlackBars.SetActive(false);
     }
 
