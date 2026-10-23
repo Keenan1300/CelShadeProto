@@ -10,6 +10,7 @@ TagManager:
   - CamPasstrhough
   - GraffitiLocation
   - TagPoint
+  - WinMesh
   layers:
   - Default
   - TransparentFX

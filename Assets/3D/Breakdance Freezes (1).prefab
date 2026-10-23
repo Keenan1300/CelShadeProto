@@ -468,6 +468,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breakdance Freezes (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d4767b83a7b172e49a4fea335e8c9ec7,
+        type: 3}
+      propertyPath: m_TagString
+      value: WinMesh
+      objectReference: {fileID: 0}
     - target: {fileID: 1092408308860062549, guid: d4767b83a7b172e49a4fea335e8c9ec7,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

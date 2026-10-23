@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    public GameObject EmptySprayPrompt;
+
     //Game State Manager
     public int GrafCanCount;
     [Tooltip("Ensure this is connected to Game manager game object")]public GameManager GameManager;
@@ -651,14 +653,24 @@ public class PlayerController : MonoBehaviour
     public void popup()
     {
       Debug.Log("thing");
-       SprayPrompt.SetActive(true);
-        GraffitiRange = true;
+        if (GrafCanCount > 0)
+        {
+            EmptySprayPrompt.SetActive(false);
+            SprayPrompt.SetActive(true);
+            GraffitiRange = true;
+        }
+        else
+        {
+            EmptySprayPrompt.SetActive(true);
+            GraffitiRange = true;
+        }
     }
 
     public void popupclose()
     {
         Debug.Log("thing");
         SprayPrompt.SetActive(false);
+        EmptySprayPrompt.SetActive(false);
         GraffitiRange = false;
     }
 

@@ -96,8 +96,15 @@ public class GameManager : MonoBehaviour
 
         // LoadSceneByName(WinScene);
         WinText.SetActive(true);
-        Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
-        Instantiate(Dancer, Player.transform.position+ Offset, Quaternion.identity);
+
+        if (GameObject.FindGameObjectsWithTag("WinMesh") != null)
+        {
+            Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
+            Instantiate(Dancer, Player.transform.position + Offset, Quaternion.identity);
+        }
+
+        
+       
         Player.SetActive(false);
         GameStateActive = false;
 
