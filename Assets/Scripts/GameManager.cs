@@ -93,10 +93,15 @@ public class GameManager : MonoBehaviour
     
     public void GameWinFunc()
     {
+
+        Vector3 Spawnloc = Player.transform.position;
+        Spawnloc.y -= 1f;
+        Vector3 Offset = new Vector3(0, -7, 0);
+
         // LoadSceneByName(WinScene);
         WinText.SetActive(true);
         Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
-        Instantiate(Dancer, Player.transform.position, Quaternion.identity);
+        Instantiate(Dancer, Player.transform.position+ Offset, Quaternion.identity);
         Player.SetActive(false);
         GameStateActive = false;
 
@@ -153,5 +158,22 @@ public class GameManager : MonoBehaviour
         GrafCanCount.GetComponent<TextMeshProUGUI>().text = CanCount.ToString();
         HealthBar.GetComponent<HealthBar>().SetHealth(PlayerHP);
     }
+
+
+    //Use only if 
+    public void QuitGame()
+    {
+        
+        Debug.Log("Quit application request received.");
+
+    #if UNITY_EDITOR
+        // Stops play mode if running inside the Unity Editor
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+            // Closes the actual built application (.exe, .app, etc.)
+            Application.Quit();
+    #endif
+    }
+
 
 }

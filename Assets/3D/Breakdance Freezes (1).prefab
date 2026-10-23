@@ -16,7 +16,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: d4767b83a7b172e49a4fea335e8c9ec7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -6.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d4767b83a7b172e49a4fea335e8c9ec7,
         type: 3}
@@ -890,3 +890,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56754985988e1c4d873d7cdd0a22f59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  Player: {fileID: 0}
+  Dance: {fileID: 0}
