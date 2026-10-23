@@ -523,6 +523,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7360180761937259419, guid: c296fc4141a6b60438cb4cd6740c0a79, type: 3}
@@ -1808,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.023000002}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -110.99991}
+  m_AnchoredPosition: {x: 0, y: -110.99988}
   m_SizeDelta: {x: -117.034546, y: 1089.3413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &82991861
@@ -2242,6 +2272,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4949,6 +5009,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7360180761937259419, guid: c296fc4141a6b60438cb4cd6740c0a79, type: 3}
@@ -5018,6 +5108,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5759,6 +5879,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7312,7 +7462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1172924, y: 0.009264156, z: -0.0010942159, w: 0.9930536}
+  m_LocalRotation: {x: 0.11729243, y: 0.009264156, z: -0.0010942162, w: 0.9930536}
   m_LocalPosition: {x: -266.28, y: 113.012665, z: -964.38245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7558,6 +7708,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (51)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7626,6 +7806,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7817,6 +8027,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (50)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7898,7 +8138,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fdff981696be914984fcad7bd6d5408,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1080481273}
   m_SourcePrefab: {fileID: 100100000, guid: 3fdff981696be914984fcad7bd6d5408, type: 3}
 --- !u!1 &386882319 stripped
 GameObject:
@@ -8172,6 +8416,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9201,6 +9475,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10756,6 +11060,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10918,6 +11252,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (43)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10986,6 +11350,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11430,6 +11824,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12370,6 +12794,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12942,6 +13396,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14655,6 +15139,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16128,6 +16642,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (41)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16196,6 +16740,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16755,7 +17329,7 @@ MonoBehaviour:
         InputAction: {fileID: 0}
         Gain: 50
         LegacyInput: Mouse X
-        LegacyGain: 600
+        LegacyGain: 150
         CancelDeltaTime: 0
       InputValue: 5.37
       Driver:
@@ -16768,7 +17342,7 @@ MonoBehaviour:
         InputAction: {fileID: 0}
         Gain: 50
         LegacyInput: Mouse Y
-        LegacyGain: -600
+        LegacyGain: -150
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -16949,7 +17523,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005583839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11729238, y: 0.009264154, z: -0.0010942157, w: 0.9930537}
+  m_LocalRotation: {x: 0.11729241, y: 0.009264155, z: -0.0010942158, w: 0.9930537}
   m_LocalPosition: {x: -266.28, y: 113.012665, z: -964.38245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17356,6 +17930,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7360180761937259419, guid: c296fc4141a6b60438cb4cd6740c0a79, type: 3}
@@ -17425,6 +18029,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (38)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17772,6 +18406,33 @@ CapsuleCollider:
   m_Height: 75.9
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1080481269 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fdff981696be914984fcad7bd6d5408,
+    type: 3}
+  m_PrefabInstance: {fileID: 386268321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1080481273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080481269}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 48.070786, y: 17.418879, z: 30.148954}
+  m_Center: {x: 0.0000009536743, y: 8.927375, z: -7.233325}
 --- !u!1 &1086482894
 GameObject:
   m_ObjectHideFlags: 0
@@ -18035,6 +18696,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (27)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18408,6 +19099,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18604,6 +19325,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7360180761937259419, guid: c296fc4141a6b60438cb4cd6740c0a79, type: 3}
@@ -19125,6 +19876,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19948,6 +20729,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20832,6 +21643,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22706,6 +23547,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23205,6 +24076,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23804,6 +24705,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24096,6 +25027,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (44)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -25997,6 +26958,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (49)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26065,6 +27056,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26464,6 +27485,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29719,6 +30770,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -29815,6 +30896,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30024,6 +31135,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31256,6 +32397,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (47)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31638,6 +32809,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31706,6 +32907,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32178,6 +33409,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -32246,6 +33507,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33342,6 +34633,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Collectible (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1343870691}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerbody
+      value: 
+      objectReference: {fileID: 7972985913186082777}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: MusicPlayer
+      value: 
+      objectReference: {fileID: 71663890}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: GrindCollect
+      value: 
+      objectReference: {fileID: 172261434}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: PlayerInRange
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7222433554991681940, guid: c296fc4141a6b60438cb4cd6740c0a79,
+        type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1343870694}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7360180761937259419, guid: c296fc4141a6b60438cb4cd6740c0a79, type: 3}
