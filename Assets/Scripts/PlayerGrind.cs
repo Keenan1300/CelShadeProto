@@ -401,7 +401,7 @@ public class PlayerGrind : MonoBehaviour
         if (CurrentRailScript.IsWall) 
         { 
             JumpDirection = CurrentRailScript.ForwardOrient? -PlayerRotAxis.transform.right : PlayerRotAxis.transform.right;
-            PlayerRB.linearVelocity = JumpDirection * ForwardForce * 40;
+            PlayerRB.linearVelocity = JumpDirection * ForwardForce * 10;
             PlayerRB.AddForce(JumpDirection, ForceMode.Impulse);
         }
 
