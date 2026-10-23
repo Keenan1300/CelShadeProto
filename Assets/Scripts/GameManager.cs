@@ -1,10 +1,6 @@
 using TMPro;
-using Unity.Cinemachine;
-using Unity.VectorGraphics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {

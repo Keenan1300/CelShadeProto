@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
-using static UnityEngine.Rendering.DebugUI;
-using static UnityEngine.UI.Image;
 
 public class PlayerController : MonoBehaviour
 {

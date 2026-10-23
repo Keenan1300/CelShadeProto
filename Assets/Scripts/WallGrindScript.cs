@@ -1,9 +1,5 @@
-using Unity.Mathematics;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.Splines;
 
+using UnityEngine;
 
 public class WallGrindScript : MonoBehaviour
 {
