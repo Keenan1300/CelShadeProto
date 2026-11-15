@@ -1,3 +1,4 @@
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -97,7 +98,9 @@ public class GameManager : MonoBehaviour
         // LoadSceneByName(WinScene);
         WinText.SetActive(true);
 
-        if (GameObject.FindGameObjectsWithTag("WinMesh") != null)
+        GameObject[] taggedObjects = GameObject.FindGameObjectsWithTag("WinMesh");
+
+            if (taggedObjects.Length == 0)
         {
             Instantiate(WinMesh, (Player.transform.position), Quaternion.identity);
             Instantiate(Dancer, Player.transform.position + Offset, Quaternion.identity);

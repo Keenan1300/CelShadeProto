@@ -250,7 +250,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45, y: 0.32}
   m_AnchorMax: {x: 0.56, y: 0.44}
-  m_AnchoredPosition: {x: -1, y: -72}
+  m_AnchoredPosition: {x: -1, y: -72.00001}
   m_SizeDelta: {x: 160.18219, y: 25.907204}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3627599
@@ -1838,7 +1838,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.023000002}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -110.99989}
+  m_AnchoredPosition: {x: 0, y: -110.999886}
   m_SizeDelta: {x: -117.034546, y: 1089.3413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &82991861
@@ -7789,7 +7789,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11729196, y: 0.009673028, z: -0.0011425089, w: 0.99304974}
+  m_LocalRotation: {x: 0.117286354, y: 0.013733353, z: -0.0016220862, w: 0.9930019}
   m_LocalPosition: {x: -266.28, y: 113.012665, z: -964.38245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12770,6 +12770,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 70002b4cdcd73ac439dfb7e05ca699b9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bce8fc30c3ab8f4cb2cfe9e2c2a592a, type: 2}
     - target: {fileID: 919132149155446097, guid: 70002b4cdcd73ac439dfb7e05ca699b9,
         type: 3}
       propertyPath: m_Name
@@ -18031,7 +18036,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005583839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11729194, y: 0.009673026, z: -0.0011425087, w: 0.99304974}
+  m_LocalRotation: {x: 0.11728634, y: 0.013733351, z: -0.0016220857, w: 0.9930019}
   m_LocalPosition: {x: -266.28, y: 113.012665, z: -964.38245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31319,6 +31324,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6911830192565476147, guid: 761dc65e28f7df2489f72411ffde23ef,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bce8fc30c3ab8f4cb2cfe9e2c2a592a, type: 2}
     - target: {fileID: 8574335345912828986, guid: 761dc65e28f7df2489f72411ffde23ef,
         type: 3}
       propertyPath: m_Pivot.x
