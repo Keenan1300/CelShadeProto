@@ -46,13 +46,13 @@ Material:
     - _Blend: 10.26
     - _Em: 0
     - _Metallic: 0
-    - _Opacity: 1
+    - _Opacity: 0.72
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Roughness: 0
     - _Tile: 0.16
     m_Colors:
-    - _MatColor: {r: 1, g: 0.95373195, b: 0.88113207, a: 1}
+    - _MatColor: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &2681116851925980391

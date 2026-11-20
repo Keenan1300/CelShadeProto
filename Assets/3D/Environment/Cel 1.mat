@@ -72,7 +72,7 @@ Material:
     - _tile: 0.02
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 0}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
     - _Tile: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

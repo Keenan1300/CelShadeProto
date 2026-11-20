@@ -74,7 +74,7 @@ Material:
     - _ShadeAdjust: 0.65
     m_Colors:
     - _HighlightTweak: {r: 1, g: 1, b: 1, a: 1}
-    - _Highlight_1: {r: 1, g: 0.024691358, b: 0, a: 0}
+    - _Highlight_1: {r: 1, g: 0.023529414, b: 0, a: 0}
     - _MetalColorHigh: {r: 0.13008898, g: 0.4391309, b: 0.4566037, a: 0}
     - _MetalShadow: {r: 0.335849, g: 0.08047701, b: 0.3239712, a: 0}
     - _MetalSlimmer: {r: 0.1764706, g: 0.4862745, b: 0.49411765, a: 0}
